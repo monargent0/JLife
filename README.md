@@ -1,6 +1,6 @@
 # JLife
 ## 0. JLife Logo
-###![JLifeLogo](https://user-images.githubusercontent.com/101619749/200117354-b11843f6-f7d5-441b-8b12-84693a5a19e6.gif)
+![JLifeLogo](https://user-images.githubusercontent.com/101619749/200117354-b11843f6-f7d5-441b-8b12-84693a5a19e6.gif)
 ## 1. JLife란 어떤 어플인가?
 ### JLife는 To Do List와 몰입도 및 성취도 평가가 합쳐진 시간 관리 어플리케이션이다.
 ## 2. JLife의 목적
