@@ -187,19 +187,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Cw-eH-IsI">
-                                <rect key="frame" x="16" y="227" width="358" height="520"/>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="520" id="89Y-Th-BWI"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHq-EN-Ll0">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHq-EN-Ll0">
                                 <rect key="frame" x="290" y="755" width="84" height="35"/>
                                 <color key="tintColor" systemColor="systemBrownColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system" title="Edit"/>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mA6-M4-c7s">
+                                <rect key="frame" x="16" y="227" width="358" height="520"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mMd-bx-1wx">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xiQ-Ld-2mH">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Co-8s-Iua">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pJq-I6-9pq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -212,13 +226,8 @@
                             <constraint firstItem="xKx-6u-UFG" firstAttribute="top" secondItem="pJq-I6-9pq" secondAttribute="top" id="Moo-dx-AIH"/>
                             <constraint firstItem="afy-he-Fqd" firstAttribute="bottom" secondItem="FuT-za-62n" secondAttribute="bottom" id="Qgj-j6-dJS"/>
                             <constraint firstItem="afy-he-Fqd" firstAttribute="trailing" secondItem="sPY-Ed-ZaK" secondAttribute="trailingMargin" id="WdJ-HP-m33"/>
-                            <constraint firstItem="3Cw-eH-IsI" firstAttribute="leading" secondItem="FuT-za-62n" secondAttribute="leading" id="aXi-dO-9fX"/>
                             <constraint firstItem="IHq-EN-Ll0" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pJq-I6-9pq" secondAttribute="leading" constant="290" id="c8c-JB-dTm"/>
-                            <constraint firstItem="afy-he-Fqd" firstAttribute="trailing" secondItem="3Cw-eH-IsI" secondAttribute="trailing" id="fEK-Ym-uNR"/>
-                            <constraint firstItem="3Cw-eH-IsI" firstAttribute="top" secondItem="FuT-za-62n" secondAttribute="bottom" constant="8" id="iof-rn-ZBT"/>
                             <constraint firstItem="FuT-za-62n" firstAttribute="top" secondItem="sPY-Ed-ZaK" secondAttribute="top" constant="129" id="rFv-1x-72e"/>
-                            <constraint firstItem="IHq-EN-Ll0" firstAttribute="trailing" secondItem="3Cw-eH-IsI" secondAttribute="trailing" id="yns-xg-Sao"/>
-                            <constraint firstItem="IHq-EN-Ll0" firstAttribute="top" secondItem="3Cw-eH-IsI" secondAttribute="bottom" constant="8" id="zmU-Kx-fY4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FlG-hG-B1b"/>
@@ -256,9 +265,6 @@
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
