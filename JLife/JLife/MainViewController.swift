@@ -9,12 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    //
+    // 컨텐츠선언
     @IBOutlet weak var cvCalender: UICollectionView! // 달력 CollectionView
     @IBOutlet weak var svWeekDays: UIStackView!
     @IBOutlet weak var lblMonthYear: UILabel!
     @IBOutlet weak var svBottom: UIStackView!
-    //
+    // 변수선언
     var presentDate = Date()
     var allDateItems : [String] = []
     var items : (daysInMonth : Int, startWeekDay : Int) = (0,0)
@@ -65,6 +65,7 @@ class MainViewController: UIViewController {
             count += 1
         } // while
         
+        // Title
         lblMonthYear.text = CalenderHelper().yearString(date: presentDate) + "년 " + CalenderHelper().monthString(date: presentDate) + "월"
         
         // CollectionView Reload
