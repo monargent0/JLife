@@ -12,7 +12,8 @@ class MainViewController: UIViewController {
     /* 스토리보드와 연결 */
     @IBOutlet weak var cvCalendar: UICollectionView! // 달력
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
-
+    @IBOutlet weak var svWeek: UIStackView! // 상단 요일
+    
     /* 변수 선언 */
     var presentDate = Date() // 현재
     var allDateItems : [String] = [] //
@@ -24,6 +25,13 @@ class MainViewController: UIViewController {
         cvCalendar.delegate = self
         setMonth()
         // Do any additional setup after loading the view.
+//        self.view.addSubview(cvCalendar)
+        
+        cvCalendar.translatesAutoresizingMaskIntoConstraints = false
+        cvCalendar.widthAnchor.constraint(equalToConstant: 393).isActive = true
+        cvCalendar.heightAnchor.constraint(equalToConstant: 340).isActive = true
+        cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 0).isActive = true
     }
     
     /* 버튼 */
