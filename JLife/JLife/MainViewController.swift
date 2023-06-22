@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
         cvCalendar.widthAnchor.constraint(equalToConstant: deviceWidth()).isActive = true // 가로
         cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
         cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
-        cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 0).isActive = true // 세로 위치
+        cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 10).isActive = true // 세로 위치
     }
     
     /* 버튼 */
