@@ -19,19 +19,19 @@ class MainViewController: UIViewController {
     var allDateItems : [String] = [] //
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
         setMonth()
-        // Do any additional setup after loading the view.
-//        self.view.addSubview(cvCalendar)
         
-        cvCalendar.translatesAutoresizingMaskIntoConstraints = false
-        cvCalendar.widthAnchor.constraint(equalToConstant: 393).isActive = true
-        cvCalendar.heightAnchor.constraint(equalToConstant: 340).isActive = true
-        cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 0).isActive = true
+        // Collection View Size
+        cvCalendar.translatesAutoresizingMaskIntoConstraints = false // 스토리보드에서 적용한것 무시
+        cvCalendar.widthAnchor.constraint(equalToConstant: deviceWidth()).isActive = true // 가로
+        cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
+        cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
+        cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 0).isActive = true // 세로 위치
     }
     
     /* 버튼 */
@@ -65,6 +65,30 @@ class MainViewController: UIViewController {
         cvCalendar.reloadData()
     }// Func setMonth
 
+    /** 아이폰 모델에 따라 Collection View 사이즈 조정 */
+    func deviceWidth() -> CGFloat {
+        let deviceName = UIDevice.current.name
+        var width : CGFloat
+        
+        switch deviceName {
+        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
+            width = 320
+        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
+            width = 375
+        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
+            width = 390
+        case "iPhone 14 Pro": // 393
+            width = 393
+        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
+            width = 414
+        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
+            width = 428
+        default : // iPhone 14 Pro Max
+            width = 430
+        }
+        return width
+    }// Func deviceWidth
+    
     /*
     // MARK: - Navigation
 
