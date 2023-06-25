@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
-        setMonth()
+        setMonth(presentDate)
         
         // Collection View Size
         cvCalendar.translatesAutoresizingMaskIntoConstraints = false // 스토리보드에서 적용한것 무시
@@ -35,15 +35,28 @@ class MainViewController: UIViewController {
     }
     
     /* 버튼 */
+    @IBAction func btnPrevMonth(_ sender: UIButton) {
+        presentDate = CalendarBuilder().minusMonth(date: presentDate)
+        setMonth(presentDate)
+    }
     
-    /* Setting Calendar */
-    func setMonth(){
+    @IBAction func btnNextMonth(_ sender: UIButton) {
+        presentDate = CalendarBuilder().plusMonth(date: presentDate)
+        setMonth(presentDate)
+    }
+    
+    @IBAction func btnMonthly(_ sender: UIButton) {
+    }
+    
+    
+    // MARK: Setting Calendar Function
+    func setMonth(_ date:Date){
         // Properties
         allDateItems.removeAll() // 초기화
-        items.daysInMonth = CalendarBuilder().daysInMonth(date: presentDate) // 현재 달 일수
-        let firstOfMonth = CalendarBuilder().firstOfMonth(date: presentDate) // 월의 첫날
+        items.daysInMonth = CalendarBuilder().daysInMonth(date: date) // 현재 달 일수
+        let firstOfMonth = CalendarBuilder().firstOfMonth(date: date) // 월의 첫날
         items.startWeekDay = CalendarBuilder().startWeekDay(date: firstOfMonth) // 달 시작 요일
-        let daysInPrevMonth = CalendarBuilder().daysInPrevMonth(date: presentDate) // 이전 달 일수
+        let daysInPrevMonth = CalendarBuilder().daysInPrevMonth(date: date) // 이전 달 일수
         
         // Calendar Contents
         var count:Int = 1
@@ -59,13 +72,13 @@ class MainViewController: UIViewController {
         } // while
         
         // Title
-        lblDateTitle.text = CalendarBuilder().yearString(date: presentDate) + "년 " + CalendarBuilder().monthString(date: presentDate) + "월"
+        lblDateTitle.text = CalendarBuilder().yearString(date: date) + "년 " + CalendarBuilder().monthString(date: date) + "월"
         
         // CollectionView Reload
         cvCalendar.reloadData()
     }// Func setMonth
-
-    /** 아이폰 모델에 따라 Collection View 사이즈 조정 */
+    
+    // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
     func deviceWidth() -> CGFloat {
         let deviceName = UIDevice.current.name
         var width : CGFloat
@@ -101,6 +114,7 @@ class MainViewController: UIViewController {
 
 } //MainViewController
 
+// MARK:  Collection View 구성 Extension
 /* Collection View Cell */
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource{
     // Cell 개수

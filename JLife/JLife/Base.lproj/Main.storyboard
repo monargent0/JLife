@@ -32,6 +32,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnPrevMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BzB-3k-Ww4"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="znV-NP-RWf">
                                         <rect key="frame" x="103.66666666666666" y="0.0" width="66" height="34.333333333333336"/>
@@ -45,6 +48,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnNextMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uUM-5E-8vF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -165,10 +171,13 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
                                             <color key="baseForegroundColor" systemColor="systemCyanColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnMonthly:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dFa-4r-mcE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" text="이번달의 나의 다짐." textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOn-Re-5UL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" text="이번 달 나의 다짐." textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOn-Re-5UL">
                                 <rect key="frame" x="20" y="605" width="353" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
