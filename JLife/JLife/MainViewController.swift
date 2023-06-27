@@ -6,35 +6,48 @@
 //
 
 import UIKit
+import SQLite3 /**/
 
 class MainViewController: UIViewController {
 
-    /* 스토리보드와 연결 */
+    // MARK: 스토리보드와 연결
     @IBOutlet weak var cvCalendar: UICollectionView! // 달력
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
     @IBOutlet weak var svWeek: UIStackView! // 상단 요일
     
-    /* 변수 선언 */
+    // MARK: 변수 선언
     var presentDate = Date() // 현재
     var allDateItems : [String] = [] //
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     
+    // MARK: Monthly SQLite
+    var monthlyBundle:[Monthly] = []
+    var db: OpaquePointer? // DB포인터
     
+    // Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
+        // 달력 구성
         setMonth(presentDate)
-        
+        // SQL 구성
+        createTable()
         // Collection View Size
         cvCalendar.translatesAutoresizingMaskIntoConstraints = false // 스토리보드에서 적용한것 무시
         cvCalendar.widthAnchor.constraint(equalToConstant: deviceWidth()).isActive = true // 가로
         cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
         cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
         cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor,constant: 10).isActive = true // 세로 위치
+        
+        
+    }
+    // Will Appear
+    override func viewWillAppear(_ animated: Bool) {
+        //
     }
     
-    /* 버튼 */
+    // MARK: 버튼 연결
     @IBAction func btnPrevMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().minusMonth(date: presentDate)
         setMonth(presentDate)
@@ -45,8 +58,17 @@ class MainViewController: UIViewController {
         setMonth(presentDate)
     }
     
-    @IBAction func btnMonthly(_ sender: UIButton) {
-    }
+//    @IBAction func btnMonthly(_ sender: UIButton) {
+//        let addAlert = UIAlertController(title: "Month 화면 수정", message: "좋아하는 노래 가사나 이번달 나의 다짐을 적어보세요!", preferredStyle: .alert)
+//        addAlert.addTextField{ ACTION in
+//            ACTION.placeholder = "수많은 별이 그랬듯이 언제나 같은 자리 제 몫의 빛으로 환하게 비출 테니"
+//        }
+//        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+//        let okAction = UIAlertAction(title: "추가", style: .default, handler: nil)
+//        addAlert.addAction(cancelAction)
+//        addAlert.addAction(okAction)
+//        present(addAlert, animated: true)
+//    }//
     
     
     // MARK: Setting Calendar Function
@@ -77,6 +99,21 @@ class MainViewController: UIViewController {
         // CollectionView Reload
         cvCalendar.reloadData()
     }// Func setMonth
+    
+    // MARK: SQLite 테이블 생성
+    func createTable(){
+        // Monthly
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening database")
+        }
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error creating table \(errmsg)")
+            return
+        }//Monthly
+    }
+    
     
     // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
     func deviceWidth() -> CGFloat {

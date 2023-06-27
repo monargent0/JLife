@@ -103,7 +103,7 @@
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xcw-Zs-DIF">
                                 <rect key="frame" x="0.0" y="181" width="393" height="362"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iIR-88-Qbj">
                                     <size key="itemSize" width="113" height="117"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -169,10 +169,10 @@
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                            <color key="baseForegroundColor" systemColor="systemCyanColor"/>
+                                            <color key="baseForegroundColor" systemColor="systemGrayColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="btnMonthly:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dFa-4r-mcE"/>
+                                            <segue destination="dig-RW-xRe" kind="presentation" id="okL-mk-D9W"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -270,6 +270,99 @@
             </objects>
             <point key="canvasLocation" x="-112.21374045801527" y="-27.464788732394368"/>
         </scene>
+        <!--Monthly Pop Up View Controller-->
+        <scene sceneID="mej-j5-Uxw">
+            <objects>
+                <viewController id="dig-RW-xRe" customClass="MonthlyPopUpViewController" customModule="JLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IUb-Vq-9Vu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="452"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwL-qg-gzv">
+                                <rect key="frame" x="20" y="399" width="353" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPb-Uk-gYp">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="33"/>
+                                        <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="취소">
+                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
+                                            <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-Mj-hBP">
+                                        <rect key="frame" x="181.66666666666663" y="0.0" width="171.33333333333337" height="33"/>
+                                        <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="확인">
+                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
+                                            <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TqF-bY-AXs">
+                                <rect key="frame" x="20" y="89" width="353" height="230"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달의 타이틀" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-Pl-Js1">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19"/>
+                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#Monthly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-NB-AL6">
+                                        <rect key="frame" x="0.0" y="36.333333333333329" width="353" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gxK-4Q-UN6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write anything you want" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-ZC-1Cc">
+                                        <rect key="frame" x="0.0" y="93.666666666666657" width="353" height="19"/>
+                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="수많은 별이 그랬듯이 언제나 같은 자리 제 몫의 빛으로 환하게 비출 테니" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-jk-B3U">
+                                        <rect key="frame" x="0.0" y="130" width="353" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="ott-KN-boM"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Mcp-jk-B3U" firstAttribute="leading" secondItem="TqF-bY-AXs" secondAttribute="leading" id="6Aw-01-yJd"/>
+                                    <constraint firstItem="ZRY-NB-AL6" firstAttribute="centerX" secondItem="TqF-bY-AXs" secondAttribute="centerX" id="Mj2-a4-3Ze"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4NR-yB-drG"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.68235301969999995" green="0.79215681550000006" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="TqF-bY-AXs" firstAttribute="centerX" secondItem="IUb-Vq-9Vu" secondAttribute="centerX" id="BHM-cu-x73"/>
+                            <constraint firstItem="4NR-yB-drG" firstAttribute="top" secondItem="TqF-bY-AXs" secondAttribute="top" constant="-30" id="P4h-W0-nkB"/>
+                            <constraint firstItem="fwL-qg-gzv" firstAttribute="leading" secondItem="4NR-yB-drG" secondAttribute="leading" constant="20" id="WLQ-Kp-SpO"/>
+                            <constraint firstItem="fwL-qg-gzv" firstAttribute="top" relation="lessThanOrEqual" secondItem="TqF-bY-AXs" secondAttribute="bottom" constant="80" id="b4h-hM-MpD"/>
+                            <constraint firstItem="4NR-yB-drG" firstAttribute="bottom" secondItem="fwL-qg-gzv" secondAttribute="bottom" constant="20" id="l9t-FZ-M70"/>
+                            <constraint firstItem="fwL-qg-gzv" firstAttribute="centerX" secondItem="IUb-Vq-9Vu" secondAttribute="centerX" id="oKA-Hk-AEN"/>
+                            <constraint firstItem="TqF-bY-AXs" firstAttribute="leading" secondItem="4NR-yB-drG" secondAttribute="leading" constant="20" id="vkP-ug-uUC"/>
+                            <constraint firstItem="4NR-yB-drG" firstAttribute="trailing" secondItem="fwL-qg-gzv" secondAttribute="trailing" constant="20" id="vuR-l3-s2D"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="393" height="452"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIi-na-Umi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803.81679389312978" y="663.38028169014092"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
@@ -281,11 +374,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
