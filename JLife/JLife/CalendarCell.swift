@@ -10,6 +10,7 @@ import UIKit
 class CalendarCell: UICollectionViewCell {
     // storyborad와 연결
     @IBOutlet weak var lblDay: UILabel!
+    @IBOutlet weak var lblToday: UILabel!
     
     // Layer Shape (원)
     override func draw(_ rect: CGRect) {
@@ -21,5 +22,6 @@ class CalendarCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.backgroundColor = .clear
+        self.lblToday.isHidden = true
     }
 }

@@ -20,6 +20,12 @@ class CalendarBuilder{
     func minusMonth(date:Date) -> Date {
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
+    // Day 표현
+    func dayString(date:Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd" //
+        return dateFormatter.string(from: date)
+    }
     // Month 표현
     func monthString(date:Date) -> String {
         let dateFormatter = DateFormatter()

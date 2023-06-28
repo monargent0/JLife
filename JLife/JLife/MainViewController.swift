@@ -16,7 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var svWeek: UIStackView! // 상단 요일
     
     // MARK: 변수 선언
-    var presentDate = Date() // 현재
+    var presentDate = Date() // 달력 생성용
+    var todayDate = Date() // 오늘 표시
     var allDateItems : [String] = [] //
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     
@@ -172,6 +173,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         default:
             cell.lblDay.textColor = .darkGray
         }
+        // Today 표시
+        if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == .darkGray{
+            cell.lblToday.isHidden = false
+        }
+                
         return cell
     }
 }// Delegate, DataSouce

@@ -124,10 +124,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-fI-d2d">
+                                                    <rect key="frame" x="47" y="33.333333333333336" width="19" height="12"/>
+                                                    <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="10"/>
+                                                    <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="1JV-Of-wDH" firstAttribute="top" secondItem="IVz-fI-d2d" secondAttribute="bottom" constant="3" id="3Yd-Ik-SLa"/>
                                                 <constraint firstItem="1JV-Of-wDH" firstAttribute="top" relation="lessThanOrEqual" secondItem="Ayp-hC-1MX" secondAttribute="top" constant="48.329999999999998" id="HQO-Ju-Yfk"/>
                                                 <constraint firstItem="1JV-Of-wDH" firstAttribute="centerX" secondItem="Ayp-hC-1MX" secondAttribute="centerX" id="Mqq-Dt-bjk"/>
+                                                <constraint firstItem="IVz-fI-d2d" firstAttribute="centerX" secondItem="Ayp-hC-1MX" secondAttribute="centerX" id="MyA-Xp-wUF"/>
                                                 <constraint firstItem="1JV-Of-wDH" firstAttribute="centerY" secondItem="Ayp-hC-1MX" secondAttribute="centerY" id="Z7b-Cn-o4i"/>
                                                 <constraint firstItem="1JV-Of-wDH" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Ayp-hC-1MX" secondAttribute="leading" constant="40.329999999999998" id="iIP-fJ-DRU"/>
                                             </constraints>
@@ -135,6 +143,7 @@
                                         <size key="customSize" width="113" height="117"/>
                                         <connections>
                                             <outlet property="lblDay" destination="1JV-Of-wDH" id="GfW-MY-Rcw"/>
+                                            <outlet property="lblToday" destination="IVz-fI-d2d" id="lw9-hO-R6B"/>
                                             <segue destination="kiu-VK-Nrx" kind="show" identifier="sgDay" id="52k-1M-ofS"/>
                                         </connections>
                                     </collectionViewCell>
