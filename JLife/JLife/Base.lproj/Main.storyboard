@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="znV-NP-RWf">
-                                        <rect key="frame" x="108.33333333333336" y="0.0" width="56.666666666666671" height="34.333333333333336"/>
+                                        <rect key="frame" x="114" y="0.0" width="45" height="34.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -54,46 +54,46 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" distribution="equalCentering" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="uhJ-ok-FGL">
-                                <rect key="frame" x="16" y="164.33333333333334" width="361" height="21.333333333333343"/>
+                                <rect key="frame" x="16" y="164.33333333333334" width="361" height="21"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="zUv-SK-TN4">
-                                        <rect key="frame" x="0.0" y="0.0" width="17.333333333333332" height="21.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="15.666666666666666" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-P8-NLo">
-                                        <rect key="frame" x="57.333333333333336" y="0.0" width="17.333333333333336" height="21.333333333333332"/>
+                                        <rect key="frame" x="57.666666666666664" y="0.0" width="15.666666666666664" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="q6k-XN-irf">
-                                        <rect key="frame" x="114.66666666666666" y="0.0" width="17.333333333333343" height="21.333333333333332"/>
+                                        <rect key="frame" x="115" y="0.0" width="15.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="pTa-TT-SG6">
-                                        <rect key="frame" x="172" y="0.0" width="17.333333333333343" height="21.333333333333332"/>
+                                        <rect key="frame" x="172.66666666666666" y="0.0" width="15.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ATY-dy-o0r">
-                                        <rect key="frame" x="229" y="0.0" width="17.333333333333343" height="21.333333333333332"/>
+                                        <rect key="frame" x="230.33333333333334" y="0.0" width="15.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="MrR-iW-V6D">
-                                        <rect key="frame" x="286.33333333333331" y="0.0" width="17.333333333333314" height="21.333333333333332"/>
+                                        <rect key="frame" x="287.66666666666669" y="0.0" width="15.666666666666686" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VZV-Zb-b9P">
-                                        <rect key="frame" x="343.66666666666669" y="0.0" width="17.333333333333314" height="21.333333333333332"/>
+                                        <rect key="frame" x="345.33333333333331" y="0.0" width="15.666666666666686" height="21"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xcw-Zs-DIF">
-                                <rect key="frame" x="0.0" y="200.66666666666666" width="393" height="317.33333333333337"/>
+                                <rect key="frame" x="0.0" y="200.33333333333334" width="393" height="317.66666666666663"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iIR-88-Qbj">
                                     <size key="itemSize" width="113" height="117"/>
@@ -124,7 +124,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-fI-d2d">
-                                                    <rect key="frame" x="47" y="35.333333333333336" width="19" height="12"/>
+                                                    <rect key="frame" x="47" y="35.666666666666664" width="19" height="11.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -167,7 +167,7 @@
                                 <rect key="frame" x="16" y="543" width="361" height="34.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Monthly" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Xm5-SP-Ob0">
-                                        <rect key="frame" x="0.0" y="0.0" width="71.666666666666671" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="34.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -256,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrG-wW-qWI">
-                                <rect key="frame" x="16" y="103" width="214.33333333333334" height="23.666666666666671"/>
+                                <rect key="frame" x="16" y="103" width="150" height="23.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-Lu-Z2e">
                                         <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="23.666666666666668"/>
@@ -276,38 +276,52 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCf-2f-xNz">
-                                        <rect key="frame" x="160" y="0.0" width="54.333333333333343" height="23.666666666666668"/>
-                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="PyB-7A-ivh">
-                                <rect key="frame" x="16" y="136.66666666666666" width="361" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="PyB-7A-ivh">
+                                <rect key="frame" x="16" y="141.66666666666666" width="361" height="80"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="하이 헬로우 안녕" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-f7-IV0">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="261" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="dw5-jU-ccz"/>
+                                            <constraint firstAttribute="height" constant="80" id="hax-4s-iMb"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrf-i7-mYs">
+                                        <rect key="frame" x="261" y="0.0" width="30" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Pvj-pW-mwr"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus.square.dashed" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="semibold"/>
+                                            <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-4I-2Hw">
-                                        <rect key="frame" x="296" y="0.0" width="65" height="100"/>
+                                        <rect key="frame" x="296" y="0.0" width="65" height="80"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="26"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Wrf-i7-mYs" firstAttribute="leading" secondItem="W6Y-f7-IV0" secondAttribute="trailing" id="HvW-IE-zdM"/>
+                                    <constraint firstItem="YKX-4I-2Hw" firstAttribute="leading" secondItem="Wrf-i7-mYs" secondAttribute="trailing" constant="5" id="r0j-JM-7Pe"/>
+                                </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiK-Sz-gWn">
+                                <rect key="frame" x="16" y="738.66666666666663" width="361" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="plus" catalog="system"/>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GrU-7t-aVd">
-                                <rect key="frame" x="16" y="253" width="361" height="459"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="16" y="283" width="361" height="286"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C1D-R0-r5R">
                                     <size key="itemSize" width="361" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -322,56 +336,51 @@
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="일어나서 물 1잔 마시기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ga-gu-OSK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ga-gu-OSK">
                                                     <rect key="frame" x="54" y="35" width="291" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S2-Ff-QVr">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S2-Ff-QVr">
                                                     <rect key="frame" x="8" y="27" width="36" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
                                                     </buttonConfiguration>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="오전 7시 30분" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idv-rr-MTe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idv-rr-MTe">
                                                     <rect key="frame" x="54" y="15.333333333333336" width="291" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="9Ga-gu-OSK" firstAttribute="top" secondItem="idv-rr-MTe" secondAttribute="bottom" constant="3" id="6cb-4L-Zfj"/>
-                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="leading" secondItem="Fyu-22-GL3" secondAttribute="leading" constant="8" id="EQy-fd-Sc0"/>
-                                                <constraint firstItem="9Ga-gu-OSK" firstAttribute="leading" secondItem="3S2-Ff-QVr" secondAttribute="trailing" constant="10" id="hJ9-WN-hMU"/>
-                                                <constraint firstItem="9Ga-gu-OSK" firstAttribute="centerY" secondItem="Fyu-22-GL3" secondAttribute="centerY" id="mFK-kW-lwp"/>
-                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="centerX" secondItem="Fyu-22-GL3" secondAttribute="centerX" constant="-154.5" id="x6x-qB-0Un"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="361" height="90"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiK-Sz-gWn">
-                                <rect key="frame" x="16" y="740" width="361" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" image="plus" catalog="system"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EBk-l7-3IF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YiK-Sz-gWn" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="1f8-De-ZGq"/>
-                            <constraint firstItem="PyB-7A-ivh" firstAttribute="top" secondItem="hrG-wW-qWI" secondAttribute="bottom" constant="10" id="D4y-EY-SQN"/>
-                            <constraint firstItem="hrG-wW-qWI" firstAttribute="top" secondItem="EBk-l7-3IF" secondAttribute="top" id="Dl1-Vc-yBC"/>
-                            <constraint firstItem="PyB-7A-ivh" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="F1A-lM-blG"/>
-                            <constraint firstItem="hrG-wW-qWI" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="G2W-sy-TmV"/>
-                            <constraint firstItem="EBk-l7-3IF" firstAttribute="bottom" secondItem="YiK-Sz-gWn" secondAttribute="bottom" constant="43" id="TGB-nw-y2N"/>
-                            <constraint firstItem="PyB-7A-ivh" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="WTW-j6-h2r"/>
-                            <constraint firstItem="YiK-Sz-gWn" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="WVX-2i-tCH"/>
-                            <constraint firstItem="GrU-7t-aVd" firstAttribute="top" secondItem="PyB-7A-ivh" secondAttribute="bottom" constant="15" id="w2u-gK-Uvm"/>
+                            <constraint firstItem="hrG-wW-qWI" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="7Wz-pc-a1R"/>
+                            <constraint firstItem="EBk-l7-3IF" firstAttribute="trailing" secondItem="PyB-7A-ivh" secondAttribute="trailing" constant="16" id="Hfy-5P-CYG"/>
+                            <constraint firstItem="PyB-7A-ivh" firstAttribute="top" secondItem="hrG-wW-qWI" secondAttribute="bottom" constant="15" id="LN9-mN-HEt"/>
+                            <constraint firstItem="hrG-wW-qWI" firstAttribute="top" secondItem="EBk-l7-3IF" secondAttribute="top" id="OWv-Na-7nC"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="SPN-Lq-JxM"/>
+                            <constraint firstItem="PyB-7A-ivh" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="W7y-tJ-Rdu"/>
+                            <constraint firstItem="EBk-l7-3IF" firstAttribute="bottom" secondItem="YiK-Sz-gWn" secondAttribute="bottom" constant="45" id="aUt-gQ-KgP"/>
+                            <constraint firstItem="PyB-7A-ivh" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="dui-1Y-ShL"/>
+                            <constraint firstItem="YiK-Sz-gWn" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="f5T-ek-6GE"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="centerY" secondItem="Nq2-Sl-5Cf" secondAttribute="centerY" id="fpc-y3-LCT"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="nJa-zQ-g8e"/>
+                            <constraint firstItem="YiK-Sz-gWn" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="nVK-fI-YmY"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="top" secondItem="PyB-7A-ivh" secondAttribute="bottom" constant="61.329999999999998" id="pHI-fK-fEb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rjh-s9-D9D"/>
@@ -410,10 +419,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwL-qg-gzv">
-                                <rect key="frame" x="20" y="399" width="353" height="33"/>
+                                <rect key="frame" x="20" y="399.33333333333331" width="353" height="32.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPb-Uk-gYp">
-                                        <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="32.666666666666664"/>
                                         <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="취소">
@@ -423,7 +432,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-Mj-hBP">
-                                        <rect key="frame" x="181.66666666666663" y="0.0" width="171.33333333333337" height="33"/>
+                                        <rect key="frame" x="181.66666666666663" y="0.0" width="171.33333333333337" height="32.666666666666664"/>
                                         <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <buttonConfiguration key="configuration" style="filled" title="확인">
                                             <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
@@ -434,10 +443,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TqF-bY-AXs">
-                                <rect key="frame" x="20" y="89" width="353" height="230"/>
+                                <rect key="frame" x="20" y="89.000000000000014" width="353" height="230.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달의 타이틀" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-Pl-Js1">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="18.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -452,13 +461,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write anything you want" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-ZC-1Cc">
-                                        <rect key="frame" x="0.0" y="93.666666666666657" width="353" height="19"/>
+                                        <rect key="frame" x="0.0" y="94" width="353" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="수많은 별이 그랬듯이 언제나 같은 자리 제 몫의 빛으로 환하게 비출 테니" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-jk-B3U">
-                                        <rect key="frame" x="0.0" y="130" width="353" height="100"/>
+                                        <rect key="frame" x="0.0" y="130.33333333333334" width="353" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="ott-KN-boM"/>
@@ -501,11 +510,15 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.square.dashed" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
