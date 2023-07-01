@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
-    var todayDate = Date() // 오늘 표시
+    let todayDate = Date() // 오늘 표시
     var allDateItems : [String] = [] // 달력 cell items
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     
@@ -72,7 +72,7 @@ class MainViewController: UIViewController {
     
     
     // MARK: Setting Calendar Function
-    func setMonth(_ date:Date){
+    private func setMonth(_ date:Date){
         // Properties
         allDateItems.removeAll() // 초기화
         items.daysInMonth = CalendarBuilder().daysInMonth(date: date) // 현재 달 일수
@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
     }// Func setMonth
     
     // MARK: SQLite 테이블 생성
-    func createTable(){
+    private func createTable(){
         // Monthly
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -116,7 +116,7 @@ class MainViewController: UIViewController {
     
     
     // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
-    func deviceWidth() -> CGFloat {
+    private func deviceWidth() -> CGFloat {
         let deviceName = UIDevice.current.name
         var width : CGFloat
         
