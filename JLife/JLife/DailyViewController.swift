@@ -7,15 +7,32 @@
 
 import UIKit
 
-class DailyViewController: UIViewController {
+class DailyViewController: UIViewController , UITextViewDelegate {
 
+    @IBOutlet weak var tvDaily: UITextView!
+//    let dot = UIImageView(image: UIImage(named: "dotLineBox.png"))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tvDaily.addSubview(dot)
+//        tvDaily.bringSubviewToFront(dot)
+//        dot.frame.size = CGSize(width: 273.0, height: 100.0)
+        
+        // DailyText Border
+        tvDaily.layer.borderColor = UIColor.lightGray.cgColor
+        tvDaily.layer.borderWidth = 1.0
+        tvDaily.layer.cornerRadius = 5
+        // 글자수 제한
+        tvDaily.delegate = self
 
-        // Do any additional setup after loading the view.
     }
     
-
+    func textViewDidChange(_ textView: UITextView) {
+        if tvDaily.text.count > 30{
+            tvDaily.deleteBackward()
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

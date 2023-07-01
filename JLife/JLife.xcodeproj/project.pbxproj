@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B512A43727400D3C3B0 /* AppDelegate.swift */; };
 		48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B532A43727400D3C3B0 /* SceneDelegate.swift */; };
-		48307B562A43727400D3C3B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B552A43727400D3C3B0 /* ViewController.swift */; };
 		48307B592A43727400D3C3B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48307B572A43727400D3C3B0 /* Main.storyboard */; };
 		48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48307B5A2A43727500D3C3B0 /* Assets.xcassets */; };
 		48307B5E2A43727500D3C3B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48307B5C2A43727500D3C3B0 /* LaunchScreen.storyboard */; };
@@ -26,7 +25,6 @@
 		48307B4E2A43727400D3C3B0 /* JLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48307B512A43727400D3C3B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48307B532A43727400D3C3B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		48307B552A43727400D3C3B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48307B582A43727400D3C3B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48307B5A2A43727500D3C3B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48307B5D2A43727500D3C3B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,18 +70,17 @@
 			children = (
 				48307B512A43727400D3C3B0 /* AppDelegate.swift */,
 				48307B532A43727400D3C3B0 /* SceneDelegate.swift */,
-				48307B552A43727400D3C3B0 /* ViewController.swift */,
 				48307B572A43727400D3C3B0 /* Main.storyboard */,
-				48307B5A2A43727500D3C3B0 /* Assets.xcassets */,
 				48307B5C2A43727500D3C3B0 /* LaunchScreen.storyboard */,
+				48307B5A2A43727500D3C3B0 /* Assets.xcassets */,
 				48307B652A43730500D3C3B0 /* Cafe24SsurroundAir.ttf */,
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
 				48307B672A4373ED00D3C3B0 /* MainViewController.swift */,
 				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
-				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
-				48307B6D2A43788800D3C3B0 /* CalendarCell.swift */,
-				48C344512A4889550061F930 /* Monthly.swift */,
 				48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */,
+				48307B6D2A43788800D3C3B0 /* CalendarCell.swift */,
+				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
+				48C344512A4889550061F930 /* Monthly.swift */,
 			);
 			path = JLife;
 			sourceTree = "<group>";
@@ -160,7 +157,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48307B562A43727400D3C3B0 /* ViewController.swift in Sources */,
 				48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
@@ -244,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -323,8 +319,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,8 +354,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -23,7 +23,7 @@ class CalendarBuilder{
     // Day 표현
     func dayString(date:Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd" //
+        dateFormatter.dateFormat = "d" // d : 1~31 dd: 01~31
         return dateFormatter.string(from: date)
     }
     // Month 표현
