@@ -19,6 +19,7 @@
 		48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B6D2A43788800D3C3B0 /* CalendarCell.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
+		48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		48307B6D2A43788800D3C3B0 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
+		48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +77,47 @@
 				48307B5A2A43727500D3C3B0 /* Assets.xcassets */,
 				48307B652A43730500D3C3B0 /* Cafe24SsurroundAir.ttf */,
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
+				48E4692A2A50A3740023B03E /* View Group */,
+				48E4692B2A50A3A30023B03E /* Calendar */,
+				48E469282A50A3140023B03E /* SQLite */,
+				48E4692C2A50A3CC0023B03E /* New Group */,
+			);
+			path = JLife;
+			sourceTree = "<group>";
+		};
+		48E469282A50A3140023B03E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				48C344512A4889550061F930 /* Monthly.swift */,
+			);
+			name = SQLite;
+			sourceTree = "<group>";
+		};
+		48E4692A2A50A3740023B03E /* View Group */ = {
+			isa = PBXGroup;
+			children = (
 				48307B672A4373ED00D3C3B0 /* MainViewController.swift */,
 				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
 				48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */,
-				48307B6D2A43788800D3C3B0 /* CalendarCell.swift */,
-				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
-				48C344512A4889550061F930 /* Monthly.swift */,
+				48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */,
 			);
-			path = JLife;
+			name = "View Group";
+			sourceTree = "<group>";
+		};
+		48E4692B2A50A3A30023B03E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
+				48307B6D2A43788800D3C3B0 /* CalendarCell.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		48E4692C2A50A3CC0023B03E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +197,7 @@
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,
+				48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */,
 				48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */,
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
