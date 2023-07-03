@@ -18,9 +18,19 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 변수 선언
     let tfMaxLength = 20
     var tvMaxLength = 0
+    var year : String = ""
+    var month : String = ""
+    var mvTitle : String = ""
+    var mvContent : String = ""
+    var existence = false
+//    let DidDismissMonthlyViewController: Notification.Name =
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(year) , \(month), \(existence) ")
+        // mainView에서 넘김
+        tfMTitle.text = mvTitle
+        tvMContent.text = mvContent
         // 기종별 textview길이 제한
         tvMaxLength = deviceTvCount()
         // 글자수 라벨
@@ -34,6 +44,7 @@ class MonthlyPopUpViewController: UIViewController {
         EnterButton.isEnabled = false
         // 인식 NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
+//        NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
         // Delegate
         tfMTitle.delegate = self
         tvMContent.delegate = self
@@ -51,8 +62,14 @@ class MonthlyPopUpViewController: UIViewController {
     @IBAction func btnBack(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    // 확인
+    // 수정
+    // select(main에서 해서 segue로 보내기) 해서 없으면 insert 있으면 update 쿼리를 사용해야함
     @IBAction func btnEnter(_ sender: UIButton) {
+        if existence == false{
+            // insert
+        }else{
+            // update
+        }
         dismiss(animated: true)
     }
     
@@ -182,7 +199,7 @@ extension MonthlyPopUpViewController:UITextFieldDelegate, UITextViewDelegate{
         }else {
             EnterButton.isEnabled = true
         }
-        // 글자수 라벨
+        // 글자수 라벨 실시간 변경
         let count = String(tvMContent.text!.count)
         lblTvCount.text = "\(count) / \(tvMaxLength)"
     }

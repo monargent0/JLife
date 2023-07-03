@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
     @IBOutlet weak var tvMContent: UITextView!
     @IBOutlet weak var svWeek: UIStackView! // 상단 요일
+    @IBOutlet weak var lblMonthlyTitle: UILabel!
     
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
@@ -56,6 +57,7 @@ class MainViewController: UIViewController {
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
         // readMonthlyValues() //
+        print("hi")
     }
     
     // MARK: 버튼 연결
@@ -154,6 +156,20 @@ class MainViewController: UIViewController {
         return width
     }// Func deviceWidth
     
+    // MARK: segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var monthlyPopUpViewController = segue.destination as? MonthlyPopUpViewController
+        if segue.identifier == "sgMonthly"{
+            let date = lblDateTitle.text?.components(separatedBy: " ")
+            monthlyPopUpViewController?.year = date![0]
+            monthlyPopUpViewController?.month = date![1]
+            monthlyPopUpViewController?.mvTitle = lblMonthlyTitle.text!
+            monthlyPopUpViewController?.mvContent = tvMContent.text == "+ 버튼을 눌러보세요!" ? "" : tvMContent.text
+            monthlyPopUpViewController?.existence = false // DB select 존재 여부
+        }else{
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

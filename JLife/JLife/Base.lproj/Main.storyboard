@@ -239,6 +239,7 @@
                     <connections>
                         <outlet property="cvCalendar" destination="xcw-Zs-DIF" id="L1F-f4-eg2"/>
                         <outlet property="lblDateTitle" destination="znV-NP-RWf" id="B71-LJ-kaO"/>
+                        <outlet property="lblMonthlyTitle" destination="Xm5-SP-Ob0" id="a78-QM-113"/>
                         <outlet property="svWeek" destination="uhJ-ok-FGL" id="myV-rQ-jDE"/>
                         <outlet property="tvMContent" destination="bOn-Re-5UL" id="L4f-85-CUK"/>
                     </connections>
