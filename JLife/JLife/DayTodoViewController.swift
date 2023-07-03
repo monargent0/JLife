@@ -1,29 +1,28 @@
 //
-//  DailyPopUpViewController.swift
+//  DayTodoViewController.swift
 //  JLife
 //
-//  Created by 오정은 on 2023/07/02.
+//  Created by 오정은 on 2023/07/03.
 //
 
 import UIKit
 
-class DailyPopUpViewController: UIViewController {
+class DayTodoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 화면 half 사이즈
-        if let sheet = sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
+
         // Do any additional setup after loading the view.
     }
-    // MARK: 버튼
+    
     @IBAction func btnCancel(_ sender: UIButton) {
         dismiss(animated: true)
     }
     
-    @IBAction func btnEnter(_ sender: UIButton) {
+    @IBAction func btnAdd(_ sender: UIButton) {
     }
+    
+    
     // 아무곳이나 눌러 softkeyboard 지우기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

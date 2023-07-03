@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     // MARK: 스토리보드와 연결
     @IBOutlet weak var cvCalendar: UICollectionView! // 달력
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
+    @IBOutlet weak var tvMContent: UITextView!
     @IBOutlet weak var svWeek: UIStackView! // 상단 요일
     
     // MARK: 변수 선언
@@ -24,6 +25,9 @@ class MainViewController: UIViewController {
     // MARK: Monthly SQLite
     var monthlyBundle:[Monthly] = []
     var db: OpaquePointer? // DB포인터
+    
+    // 임시 변수
+    var content = ""
     
     // Did Load
     override func viewDidLoad() {
@@ -40,7 +44,13 @@ class MainViewController: UIViewController {
         cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
         cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
         cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor, constant: 10).isActive = true // 세로 위치
-        
+        // Month Content placeholder
+        if content.isEmpty {
+            tvMContent.text = "Write anthing you want!"
+            tvMContent.textColor = UIColor.brown
+        }else{
+            tvMContent.textColor = UIColor.black
+        }
     }
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
