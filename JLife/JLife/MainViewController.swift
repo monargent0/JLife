@@ -44,17 +44,18 @@ class MainViewController: UIViewController {
         cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
         cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
         cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor, constant: 10).isActive = true // 세로 위치
+        
         // Month Content placeholder
         if content.isEmpty {
-            tvMContent.text = "Write anthing you want!"
-            tvMContent.textColor = UIColor.brown
+            tvMContent.text = "+ 버튼을 눌러보세요!"
+            tvMContent.textColor = UIColor(named: "AccentColor")
         }else{
             tvMContent.textColor = UIColor.black
         }
     }
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
-        //
+        // readMonthlyValues() //
     }
     
     // MARK: 버튼 연결
@@ -67,20 +68,7 @@ class MainViewController: UIViewController {
         presentDate = CalendarBuilder().plusMonth(date: presentDate)
         setMonth(presentDate)
     }
-    
-//    @IBAction func btnMonthly(_ sender: UIButton) {
-//        let addAlert = UIAlertController(title: "Month 화면 수정", message: "좋아하는 노래 가사나 이번달 나의 다짐을 적어보세요!", preferredStyle: .alert)
-//        addAlert.addTextField{ ACTION in
-//            ACTION.placeholder = "수많은 별이 그랬듯이 언제나 같은 자리 제 몫의 빛으로 환하게 비출 테니"
-//        }
-//        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-//        let okAction = UIAlertAction(title: "추가", style: .default, handler: nil)
-//        addAlert.addAction(cancelAction)
-//        addAlert.addAction(okAction)
-//        present(addAlert, animated: true)
-//    }//
-    
-    
+       
     // MARK: Setting Calendar Function
     private func setMonth(_ date:Date){
         // Properties
@@ -115,15 +103,30 @@ class MainViewController: UIViewController {
         // Monthly
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening database")
+            print("error opening database1")
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error creating table \(errmsg)")
             return
         }//Monthly
+        
+        // TodoList
+        let fileURL2 = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
+        if sqlite3_open(fileURL2.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening database2")
+        }
+//        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error creating table \(errmsg)")
+//            return
+//        }//TodoList
     }
     
+    // MARK: SQLite 테이블 불러오기
+    func readMonthlyValues(){
+        
+    }
     
     // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
     private func deviceWidth() -> CGFloat {
@@ -134,7 +137,7 @@ class MainViewController: UIViewController {
         case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
             width = 320
         case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            width = 375
+            width = 375 
         case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
             width = 390
         case "iPhone 14 Pro": // 393
@@ -143,8 +146,10 @@ class MainViewController: UIViewController {
             width = 414
         case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
             width = 428
-        default : // iPhone 14 Pro Max
+        case "iPhone 14 Pro Max" : // 430
             width = 430
+        default : //
+            width = 380
         }
         return width
     }// Func deviceWidth
@@ -185,7 +190,6 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         // Today 표시
         if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == .darkGray{
             cell.lblToday.isHidden = false
-            
         }
 
         return cell

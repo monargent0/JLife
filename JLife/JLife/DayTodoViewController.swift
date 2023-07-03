@@ -8,22 +8,28 @@
 import UIKit
 
 class DayTodoViewController: UIViewController {
-
+    // MARK: 스토리보드 연결
+    
+    
+    // MARK: 변수 선언
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
-    
+    // MARK: 버튼
+    // 취소
     @IBAction func btnCancel(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
+    // 추가
     @IBAction func btnAdd(_ sender: UIButton) {
+        
     }
     
-    
-    // 아무곳이나 눌러 softkeyboard 지우기
+    // MARK: 아무곳이나 눌러 softkeyboard 지우기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -38,4 +44,4 @@ class DayTodoViewController: UIViewController {
     }
     */
 
-}
+}//DayTodoViewController
