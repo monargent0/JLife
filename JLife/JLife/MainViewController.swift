@@ -70,11 +70,13 @@ class MainViewController: UIViewController {
     @IBAction func btnPrevMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().minusMonth(date: presentDate)
         setMonth(presentDate)
+        readMonthlyValues()
     }
     
     @IBAction func btnNextMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().plusMonth(date: presentDate)
         setMonth(presentDate)
+        readMonthlyValues()
     }
        
     // MARK: Setting Calendar Function
@@ -111,14 +113,16 @@ class MainViewController: UIViewController {
         // Monthly
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening database1")
+            print("error opening monthly database")
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating table \(errmsg)")
+            print("error creating monthly table \(errmsg)")
             return
-        }else{print("create monthly")}//Monthly
-        
+        }else{print("create monthly ok")}//Monthly
+       
+    }
+    
 //        // TodoList
 //        let fileURL2 = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
 //        if sqlite3_open(fileURL2.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -129,7 +133,6 @@ class MainViewController: UIViewController {
 //            print("error creating table \(errmsg)")
 //            return
 //        }//TodoList
-    }
     
     // MARK: SQLite 테이블 불러오기
     func readMonthlyValues(){
@@ -157,9 +160,16 @@ class MainViewController: UIViewController {
             print(id, title, content)
             monthlyBundle.append(Monthly(id: Int(id), title: title, content: content))
             monthlyExistence = true
+            
+            self.lblMonthlyTitle.text = title
+            self.tvMContent.text = content
+            self.tvMContent.textColor = UIColor.black
         }else{
             print("no db Data")
             monthlyExistence = false
+            self.lblMonthlyTitle.text = "#Monthly"
+            self.tvMContent.text = "+ 버튼을 눌러보세요!"
+            self.tvMContent.textColor = UIColor(named: "AccentColor")
         }
                 
     }
@@ -190,7 +200,7 @@ class MainViewController: UIViewController {
         return width
     }// Func deviceWidth
     
-    // MARK: segue
+    // MARK: segue MonthlyView로 값 보내기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let monthlyPopUpViewController = segue.destination as? MonthlyPopUpViewController
         if segue.identifier == "sgMonthly"{
@@ -207,11 +217,14 @@ class MainViewController: UIViewController {
     private func didDismissMonthlyNotification(_ notification:Notification) {
          readMonthlyValues()
 //        print("hi")
-        
-        OperationQueue.main.addOperation {
-            self.tvMContent.reloadInputViews()
-            self.lblMonthlyTitle.reloadInputViews()
+        if monthlyExistence == true{
+            lblMonthlyTitle.text = monthlyBundle[0].title
+            tvMContent.text = monthlyBundle[0].content
         }
+//        OperationQueue.main.addOperation {
+//            self.tvMContent.reloadInputViews()
+//            self.lblMonthlyTitle.reloadInputViews()
+//        }
     }//
     /*
     // MARK: - Navigation

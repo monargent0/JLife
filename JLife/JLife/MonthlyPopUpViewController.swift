@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SQLite3 /**/
 
 class MonthlyPopUpViewController: UIViewController {
     // MARK: 스토리보드 연결
@@ -18,43 +19,54 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 변수 선언
     let tfMaxLength = 20
     var tvMaxLength = 0
+    let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
+    
+    // MARK: DB 관련 변수
     var year : String = ""
     var month : String = ""
     var mvTitle : String = ""
     var mvContent : String = ""
-    var existence = false
-    let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
+    var existence = false // data 존재 여부
+    var db: OpaquePointer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /* mainview에서 넘어오는 값 */
         print("\(year) , \(month), \(existence) ")
-        // mainView에서 넘김
         tfMTitle.text = mvTitle
         tvMContent.text = mvContent
-        // 기종별 textview길이 제한
-        tvMaxLength = deviceTvCount()
-        // 글자수 라벨
+        // 글자 갯수 카운팅 라벨
         lblTfCount.text = "\(String(tfMTitle.text!.count)) / \(tfMaxLength)"
         lblTvCount.text = "\(tvMContent.text.count) / \(tvMaxLength)"
-        // 화면 half 사이즈
-        if let sheet = sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
         // 초기 수정 버튼 비활성화
         EnterButton.isEnabled = false
+        
+        // SQLITE
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening monthly database")
+        }
+        
+        // 기종별 textview길이 변동 적용 function
+        tvMaxLength = deviceTvCount()
+
         // 인식 NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
-        
-        // Delegate
+        // Delegate 연결
         tfMTitle.delegate = self
         tvMContent.delegate = self
-        // DailyText Border
+
+        // DailyText Border 레이아웃
         tfMTitle.layer.borderWidth = 0.7
         tfMTitle.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         tfMTitle.layer.cornerRadius = 5
         tvMContent.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         tvMContent.layer.borderWidth = 0.7
         tvMContent.layer.cornerRadius = 5
+        // 화면 half 사이즈
+        if let sheet = sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
     }
     
     // MARK: 버튼
@@ -68,17 +80,73 @@ class MonthlyPopUpViewController: UIViewController {
     @IBAction func btnEnter(_ sender: UIButton) {
         if existence == false{
             // insert
+            insertActionM(year, month, tfMTitle.text!, tvMContent.text!)
+            
         }else{
             // update
         }
         NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
     }
+    /* ----- */
     
-    // MARK: 아무곳이나 눌러 softkeyboard 지우기
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    // MARK: SQLITE
+    func insertActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "INSERT INTO monthly (myear,mmonth,mtitle,mcontent) VALUES (?,?,?,?)"
+        // 사용자 입력 값
+        let myear = year
+        let mmonth = month
+        let title = tfTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing insert : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, myear, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, mmonth, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 3, title, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 4, content, -1, SQLITE_TRANSIENT)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting : \(errmsg)")
+            return
+        }
     }
+    
+    func updateActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "UPDATE monthly SET mtitle = ?, mcontent = ? WHERE myear = ? and mmonth = ?"
+        // 사용자 입력 값
+        let myear = year
+        let mmonth = month
+        let title = tfTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing insert : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, title, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, content, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 3, year, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 4, month, -1, SQLITE_TRANSIENT)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting : \(errmsg)")
+            return
+        }
+    }
+    
     
     // MARK: TF 글자 수 인식 textFieldDidChange
     @objc
@@ -135,6 +203,12 @@ class MonthlyPopUpViewController: UIViewController {
         }
         return length
     }// Func deviceTvCount
+    
+    // MARK: 아무곳이나 눌러 softkeyboard 지우기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -204,6 +278,6 @@ extension MonthlyPopUpViewController:UITextFieldDelegate, UITextViewDelegate{
         // 글자수 라벨 실시간 변경
         let count = String(tvMContent.text!.count)
         lblTvCount.text = "\(count) / \(tvMaxLength)"
-    }
+    }//textViewDidChange
     
 }//UITextFieldDelegate, UITextViewDelegate
