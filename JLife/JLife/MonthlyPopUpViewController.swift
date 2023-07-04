@@ -23,7 +23,7 @@ class MonthlyPopUpViewController: UIViewController {
     var mvTitle : String = ""
     var mvContent : String = ""
     var existence = false
-//    let DidDismissMonthlyViewController: Notification.Name =
+    let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class MonthlyPopUpViewController: UIViewController {
         EnterButton.isEnabled = false
         // 인식 NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
-//        NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
+        
         // Delegate
         tfMTitle.delegate = self
         tvMContent.delegate = self
@@ -60,6 +60,7 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 버튼
     // 취소
     @IBAction func btnBack(_ sender: UIButton) {
+        NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
     }
     // 수정
@@ -70,6 +71,7 @@ class MonthlyPopUpViewController: UIViewController {
         }else{
             // update
         }
+        NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
     }
     
