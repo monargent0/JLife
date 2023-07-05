@@ -19,6 +19,7 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 변수 선언
     let tfMaxLength = 20
     var tvMaxLength = 0
+    var monthlyID = 0
     let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
     
     // MARK: DB 관련 변수
@@ -32,9 +33,16 @@ class MonthlyPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         /* mainview에서 넘어오는 값 */
-        print("\(year) , \(month), \(existence) ")
+//        print("\(year) , \(month), \(existence) , \(monthlyID)")
         tfMTitle.text = mvTitle
         tvMContent.text = mvContent
+        if mvTitle == "#Monthly" && mvContent.isEmpty {
+            existence = false
+        }else{
+            existence = true
+        }
+        // 기종별 textview길이 변동 적용 function
+        tvMaxLength = deviceTvCount()
         // 글자 갯수 카운팅 라벨
         lblTfCount.text = "\(String(tfMTitle.text!.count)) / \(tfMaxLength)"
         lblTvCount.text = "\(tvMContent.text.count) / \(tvMaxLength)"
@@ -47,9 +55,6 @@ class MonthlyPopUpViewController: UIViewController {
             print("error opening monthly database")
         }
         
-        // 기종별 textview길이 변동 적용 function
-        tvMaxLength = deviceTvCount()
-
         // 인식 NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
         // Delegate 연결
@@ -82,8 +87,9 @@ class MonthlyPopUpViewController: UIViewController {
             // insert
             insertActionM(year, month, tfMTitle.text!, tvMContent.text!)
             
-        }else{
+        }else if existence == true{
             // update
+            updateActionM(monthlyID, tfMTitle.text!, tvMContent.text!)
         }
         NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
@@ -117,15 +123,15 @@ class MonthlyPopUpViewController: UIViewController {
             print("failure inserting : \(errmsg)")
             return
         }
-    }
+        sqlite3_finalize(stmt)
+    }// insert
     
-    func updateActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
+    func updateActionM(_ mid : Int ,_ tfTitle:String ,_ tvContent:String) {
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
-        let queryString = "UPDATE monthly SET mtitle = ?, mcontent = ? WHERE myear = ? and mmonth = ?"
+        let queryString = "UPDATE monthly SET mtitle = ?, mcontent = ? WHERE mid = ?"
         // 사용자 입력 값
-        let myear = year
-        let mmonth = month
+        let id = Int32(mid)
         let title = tfTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -137,15 +143,16 @@ class MonthlyPopUpViewController: UIViewController {
         // ?에 데이터 매칭
         sqlite3_bind_text(stmt, 1, title, -1, SQLITE_TRANSIENT)
         sqlite3_bind_text(stmt, 2, content, -1, SQLITE_TRANSIENT)
-        sqlite3_bind_text(stmt, 3, year, -1, SQLITE_TRANSIENT)
-        sqlite3_bind_text(stmt, 4, month, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_int(stmt, 3, id)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting : \(errmsg)")
+            print("failure updating : \(errmsg)")
             return
         }
-    }
+        sqlite3_finalize(stmt)
+
+    }//update
     
     
     // MARK: TF 글자 수 인식 textFieldDidChange

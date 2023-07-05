@@ -60,6 +60,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // 달력 달성도 색 표시 reloadview
         readMonthlyValues()
+        
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
@@ -152,26 +153,29 @@ class MainViewController: UIViewController {
         sqlite3_bind_text(stmt, 1, year, -1, SQLITE_TRANSIENT)
         sqlite3_bind_text(stmt, 2, month, -1, SQLITE_TRANSIENT)
         
-        print("sqlite row ",SQLITE_ROW)
+//        print("sqlite row ",SQLITE_ROW)
         if sqlite3_step(stmt) == SQLITE_ROW{
+            // DB 있는 경우
             let id = sqlite3_column_int(stmt, 0)
             let title = String(cString: sqlite3_column_text(stmt, 1))
             let content = String(cString: sqlite3_column_text(stmt, 2))
-            print(id, title, content)
+//            print(id, title, content)
             monthlyBundle.append(Monthly(id: Int(id), title: title, content: content))
-            monthlyExistence = true
             
+            monthlyExistence = true
             self.lblMonthlyTitle.text = title
             self.tvMContent.text = content
-            self.tvMContent.textColor = UIColor.black
+            self.tvMContent.textColor = UIColor.black // textview 글자색
         }else{
-            print("no db Data")
+//            print("no db Data")
             monthlyExistence = false
             self.lblMonthlyTitle.text = "#Monthly"
             self.tvMContent.text = "+ 버튼을 눌러보세요!"
-            self.tvMContent.textColor = UIColor(named: "AccentColor")
+            self.tvMContent.textColor = UIColor(named: "AccentColor") // textview 글자색
         }
-                
+        
+        sqlite3_finalize(stmt)
+
     }
     
     // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
@@ -210,21 +214,19 @@ class MainViewController: UIViewController {
             monthlyPopUpViewController?.mvTitle = lblMonthlyTitle.text!
             monthlyPopUpViewController?.mvContent = tvMContent.text == "+ 버튼을 눌러보세요!" ? "" : tvMContent.text
             monthlyPopUpViewController?.existence = monthlyExistence // DB select 존재 여부
+            monthlyPopUpViewController?.monthlyID = monthlyBundle.isEmpty ? 0 : monthlyBundle[0].id
         }
     }// prepare
-    
+
+    // MARK: DISMISS 후 화면 재로딩
     @objc
     private func didDismissMonthlyNotification(_ notification:Notification) {
          readMonthlyValues()
-//        print("hi")
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
         }
-//        OperationQueue.main.addOperation {
-//            self.tvMContent.reloadInputViews()
-//            self.lblMonthlyTitle.reloadInputViews()
-//        }
+
     }//
     /*
     // MARK: - Navigation
