@@ -172,9 +172,9 @@ class MonthlyPopUpViewController: UIViewController {
             default: return
             }
             // 버튼 활성화
-            if tfMTitle.text?.isEmpty == false && tvMContent.text.isEmpty == false{
+            if tfMTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false && tvMContent.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false{
                 EnterButton.isEnabled = true
-            }else if tvMContent.text.isEmpty == false{
+            }else if tvMContent.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false{
                 EnterButton.isEnabled = true
             } else {
                 EnterButton.isEnabled = false
@@ -277,7 +277,7 @@ extension MonthlyPopUpViewController:UITextFieldDelegate, UITextViewDelegate{
             default: return
             }
         // 버튼 활성화
-        if tvMContent.text?.isEmpty == true {
+        if tvMContent.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true {
             EnterButton.isEnabled = false
         }else {
             EnterButton.isEnabled = true
