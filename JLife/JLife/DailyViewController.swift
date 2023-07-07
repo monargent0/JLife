@@ -8,30 +8,54 @@
 import UIKit
 
 class DailyViewController: UIViewController , UITextViewDelegate {
-
+    // MARK: 스토리보드 연결
+    @IBOutlet weak var lblMonth: UILabel!
+    @IBOutlet weak var lblDay: UILabel!
+    @IBOutlet weak var lblWeekDay: UILabel!
     @IBOutlet weak var tvDaily: UITextView!
-//    let dot = UIImageView(image: UIImage(named: "dotLineBox.png"))
+
+    // MARK: 변수선언
+    
+    // MARK: DB 변수선언
+    var todoID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tvDaily.addSubview(dot)
-//        tvDaily.bringSubviewToFront(dot)
-//        dot.frame.size = CGSize(width: 273.0, height: 100.0)
-        
+
         // DailyText Border
         tvDaily.layer.borderColor = UIColor.lightGray.cgColor
         tvDaily.layer.borderWidth = 1.0
         tvDaily.layer.cornerRadius = 5
-        // 글자수 제한
-        tvDaily.delegate = self
-
+        
+        // modal dismiss notification
+        NotificationCenter.default.addObserver(self, selector: #selector(didDismissDailyNotification(_ :)), name: Notification.Name("DidDismissDailyViewController"), object: nil)
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        if tvDaily.text.count > 30{
-            tvDaily.deleteBackward()
+    
+    // MARK: segue DailyyView로 값 보내기
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dailyPopUpViewController = segue.destination as? DailyPopUpViewController
+        if segue.identifier == "sgDaily"{
+//            let date = lblDateTitle.text?.components(separatedBy: " ")
+//            monthlyPopUpViewController?.year = date![0]
+//            monthlyPopUpViewController?.month = date![1]
+//            monthlyPopUpViewController?.mvTitle = lblMonthlyTitle.text!
+//            monthlyPopUpViewController?.mvContent = tvMContent.text == "+ 버튼을 눌러보세요!" ? "" : tvMContent.text
+//            monthlyPopUpViewController?.existence = monthlyExistence // DB select 존재 여부
+//            monthlyPopUpViewController?.monthlyID = monthlyBundle.isEmpty ? 0 : monthlyBundle[0].id
         }
-    }
+    }// prepare
+    
+    // MARK: DISMISS 후 화면 재로딩
+    @objc
+    private func didDismissDailyNotification(_ notification:Notification) {
+//         readMonthlyValues()
+//        if monthlyExistence == true{
+//            lblMonthlyTitle.text = monthlyBundle[0].title
+//            tvMContent.text = monthlyBundle[0].content
+//        }
+
+    }//
     
     /*
     // MARK: - Navigation

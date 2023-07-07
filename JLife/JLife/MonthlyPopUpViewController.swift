@@ -19,10 +19,10 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 변수 선언
     let tfMaxLength = 20
     var tvMaxLength = 0
-    var monthlyID = 0
     let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
     
     // MARK: DB 관련 변수
+    var monthlyID = 0
     var year : String = ""
     var month : String = ""
     var mvTitle : String = ""
@@ -55,7 +55,7 @@ class MonthlyPopUpViewController: UIViewController {
             print("error opening monthly database")
         }
         
-        // 인식 NotificationCenter
+        // TF 인식 NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
         // Delegate 연결
         tfMTitle.delegate = self

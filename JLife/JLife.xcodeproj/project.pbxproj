@@ -17,6 +17,9 @@
 		48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B692A43740000D3C3B0 /* DailyViewController.swift */; };
 		48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */; };
 		48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B6D2A43788800D3C3B0 /* CalendarCell.swift */; };
+		486368DB2A580770007CE00A /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DA2A580770007CE00A /* Daily.swift */; };
+		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
+		486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368E02A5807BD007CE00A /* TodoListCell.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */; };
@@ -36,6 +39,9 @@
 		48307B692A43740000D3C3B0 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBuilder.swift; sourceTree = "<group>"; };
 		48307B6D2A43788800D3C3B0 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		486368DA2A580770007CE00A /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
+		486368DC2A58077B007CE00A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		486368E02A5807BD007CE00A /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPopUpViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +88,7 @@
 				48E4692A2A50A3740023B03E /* View Group */,
 				48E4692B2A50A3A30023B03E /* Cell Group */,
 				48E469282A50A3140023B03E /* Model */,
-				48E4692C2A50A3CC0023B03E /* New Group */,
+				48E4692C2A50A3CC0023B03E /* Builder */,
 			);
 			path = JLife;
 			sourceTree = "<group>";
@@ -91,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				48C344512A4889550061F930 /* Monthly.swift */,
+				486368DA2A580770007CE00A /* Daily.swift */,
+				486368DC2A58077B007CE00A /* Todo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -99,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				48307B672A4373ED00D3C3B0 /* MainViewController.swift */,
-				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
 				48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */,
+				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
 				48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */,
 				48E4692F2A52E5180023B03E /* DayTodoViewController.swift */,
 			);
@@ -111,16 +119,17 @@
 			isa = PBXGroup;
 			children = (
 				48307B6D2A43788800D3C3B0 /* CalendarCell.swift */,
+				486368E02A5807BD007CE00A /* TodoListCell.swift */,
 			);
 			name = "Cell Group";
 			sourceTree = "<group>";
 		};
-		48E4692C2A50A3CC0023B03E /* New Group */ = {
+		48E4692C2A50A3CC0023B03E /* Builder */ = {
 			isa = PBXGroup;
 			children = (
 				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
 			);
-			name = "New Group";
+			name = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +211,10 @@
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,
 				48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */,
+				486368DD2A58077B007CE00A /* Todo.swift in Sources */,
+				486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */,
 				48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */,
+				486368DB2A580770007CE00A /* Daily.swift in Sources */,
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
 			);

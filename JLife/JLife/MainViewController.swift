@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var allDateItems : [String] = [] // 달력 cell items
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     var monthlyExistence = false
+    var noNowMonthIndex:[Int] = []
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
@@ -39,7 +40,8 @@ class MainViewController: UIViewController {
         // 달력 구성
         setMonth(presentDate)
         // SQL 구성
-        createTable()
+        createMonthlyTable()
+        
         // Collection View Size
         cvCalendar.translatesAutoresizingMaskIntoConstraints = false // 스토리보드에서 적용한것 무시
         cvCalendar.widthAnchor.constraint(equalToConstant: deviceWidth()).isActive = true // 가로
@@ -110,7 +112,7 @@ class MainViewController: UIViewController {
     }// Func setMonth
     
     // MARK: SQLite 테이블 생성
-    private func createTable(){
+    private func createMonthlyTable(){
         // Monthly
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -120,20 +122,21 @@ class MainViewController: UIViewController {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error creating monthly table \(errmsg)")
             return
-        }else{print("create monthly ok")}//Monthly
-       
-    }
+        }else{print("create monthly ok")}
+    }//Monthly
     
-//        // TodoList
-//        let fileURL2 = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
-//        if sqlite3_open(fileURL2.path(percentEncoded: false), &db) != SQLITE_OK{
-//            print("error opening database2")
-//        }
-//        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
-//            let errmsg = String(cString: sqlite3_errmsg(db))
-//            print("error creating table \(errmsg)")
-//            return
-//        }//TodoList
+    private func createTodoTable(){
+        // TodoList
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening Todo DB")
+        }
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todolist (tid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error creating todo table \(errmsg)")
+            return
+        }
+    }//TodoList
     
     // MARK: SQLite 테이블 불러오기
     func readMonthlyValues(){
@@ -256,10 +259,13 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         switch indexPath.row {
         case 0..<items.startWeekDay:
             cell.lblDay.textColor = .lightGray
+            cell.isUserInteractionEnabled = false // cell 선택 비활성화
         case (items.daysInMonth + items.startWeekDay)..<allDateItems.count:
             cell.lblDay.textColor = .lightGray
+            cell.isUserInteractionEnabled = false
         default:
             cell.lblDay.textColor = .darkGray
+            cell.isUserInteractionEnabled = true
         }
         // Today 표시
         if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == .darkGray{
@@ -268,6 +274,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
 
         return cell
     }
+
 }// Delegate, DataSouce
 
 extension MainViewController:UICollectionViewDelegateFlowLayout{
