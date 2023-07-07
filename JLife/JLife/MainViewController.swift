@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tvMContent: UITextView!
     @IBOutlet weak var svWeek: UIStackView! // 상단 요일
     @IBOutlet weak var lblMonthlyTitle: UILabel!
+    @IBOutlet weak var todayButton: UIBarButtonItem!
     
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
@@ -30,31 +31,27 @@ class MainViewController: UIViewController {
     var db: OpaquePointer? // DB포인터
     
     // 임시 변수
-    var content = ""
+    var content = "2023년"
     
     // Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        print( Int(content.prefix(upTo:content.index(before: content.endIndex)))! )
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
         // 달력 구성
         setMonth(presentDate)
         // SQL 구성
         createMonthlyTable()
-        
+        // 오늘 버튼 초기세팅
+        todayButton.isEnabled = false
         // Collection View Size
         cvCalendar.translatesAutoresizingMaskIntoConstraints = false // 스토리보드에서 적용한것 무시
         cvCalendar.widthAnchor.constraint(equalToConstant: deviceWidth()).isActive = true // 가로
         cvCalendar.heightAnchor.constraint(equalToConstant: ceil((deviceWidth()/7)*6) ).isActive = true // 세로
         cvCalendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true // 가로 중앙 정렬
         cvCalendar.topAnchor.constraint(equalTo:svWeek.bottomAnchor, constant: 10).isActive = true // 세로 위치
-        // Month Content placeholder
-        if content.isEmpty {
-            tvMContent.text = "+ 버튼을 눌러보세요!"
-            tvMContent.textColor = UIColor(named: "AccentColor")
-        }else{
-            tvMContent.textColor = UIColor.black
-        }
+        
         // modal dismiss notification
         NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
     }
@@ -74,14 +71,30 @@ class MainViewController: UIViewController {
         presentDate = CalendarBuilder().minusMonth(date: presentDate)
         setMonth(presentDate)
         readMonthlyValues()
-    }
+        if presentDate != todayDate{
+            todayButton.isEnabled = true
+        }else{
+            todayButton.isEnabled = false
+        }
+    }//
     
     @IBAction func btnNextMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().plusMonth(date: presentDate)
         setMonth(presentDate)
         readMonthlyValues()
-    }
-       
+        if presentDate != todayDate{
+            todayButton.isEnabled = true
+        }else{
+            todayButton.isEnabled = false
+        }
+    }//
+    
+    @IBAction func btnToday(_ sender: UIBarButtonItem) {
+        presentDate = todayDate
+        setMonth(presentDate)
+        readMonthlyValues()
+    }//
+    
     // MARK: Setting Calendar Function
     private func setMonth(_ date:Date){
         // Properties
@@ -122,7 +135,9 @@ class MainViewController: UIViewController {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error creating monthly table \(errmsg)")
             return
-        }else{print("create monthly ok")}
+        }else{
+            print("create monthly ok")
+        }
     }//Monthly
     
     private func createTodoTable(){
@@ -210,15 +225,25 @@ class MainViewController: UIViewController {
     // MARK: segue MonthlyView로 값 보내기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let monthlyPopUpViewController = segue.destination as? MonthlyPopUpViewController
+        let dailyViewController = segue.destination as? DailyViewController
+        let date = lblDateTitle.text?.components(separatedBy: " ")
+        
         if segue.identifier == "sgMonthly"{
-            let date = lblDateTitle.text?.components(separatedBy: " ")
             monthlyPopUpViewController?.year = date![0]
             monthlyPopUpViewController?.month = date![1]
             monthlyPopUpViewController?.mvTitle = lblMonthlyTitle.text!
             monthlyPopUpViewController?.mvContent = tvMContent.text == "+ 버튼을 눌러보세요!" ? "" : tvMContent.text
             monthlyPopUpViewController?.existence = monthlyExistence // DB select 존재 여부
             monthlyPopUpViewController?.monthlyID = monthlyBundle.isEmpty ? 0 : monthlyBundle[0].id
+        }else if segue.identifier == "sgDay"{
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.cvCalendar.indexPath(for: cell)
+            
+            dailyViewController?.mvYear = Int(date![0].prefix(upTo:date![0].index(before: date![0].endIndex)))!
+            dailyViewController?.mvMonth = Int(date![1].prefix(upTo:date![1].index(before: date![1].endIndex)))!
+            dailyViewController?.mvDay = Int(allDateItems[indexPath!.row])!
         }
+        
     }// prepare
 
     // MARK: DISMISS 후 화면 재로딩

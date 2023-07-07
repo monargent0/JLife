@@ -9,19 +9,27 @@ import UIKit
 
 class DailyViewController: UIViewController , UITextViewDelegate {
     // MARK: 스토리보드 연결
-    @IBOutlet weak var lblMonth: UILabel!
-    @IBOutlet weak var lblDay: UILabel!
-    @IBOutlet weak var lblWeekDay: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var tvDaily: UITextView!
 
     // MARK: 변수선언
     
     // MARK: DB 변수선언
     var todoID = 0
-    
+    var mvYear = 0
+    var mvMonth = 0
+    var mvDay = 0
+       
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Date label
+        let dateComponent = DateComponents(year:mvYear,month: mvMonth,day: mvDay)
+        let date = Calendar.current.date(from: dateComponent)
+        let dateFormat = DateFormatter()
+        dateFormat.locale = Locale(identifier: "ko_kr")
+        dateFormat.dateFormat = "M월 d일 EEEE"
+        lblDate.text = dateFormat.string(from: date!)
+        
         // DailyText Border
         tvDaily.layer.borderColor = UIColor.lightGray.cgColor
         tvDaily.layer.borderWidth = 1.0
@@ -34,7 +42,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     
     // MARK: segue DailyyView로 값 보내기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dailyPopUpViewController = segue.destination as? DailyPopUpViewController
+//        let dailyPopUpViewController = segue.destination as? DailyPopUpViewController
         if segue.identifier == "sgDaily"{
 //            let date = lblDateTitle.text?.components(separatedBy: " ")
 //            monthlyPopUpViewController?.year = date![0]

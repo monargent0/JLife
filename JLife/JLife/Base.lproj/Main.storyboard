@@ -236,12 +236,19 @@
                             <constraint firstItem="spM-I8-WEu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v15-mf-Gd4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ehY-ch-cIZ"/>
+                    <navigationItem key="navigationItem" id="ehY-ch-cIZ">
+                        <barButtonItem key="rightBarButtonItem" title="오늘" id="H53-Sv-RTg">
+                            <connections>
+                                <action selector="btnToday:" destination="BYZ-38-t0r" id="ZlN-z1-bPw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cvCalendar" destination="xcw-Zs-DIF" id="L1F-f4-eg2"/>
                         <outlet property="lblDateTitle" destination="znV-NP-RWf" id="B71-LJ-kaO"/>
                         <outlet property="lblMonthlyTitle" destination="Xm5-SP-Ob0" id="a78-QM-113"/>
                         <outlet property="svWeek" destination="uhJ-ok-FGL" id="myV-rQ-jDE"/>
+                        <outlet property="todayButton" destination="H53-Sv-RTg" id="bXh-eV-0sc"/>
                         <outlet property="tvMContent" destination="bOn-Re-5UL" id="L4f-85-CUK"/>
                     </connections>
                 </viewController>
@@ -258,22 +265,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrG-wW-qWI">
-                                <rect key="frame" x="16" y="103" width="157.33333333333334" height="23.666666666666671"/>
+                                <rect key="frame" x="16" y="103" width="133.66666666666666" height="23.666666666666671"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6월" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-Lu-Z2e">
-                                        <rect key="frame" x="0.0" y="0.0" width="34" height="23.666666666666668"/>
-                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28일" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saV-qY-3Nh">
-                                        <rect key="frame" x="44" y="0.0" width="46.333333333333343" height="23.666666666666668"/>
-                                        <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금요일" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUz-NZ-i14">
-                                        <rect key="frame" x="100.33333333333331" y="0.0" width="57" height="23.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7월 7일 금요일" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-Lu-Z2e">
+                                        <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="23.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -403,9 +398,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rjh-s9-D9D"/>
                     <connections>
-                        <outlet property="lblDay" destination="saV-qY-3Nh" id="GOc-On-RfW"/>
-                        <outlet property="lblMonth" destination="N2Z-Lu-Z2e" id="Ldp-w3-Aci"/>
-                        <outlet property="lblWeekDay" destination="aUz-NZ-i14" id="Vem-Yz-Iss"/>
+                        <outlet property="lblDate" destination="N2Z-Lu-Z2e" id="hyo-XJ-YJ7"/>
                         <outlet property="tvDaily" destination="W6Y-f7-IV0" id="tss-Lq-Ruc"/>
                     </connections>
                 </viewController>
