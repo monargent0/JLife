@@ -21,15 +21,14 @@ class DailyPopUpViewController: UIViewController {
     
     // MARK: DB관련 변수
     var db : OpaquePointer?
-    var tvExistence = false
-    var dvContent : String = ""
-    var dailyID = 0
-    // 날짜
+    var tvExistence = false //*
+    var dvContent : String = "" //*
+    var dailyID = 0 //*
+    var dvDate = "" //*
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // DailyView에서 넘어오는 값
-        // 날짜, 내용
         tvDContent.text = dvContent
         if dvContent.isEmpty {
             tvExistence = false
@@ -69,12 +68,66 @@ class DailyPopUpViewController: UIViewController {
     @IBAction func btnEnter(_ sender: UIButton) {
         if tvExistence == false{
             // insert
+            insertActionD(dvDate, tvDContent.text!)
         }else if tvExistence == true{
             // update
+            updateActionD(dailyID, tvDContent.text!)
         }
         NotificationCenter.default.post(name: DidDismissDailyViewController, object: nil)
         dismiss(animated: true)
     }
+    // MARK: SQLite
+    // MARK: SQLite - insert
+    private func insertActionD(_ dvdate : String ,_ tvContent:String) {
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "INSERT INTO daily (ddate,dcontent) VALUES (?,?)"
+        // 사용자 입력 값
+        let date = dvdate
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing insert : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, content, -1, SQLITE_TRANSIENT)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// insert
+    // MARK: SQLite - update
+    private func updateActionD(_ dailyid : Int ,_ tvContent:String) {
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "UPDATE daily SET dcontent = ? WHERE did = ?"
+        // 사용자 입력 값
+        let id = Int32(dailyid)
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing update : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, content, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_int(stmt, 2, id)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure updating : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+
+    }//update
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
     private func deviceTvCount() -> Int {
@@ -134,6 +187,7 @@ extension DailyPopUpViewController:UITextViewDelegate{
         }
         return true
     }// textview shouldchange
+    
     func textViewDidChange(_ textView: UITextView) {
         switch textView {
            case tvDContent:

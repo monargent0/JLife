@@ -97,7 +97,8 @@ class MonthlyPopUpViewController: UIViewController {
     /* ----- */
     
     // MARK: SQLITE
-    func insertActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
+    // MARK: SQLite - insert
+    private func insertActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "INSERT INTO monthly (myear,mmonth,mtitle,mcontent) VALUES (?,?,?,?)"
@@ -125,8 +126,8 @@ class MonthlyPopUpViewController: UIViewController {
         }
         sqlite3_finalize(stmt)
     }// insert
-    
-    func updateActionM(_ mid : Int ,_ tfTitle:String ,_ tvContent:String) {
+    // MARK: SQLite - update
+    private func updateActionM(_ mid : Int ,_ tfTitle:String ,_ tvContent:String) {
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "UPDATE monthly SET mtitle = ?, mcontent = ? WHERE mid = ?"
@@ -137,7 +138,7 @@ class MonthlyPopUpViewController: UIViewController {
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing insert : \(errmsg)")
+            print("error preparing update : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -153,7 +154,6 @@ class MonthlyPopUpViewController: UIViewController {
         sqlite3_finalize(stmt)
 
     }//update
-    
     
     // MARK: TF 글자 수 인식 textFieldDidChange
     @objc

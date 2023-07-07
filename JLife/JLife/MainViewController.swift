@@ -30,13 +30,9 @@ class MainViewController: UIViewController {
     var monthlyBundle: [Monthly] = []
     var db: OpaquePointer? // DB포인터
     
-    // 임시 변수
-    var content = "2023년"
-    
     // Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        print( Int(content.prefix(upTo:content.index(before: content.endIndex)))! )
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
         // 달력 구성
@@ -140,7 +136,7 @@ class MainViewController: UIViewController {
         }
     }//Monthly
     
-    private func createTodoTable(){
+    private func createTodoTable(){ // 쿼리문 수정 해야함
         // TodoList
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -154,7 +150,7 @@ class MainViewController: UIViewController {
     }//TodoList
     
     // MARK: SQLite 테이블 불러오기
-    func readMonthlyValues(){
+    private func readMonthlyValues(){
         monthlyBundle.removeAll()
         let queryString = "SELECT mid,mtitle,mcontent FROM monthly WHERE myear = ? and mmonth = ?;"
         var stmt : OpaquePointer?
