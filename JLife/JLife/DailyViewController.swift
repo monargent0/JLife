@@ -43,16 +43,20 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         tvDaily.layer.borderWidth = 1.0
         tvDaily.layer.cornerRadius = 5
         // SQL Func
-        createDailyTable()
+        Task{
+            try await readDailyValues()
+//            try await readTodoValues()
+        }
         // modal dismiss notification
         NotificationCenter.default.addObserver(self, selector: #selector(didDismissDailyNotification(_ :)), name: Notification.Name("DidDismissDailyViewController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDismissTodoAddNotification(_ :)), name: Notification.Name("DidDismissTodoAddViewController"), object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        readDailyValues()
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
         }
+        
     }
     
     // MARK: segue DailyPopUpView로 값 보내기
@@ -69,16 +73,23 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     // MARK: DISMISS 후 화면 재로딩
     @objc
     private func didDismissDailyNotification(_ notification:Notification) {
-        readDailyValues()
+        Task{
+            try await readDailyValues()
+        }
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
         }
-        
-    }//
+    }//Daily
+    @objc
+    private func didDismissTodoAddNotification(_ notification:Notification) {
+        Task{
+//            try await readTodoValues()
+        }
+    }//TodoAdd
     
     // MARK: SQLITE --
     // MARK: sql create daily
-    private func createDailyTable(){
+    private func createDailyTable() async throws{
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "DailyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
             print("error opening daily database")
@@ -88,13 +99,26 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             print("error creating daily table \(errmsg)")
             return
         }else{
-            print("create daily ok")
+//            print("create daily ok")
         }
     }
     // MARK: sql create todolist - main에서 만드나?
-    
+    private func createTodoTable() async throws{
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoyData.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening Todo database")
+        }
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todo (tid INTEGER PRIMARY KEY AUTOINCREMENT, tdate TEXT, tcontent TEXT, tcomplete INTEGER , tscore INTEGER)", nil, nil, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error creating todo table \(errmsg)")
+            return
+        }else{
+//            print("create todo ok")
+        }
+    }
     // MARK: sql daily select
-    private func readDailyValues(){
+    private func readDailyValues() async throws{
+        try await createDailyTable()
         dailyBundle.removeAll()
         let queryString = "SELECT did, dcontent FROM daily WHERE ddate = ?"
         var stmt : OpaquePointer?
@@ -103,7 +127,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing select : \(errmsg)")
+            print("error preparing d select : \(errmsg)")
             return
         }
         sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
@@ -130,7 +154,37 @@ class DailyViewController: UIViewController , UITextViewDelegate {
 
     }
     // MARK: sql todolist select
-    
+    private func readTodoValues() async throws {
+        try await createTodoTable()
+        // todoList.removeAll()
+        let queryString = "SELECT tid, tcontent, tcomplete, tscore FROM todo WHERE tdate = ?"
+        var stmt : OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let date = dbDate
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing t select : \(errmsg)")
+            return
+        }
+        sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
+        
+        if sqlite3_step(stmt) == SQLITE_ROW{
+            // DB 있는 경우
+            let id = sqlite3_column_int(stmt, 0)
+            let content = String(cString: sqlite3_column_text(stmt, 1))
+            let completion = sqlite3_column_int(stmt, 2)
+            let score = sqlite3_column_int(stmt, 3)
+            print(id,content,completion,score)
+            // 이거로 collection view 만들어야함
+        }else{
+//            print("no db Data")
+            // collectionview 빈공간
+     
+        }
+        
+        sqlite3_finalize(stmt)
+    }
     /*
     // MARK: - Navigation
 

@@ -171,7 +171,7 @@ class DailyPopUpViewController: UIViewController {
     */
 
 }//DailyPopUpViewController
-// MARK: extension TF 글자수 제한
+// MARK: extension TV 글자수 제한
 extension DailyPopUpViewController:UITextViewDelegate{
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let tvCount = tvDContent.text!.count
