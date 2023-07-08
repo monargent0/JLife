@@ -24,6 +24,8 @@ class DayTodoViewController: UIViewController {
     // 수정화면일때 받아올 값
     var timeExist = false
     var selectedTime = "선택 안함"
+    // Dailyview에서 넘어오는 값
+    var dvDate = ""
     
     //
     var db : OpaquePointer?
@@ -62,6 +64,7 @@ class DayTodoViewController: UIViewController {
     // 추가
     @IBAction func btnAdd(_ sender: UIButton) {
         // insert
+        insertActionT(dvDate, selectedTime, tvTodo.text, 0, 0)
         NotificationCenter.default.post(name: DidDismissTodoAddViewController, object: nil)
         dismiss(animated: true)
     }
@@ -78,7 +81,7 @@ class DayTodoViewController: UIViewController {
     private func timeSelec(_ switchState : Bool) {
         if switchState == false {
             picker.isHidden = true
-            selectedTime = "선택 안함"
+            selectedTime = "NoTime"
             lblSelectTime.text = "일정 시간: \(selectedTime)"
         }else {
             picker.isHidden = false
@@ -88,6 +91,42 @@ class DayTodoViewController: UIViewController {
             lblSelectTime.text = "일정 시간: \(selectedTime)"
         }
     }// timeSelec
+    
+    // MARK: SQLite
+    // MARK: SQLite - insert
+    private func insertActionT(_ dvdate : String ,_ timeSelect:String,_ tvContent:String,_ completion:Int,_ tscore:Int ) {
+        defer{
+            sqlite3_close(db)
+        }
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "INSERT INTO todo (tdate, ttime, tcontent, tcomplete, tscore) VALUES (?,?,?,?,?)"
+        // 사용자 입력 값
+        let date = dvdate
+        let time = timeSelect
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        let complete = Int32(completion)
+        let score = Int32(tscore)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing insert : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, time, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 3, content, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_int(stmt, 4, complete)
+        sqlite3_bind_int(stmt, 5, score)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// insert
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
     private func deviceTvCount() -> Int {

@@ -324,59 +324,68 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GrU-7t-aVd">
-                                <rect key="frame" x="16" y="288" width="361" height="276"/>
+                                <rect key="frame" x="25" y="246.66666666666663" width="343" height="472"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C1D-R0-r5R">
-                                    <size key="itemSize" width="361" height="90"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C1D-R0-r5R">
+                                    <size key="itemSize" width="319" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todoCell" id="CU0-qh-wOA">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todoCell" id="CU0-qh-wOA" customClass="TodoListCell" customModule="JLife" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="0.0" width="319" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fyu-22-GL3">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ga-gu-OSK">
-                                                    <rect key="frame" x="337.66666666666669" y="35" width="7.3333333333333144" height="47"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S2-Ff-QVr">
-                                                    <rect key="frame" x="8" y="27" width="319.66666666666669" height="36"/>
+                                                    <rect key="frame" x="5" y="23.000000000000004" width="25" height="34.333333333333343"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small" weight="semibold"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="btnComplete:" destination="CU0-qh-wOA" eventType="touchUpInside" id="FFE-4x-pnG"/>
+                                                    </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idv-rr-MTe">
-                                                    <rect key="frame" x="337.66666666666669" y="15.333333333333336" width="7.3333333333333144" height="17"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="17" id="LUW-63-gc2"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-eG-JdC">
+                                                    <rect key="frame" x="35" y="0.0" width="274" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간을 적은 공간입니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idv-rr-MTe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="274" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="할일을 적은 공간입니다할일을 적은 공간입니다할일을 적은 공간입니다" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ga-gu-OSK">
+                                                            <rect key="frame" x="0.0" y="23" width="274" height="57"/>
+                                                            <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" name="Background"/>
                                             <constraints>
-                                                <constraint firstItem="idv-rr-MTe" firstAttribute="top" secondItem="Fyu-22-GL3" secondAttribute="top" constant="15.333333333333336" id="EOI-0v-6pG"/>
-                                                <constraint firstAttribute="trailing" secondItem="idv-rr-MTe" secondAttribute="trailing" constant="16" id="IbZ-P9-q1n"/>
-                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="leading" secondItem="Fyu-22-GL3" secondAttribute="leadingMargin" id="Lf6-DR-VBh"/>
-                                                <constraint firstItem="9Ga-gu-OSK" firstAttribute="top" secondItem="idv-rr-MTe" secondAttribute="bottom" constant="2.6666666666666643" id="LwG-ju-fEk"/>
-                                                <constraint firstItem="9Ga-gu-OSK" firstAttribute="bottom" secondItem="Fyu-22-GL3" secondAttribute="bottomMargin" id="MY6-4M-Aen"/>
-                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="centerY" secondItem="Fyu-22-GL3" secondAttribute="centerY" id="N8Q-We-UQB"/>
-                                                <constraint firstItem="idv-rr-MTe" firstAttribute="leading" secondItem="3S2-Ff-QVr" secondAttribute="trailing" constant="10" id="PWz-ZC-DLI"/>
-                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="top" secondItem="Fyu-22-GL3" secondAttribute="top" constant="27" id="dRf-2J-7gm"/>
-                                                <constraint firstItem="idv-rr-MTe" firstAttribute="leading" secondItem="9Ga-gu-OSK" secondAttribute="leading" id="e1s-sf-UYC"/>
-                                                <constraint firstItem="idv-rr-MTe" firstAttribute="trailing" secondItem="9Ga-gu-OSK" secondAttribute="trailing" id="hag-67-7KS"/>
+                                                <constraint firstAttribute="trailing" secondItem="ttf-eG-JdC" secondAttribute="trailing" constant="10" id="1Nh-U4-aI1"/>
+                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="leading" secondItem="Fyu-22-GL3" secondAttribute="leading" constant="5" id="EFI-Jt-wwu"/>
+                                                <constraint firstItem="3S2-Ff-QVr" firstAttribute="centerY" secondItem="Fyu-22-GL3" secondAttribute="centerY" id="Pbd-L9-7u5"/>
+                                                <constraint firstAttribute="bottom" secondItem="ttf-eG-JdC" secondAttribute="bottom" id="RPa-GW-U5y"/>
+                                                <constraint firstItem="ttf-eG-JdC" firstAttribute="top" secondItem="Fyu-22-GL3" secondAttribute="top" id="YJ1-yJ-SKr"/>
+                                                <constraint firstItem="ttf-eG-JdC" firstAttribute="leading" secondItem="Fyu-22-GL3" secondAttribute="leading" constant="35" id="kaK-tp-j40"/>
+                                                <constraint firstItem="ttf-eG-JdC" firstAttribute="leading" secondItem="3S2-Ff-QVr" secondAttribute="trailing" constant="5" id="p2D-G1-ESp"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="361" height="90"/>
+                                        <size key="customSize" width="319" height="80"/>
+                                        <connections>
+                                            <outlet property="checkBtnOut" destination="3S2-Ff-QVr" id="Jpr-u3-RO1"/>
+                                            <outlet property="lblContent" destination="9Ga-gu-OSK" id="gDH-VH-qfY"/>
+                                            <outlet property="lblTime" destination="idv-rr-MTe" id="6bs-6b-j4t"/>
+                                            <segue destination="Bo0-Q5-3Ec" kind="presentation" identifier="sgTodoCell" id="C3Z-9g-cem"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -385,22 +394,23 @@
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="hrG-wW-qWI" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="7Wz-pc-a1R"/>
+                            <constraint firstItem="YiK-Sz-gWn" firstAttribute="top" secondItem="GrU-7t-aVd" secondAttribute="bottom" constant="20" id="C1E-VO-H9n"/>
                             <constraint firstItem="EBk-l7-3IF" firstAttribute="trailing" secondItem="PyB-7A-ivh" secondAttribute="trailing" constant="16" id="Hfy-5P-CYG"/>
                             <constraint firstItem="PyB-7A-ivh" firstAttribute="top" secondItem="hrG-wW-qWI" secondAttribute="bottom" constant="15" id="LN9-mN-HEt"/>
                             <constraint firstItem="hrG-wW-qWI" firstAttribute="top" secondItem="EBk-l7-3IF" secondAttribute="top" id="OWv-Na-7nC"/>
-                            <constraint firstItem="GrU-7t-aVd" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="SPN-Lq-JxM"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="25" id="SPN-Lq-JxM"/>
                             <constraint firstItem="PyB-7A-ivh" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="W7y-tJ-Rdu"/>
                             <constraint firstItem="EBk-l7-3IF" firstAttribute="bottom" secondItem="YiK-Sz-gWn" secondAttribute="bottom" constant="45" id="aUt-gQ-KgP"/>
                             <constraint firstItem="PyB-7A-ivh" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="dui-1Y-ShL"/>
                             <constraint firstItem="YiK-Sz-gWn" firstAttribute="leading" secondItem="EBk-l7-3IF" secondAttribute="leading" constant="16" id="f5T-ek-6GE"/>
-                            <constraint firstItem="GrU-7t-aVd" firstAttribute="centerY" secondItem="Nq2-Sl-5Cf" secondAttribute="centerY" id="fpc-y3-LCT"/>
                             <constraint firstItem="GrU-7t-aVd" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="nJa-zQ-g8e"/>
                             <constraint firstItem="YiK-Sz-gWn" firstAttribute="centerX" secondItem="Nq2-Sl-5Cf" secondAttribute="centerX" id="nVK-fI-YmY"/>
-                            <constraint firstItem="GrU-7t-aVd" firstAttribute="top" secondItem="PyB-7A-ivh" secondAttribute="bottom" constant="61.329999999999998" id="pHI-fK-fEb"/>
+                            <constraint firstItem="GrU-7t-aVd" firstAttribute="top" secondItem="PyB-7A-ivh" secondAttribute="bottom" constant="20" id="pHI-fK-fEb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rjh-s9-D9D"/>
                     <connections>
+                        <outlet property="cvTodo" destination="GrU-7t-aVd" id="YeB-iy-eNb"/>
                         <outlet property="lblDate" destination="N2Z-Lu-Z2e" id="hyo-XJ-YJ7"/>
                         <outlet property="tvDaily" destination="W6Y-f7-IV0" id="tss-Lq-Ruc"/>
                     </connections>
@@ -776,6 +786,9 @@
             <point key="canvasLocation" x="2707.6335877862593" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="C3Z-9g-cem"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemTealColor"/>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
