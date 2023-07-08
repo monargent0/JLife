@@ -120,6 +120,9 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     private func readDailyValues() async throws{
         try await createDailyTable()
         dailyBundle.removeAll()
+        defer{
+            sqlite3_close(db)
+        }
         let queryString = "SELECT did, dcontent FROM daily WHERE ddate = ?"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
@@ -157,6 +160,9 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     private func readTodoValues() async throws {
         try await createTodoTable()
         // todoList.removeAll()
+        defer{
+            sqlite3_close(db)
+        }
         let queryString = "SELECT tid, tcontent, tcomplete, tscore FROM todo WHERE tdate = ?"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글

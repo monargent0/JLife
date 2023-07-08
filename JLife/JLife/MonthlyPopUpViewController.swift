@@ -86,7 +86,6 @@ class MonthlyPopUpViewController: UIViewController {
         if existence == false{
             // insert
             insertActionM(year, month, tfMTitle.text!, tvMContent.text!)
-            
         }else if existence == true{
             // update
             updateActionM(monthlyID, tfMTitle.text!, tvMContent.text!)
@@ -99,6 +98,9 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: SQLITE
     // MARK: SQLite - insert
     private func insertActionM(_ year : String , _ month : String ,_ tfTitle:String ,_ tvContent:String) {
+        defer{
+            sqlite3_close(db)
+        }
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "INSERT INTO monthly (myear,mmonth,mtitle,mcontent) VALUES (?,?,?,?)"
@@ -128,6 +130,9 @@ class MonthlyPopUpViewController: UIViewController {
     }// insert
     // MARK: SQLite - update
     private func updateActionM(_ mid : Int ,_ tfTitle:String ,_ tvContent:String) {
+        defer{
+            sqlite3_close(db)
+        }
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "UPDATE monthly SET mtitle = ?, mcontent = ? WHERE mid = ?"

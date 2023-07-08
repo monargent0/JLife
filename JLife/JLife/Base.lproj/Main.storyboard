@@ -670,6 +670,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Ref-de-C4i"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="timeSwitchAction:" destination="Bo0-Q5-3Ec" eventType="valueChanged" id="Fxa-ye-vfC"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -709,7 +712,7 @@
                                         <color key="textColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="할일 적는 칸 할일 적는 칸 할일 적는 칸 할일 적는 칸 할일 적는 칸 할일 적는 칸 할일 적는 칸 할일 적는 칸" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-CY-8q0">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-CY-8q0">
                                         <rect key="frame" x="0.0" y="23" width="361" height="70"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -764,6 +767,7 @@
                         <outlet property="lblSelectTime" destination="wc0-pl-lCa" id="q38-bz-jDP"/>
                         <outlet property="lblTvCount" destination="CFd-Kt-y8J" id="IoY-zB-MkM"/>
                         <outlet property="picker" destination="pYv-aM-NqS" id="7rm-ba-giy"/>
+                        <outlet property="timeSwitch" destination="koJ-g7-dUG" id="b06-hK-qGe"/>
                         <outlet property="tvTodo" destination="6zJ-CY-8q0" id="RDj-L5-DSq"/>
                     </connections>
                 </viewController>

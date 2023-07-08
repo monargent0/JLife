@@ -12,25 +12,31 @@ class DayTodoViewController: UIViewController {
     
     // MARK: 스토리보드 연결
     @IBOutlet weak var tvTodo: UITextView!
-    @IBOutlet weak var pickerOut: UIDatePicker!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var lblTvCount: UILabel!
     @IBOutlet weak var lblSelectTime: UILabel!
     @IBOutlet weak var picker: UIDatePicker!
+    @IBOutlet weak var timeSwitch: UISwitch!
     
     // MARK: 변수 선언
     var tvMaxLength = 50
     let DidDismissTodoAddViewController:Notification.Name = Notification.Name("DidDismissTodoAddViewController")
+    // 수정화면일때 받아올 값
+    var timeExist = false
+    var selectedTime = "선택 안함"
     
     //
     var db : OpaquePointer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tvMaxLength = deviceTvCount()
         // 화면 setting
-        lblTvCount.text = "0 / \(tvMaxLength)"
         addButton.isEnabled = false
-//        picker.isHidden = true
+        lblTvCount.text = "0 / \(tvMaxLength)"
+        lblSelectTime.text = "일정 시간 : \(selectedTime)"
+        timeSwitch.isOn = timeExist
+        timeSelec(timeExist)
         //delegate
         tvTodo.delegate = self
         // 레이아웃
@@ -44,6 +50,10 @@ class DayTodoViewController: UIViewController {
         }
     }
     // MARK: 버튼
+    // switch
+    @IBAction func timeSwitchAction(_ sender: UISwitch) {
+        timeSelec(timeSwitch.isOn)
+    }
     // 취소
     @IBAction func btnCancel(_ sender: UIButton) {
         NotificationCenter.default.post(name: DidDismissTodoAddViewController, object: nil)
@@ -59,10 +69,51 @@ class DayTodoViewController: UIViewController {
     @IBAction func timePicker(_ sender: UIDatePicker) {
         let senderTP = sender
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh시 mm분"
+        formatter.dateFormat = "a h시 mm분"
         let time = formatter.string(from: senderTP.date)
-        lblSelectTime.text = "선택 시간: \(time)"
+        selectedTime = time
+        lblSelectTime.text = "일정 시간: \(time)"
     }
+    
+    private func timeSelec(_ switchState : Bool) {
+        if switchState == false {
+            picker.isHidden = true
+            selectedTime = "선택 안함"
+            lblSelectTime.text = "일정 시간: \(selectedTime)"
+        }else {
+            picker.isHidden = false
+            let formatter = DateFormatter()
+            formatter.dateFormat = "a h시 mm분"
+            selectedTime = formatter.string(from: picker.date)
+            lblSelectTime.text = "일정 시간: \(selectedTime)"
+        }
+    }// timeSelec
+    
+    // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
+    private func deviceTvCount() -> Int {
+        let deviceName = UIDevice.current.name
+        var length : Int
+        
+        switch deviceName {
+        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
+            length = 65
+        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
+            length = 72
+        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
+            length = 76
+        case "iPhone 14 Pro": // 393
+            length = 76
+        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
+            length = 84
+        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
+            length = 88
+        case "iPhone 14 Pro Max" : // 430
+            length = 88
+        default : //
+            length = 75
+        }
+        return length
+    }// Func deviceTvCount
     
     // MARK: 아무곳이나 눌러 softkeyboard 지우기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

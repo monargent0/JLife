@@ -79,6 +79,9 @@ class DailyPopUpViewController: UIViewController {
     // MARK: SQLite
     // MARK: SQLite - insert
     private func insertActionD(_ dvdate : String ,_ tvContent:String) {
+        defer{
+            sqlite3_close(db)
+        }
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "INSERT INTO daily (ddate,dcontent) VALUES (?,?)"
@@ -104,6 +107,9 @@ class DailyPopUpViewController: UIViewController {
     }// insert
     // MARK: SQLite - update
     private func updateActionD(_ dailyid : Int ,_ tvContent:String) {
+        defer{
+            sqlite3_close(db)
+        }
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "UPDATE daily SET dcontent = ? WHERE did = ?"

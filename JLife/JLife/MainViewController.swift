@@ -38,7 +38,11 @@ class MainViewController: UIViewController {
         // 달력 구성
         setMonth(presentDate)
         // SQL 구성
-        createMonthlyTable()
+        Task{
+            try await readMonthlyValues()
+            // readTotalScoreValues() 달력 달성도 색 표시
+        }
+//        createMonthlyTable()
         // 오늘 버튼 초기세팅
         todayButton.isEnabled = false
         // Collection View Size
@@ -53,9 +57,6 @@ class MainViewController: UIViewController {
     }
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
-        // 달력 달성도 색 표시 reloadview
-        readMonthlyValues()
-        
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
@@ -66,7 +67,10 @@ class MainViewController: UIViewController {
     @IBAction func btnPrevMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().minusMonth(date: presentDate)
         setMonth(presentDate)
-        readMonthlyValues()
+        Task{
+            try await readMonthlyValues()
+            
+        }
         if presentDate != todayDate{
             todayButton.isEnabled = true
         }else{
@@ -77,7 +81,10 @@ class MainViewController: UIViewController {
     @IBAction func btnNextMonth(_ sender: UIButton) {
         presentDate = CalendarBuilder().plusMonth(date: presentDate)
         setMonth(presentDate)
-        readMonthlyValues()
+        Task{
+            try await readMonthlyValues()
+            
+        }
         if presentDate != todayDate{
             todayButton.isEnabled = true
         }else{
@@ -88,7 +95,10 @@ class MainViewController: UIViewController {
     @IBAction func btnToday(_ sender: UIBarButtonItem) {
         presentDate = todayDate
         setMonth(presentDate)
-        readMonthlyValues()
+        Task{
+            try await readMonthlyValues()
+            
+        }
     }//
     
     // MARK: Setting Calendar Function
@@ -121,7 +131,7 @@ class MainViewController: UIViewController {
     }// Func setMonth
     
     // MARK: SQLite 테이블 생성
-    private func createMonthlyTable(){
+    private func createMonthlyTable() async throws{
         // Monthly
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -132,11 +142,11 @@ class MainViewController: UIViewController {
             print("error creating monthly table \(errmsg)")
             return
         }else{
-            print("create monthly ok")
+//            print("create monthly ok")
         }
     }//Monthly
     
-    private func createTodoTable(){ // 쿼리문 수정 해야함
+    private func createTodoTable() async throws{ // 쿼리문 수정 해야함
         // TodoList
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -150,8 +160,12 @@ class MainViewController: UIViewController {
     }//TodoList
     
     // MARK: SQLite 테이블 불러오기
-    private func readMonthlyValues(){
+    private func readMonthlyValues() async throws{
+        try await createMonthlyTable()
         monthlyBundle.removeAll()
+        defer{
+            sqlite3_close(db)
+        }
         let queryString = "SELECT mid,mtitle,mcontent FROM monthly WHERE myear = ? and mmonth = ?;"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
@@ -245,7 +259,9 @@ class MainViewController: UIViewController {
     // MARK: DISMISS 후 화면 재로딩
     @objc
     private func didDismissMonthlyNotification(_ notification:Notification) {
-         readMonthlyValues()
+        Task{
+            try await readMonthlyValues()
+        }
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
