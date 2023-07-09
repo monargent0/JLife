@@ -54,6 +54,8 @@ class MainViewController: UIViewController {
         
         // modal dismiss notification
         NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
+        //
+        makeSwipe()
     }
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
@@ -268,6 +270,49 @@ class MainViewController: UIViewController {
         }
 
     }//
+    
+    //MARK: 달력 스와이프 제스쳐
+    func makeSwipe() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.respondToSwipeGesture(_ :)))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.cvCalendar.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.respondToSwipeGesture(_ :)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.cvCalendar.addGestureRecognizer(swipeRight)
+        
+    }
+    @objc func respondToSwipeGesture(_ gesture:UIGestureRecognizer){
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+            if swipeGesture.direction == UISwipeGestureRecognizer.Direction.left{
+                // 다음달
+                presentDate = CalendarBuilder().plusMonth(date: presentDate)
+                setMonth(presentDate)
+                Task{
+                    try await readMonthlyValues()
+                    
+                }
+                if presentDate != todayDate{
+                    todayButton.isEnabled = true
+                }else{
+                    todayButton.isEnabled = false
+                }
+            }else if swipeGesture.direction == UISwipeGestureRecognizer.Direction.right{
+                // 이전달
+                presentDate = CalendarBuilder().minusMonth(date: presentDate)
+                setMonth(presentDate)
+                Task{
+                    try await readMonthlyValues()
+                    
+                }
+                if presentDate != todayDate{
+                    todayButton.isEnabled = true
+                }else{
+                    todayButton.isEnabled = false
+                }
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
