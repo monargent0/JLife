@@ -66,14 +66,22 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     // MARK: segue 값 보내기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dailyPopUpViewController = segue.destination as? DailyPopUpViewController
-        let todoInsertViewController = segue.destination as? DayTodoViewController
+        let todoViewController = segue.destination as? DayTodoViewController
         if segue.identifier == "sgDaily"{
             dailyPopUpViewController?.dvDate = dbDate
             dailyPopUpViewController?.dvContent = tvDaily.text == "+ 버튼을 눌러보세요!" ? "" : tvDaily.text
             dailyPopUpViewController?.tvExistence = dailyExistence
             dailyPopUpViewController?.dailyID = dailyBundle.isEmpty ? 0 : dailyBundle[0].id
         }else if segue.identifier == "sgTodo"{
-            todoInsertViewController?.dvDate = "\(mvYear)\(mvMonth)\(mvDay)"
+            todoViewController?.sgKind = "insert"
+            todoViewController?.existTodoData[0].date = "\(mvYear)\(mvMonth)\(mvDay)"
+            
+        }else if segue.identifier == "sgTodoCell"{ // time,content
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.cvTodo.indexPath(for: cell)
+            
+            todoViewController?.sgKind = "update"
+            todoViewController?.existTodoData[0] = todoData[indexPath!.row]
         }
     }// prepare
     
@@ -171,7 +179,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         defer{
             sqlite3_close(db)
         }
-        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY ttime , tid"
+        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END), ttime , tid"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let date = "\(mvYear)\(mvMonth)\(mvDay)"
@@ -219,8 +227,8 @@ extension DailyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todoCell", for: indexPath) as! TodoListCell
         // time, content
-        if todoData[indexPath.row].time == "NoTime"{
-            cell.lblTime.text = " "
+        if todoData[indexPath.row].time == "선택 안함"{
+            cell.lblTime.text = ""
         }else{
             cell.lblTime.text = todoData[indexPath.row].time
         }
@@ -242,7 +250,7 @@ extension DailyViewController:UICollectionViewDelegateFlowLayout{
     // cell 크기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width
-        let height = CGFloat(50)
+        let height = CGFloat(60)
         let size = CGSize(width: width, height: height)
         return size
     }

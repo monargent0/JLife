@@ -197,21 +197,19 @@ class MonthlyPopUpViewController: UIViewController {
         
         switch deviceName {
         case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
-            length = 120
+            length = 100
         case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            length = 130
+            length = 110
         case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
-            length = 135
+            length = 115
         case "iPhone 14 Pro": // 393
-            length = 135
+            length = 120
         case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
-            length = 145
-        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
-            length = 150
-        case "iPhone 14 Pro Max" : // 430
-            length = 150
-        default : //
+            length = 125
+        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus","iPhone 14 Pro Max": // 428 , 430
             length = 130
+        default : //
+            length = 110
         }
         return length
     }// Func deviceTvCount

@@ -17,17 +17,16 @@ class DayTodoViewController: UIViewController {
     @IBOutlet weak var lblSelectTime: UILabel!
     @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var timeSwitch: UISwitch!
+    @IBOutlet weak var deleteButton: UIButton!
     
     // MARK: 변수 선언
     var tvMaxLength = 50
     let DidDismissTodoAddViewController:Notification.Name = Notification.Name("DidDismissTodoAddViewController")
-    // 수정화면일때 받아올 값
-    var timeExist = false
-    var selectedTime = "선택 안함"
-    // Dailyview에서 넘어오는 값
-    var dvDate = ""
     
-    //
+    // Dailyview에서 넘어오는 값
+    var sgKind = "insert"
+    var existTodoData:[Todo] = [Todo(id: 0, date: "", time: "선택 안함", content: "", complete: 0, score: 0)]
+    // SQLITE
     var db : OpaquePointer?
     
     override func viewDidLoad() {
@@ -35,16 +34,26 @@ class DayTodoViewController: UIViewController {
         tvMaxLength = deviceTvCount()
         // 화면 setting
         addButton.isEnabled = false
-        lblTvCount.text = "0 / \(tvMaxLength)"
-        lblSelectTime.text = "일정 시간 : \(selectedTime)"
-        timeSwitch.isOn = timeExist
-        timeSelec(timeExist)
+        if sgKind == "insert"{
+            deleteButton.isHidden = true
+            addButton.titleLabel?.text = "추가"
+        }else{
+            deleteButton.isHidden = false
+            addButton.titleLabel?.text = "수정"
+        }
+        tvTodo.text = existTodoData[0].content
+        lblTvCount.text = "\(tvTodo.text.count) / \(tvMaxLength)"
+        lblSelectTime.text = "일정 시간 : \(existTodoData[0].time!)"
+        let firstTime = existTodoData[0].time == "선택 안함" ? false : true
+        timeSwitch.isOn = firstTime
+        timeSelec(firstTime)
         //delegate
         tvTodo.delegate = self
         // 레이아웃
         tvTodo.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         tvTodo.layer.borderWidth = 0.7
         tvTodo.layer.cornerRadius = 5
+        tvTodo.becomeFirstResponder()
         // SQLite
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
@@ -63,38 +72,52 @@ class DayTodoViewController: UIViewController {
     }
     // 추가
     @IBAction func btnAdd(_ sender: UIButton) {
-        // insert
-        insertActionT(dvDate, selectedTime, tvTodo.text, 0, 0)
+        if sgKind == "insert"{
+            insertActionT(tvTodo.text, existTodoData)
+        }else if sgKind == "update"{
+            updateActionT(tvTodo.text, existTodoData)
+        }
         NotificationCenter.default.post(name: DidDismissTodoAddViewController, object: nil)
         dismiss(animated: true)
     }
+    
+    @IBAction func btnDelete(_ sender: UIButton) {
+        deleteActionT(existTodoData[0].id)
+        NotificationCenter.default.post(name: DidDismissTodoAddViewController, object: nil)
+        dismiss(animated: true)
+    }
+    
     // MARK: TimePicker
     @IBAction func timePicker(_ sender: UIDatePicker) {
         let senderTP = sender
         let formatter = DateFormatter()
         formatter.dateFormat = "a h시 mm분"
         let time = formatter.string(from: senderTP.date)
-        selectedTime = time
+        existTodoData[0].time = time
         lblSelectTime.text = "일정 시간: \(time)"
     }
     
     private func timeSelec(_ switchState : Bool) {
         if switchState == false {
             picker.isHidden = true
-            selectedTime = "NoTime"
-            lblSelectTime.text = "일정 시간: \(selectedTime)"
+            existTodoData[0].time = "선택 안함"
+            lblSelectTime.text = "일정 시간: \(existTodoData[0].time!)"
         }else {
             picker.isHidden = false
             let formatter = DateFormatter()
             formatter.dateFormat = "a h시 mm분"
-            selectedTime = formatter.string(from: picker.date)
-            lblSelectTime.text = "일정 시간: \(selectedTime)"
+            if sgKind == "update" && existTodoData[0].time != "선택 안함" {
+                picker.date = formatter.date(from: existTodoData[0].time!)!
+            }else{
+                existTodoData[0].time = formatter.string(from: picker.date)
+            }
+            lblSelectTime.text = "일정 시간: \(existTodoData[0].time!)"
         }
     }// timeSelec
     
     // MARK: SQLite
     // MARK: SQLite - insert
-    private func insertActionT(_ dvdate : String ,_ timeSelect:String,_ tvContent:String,_ completion:Int,_ tscore:Int ) {
+    private func insertActionT(_ tvContent:String,_ todoData : [Todo] ) {
         defer{
             sqlite3_close(db)
         }
@@ -102,11 +125,11 @@ class DayTodoViewController: UIViewController {
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "INSERT INTO todo (tdate, ttime, tcontent, tcomplete, tscore) VALUES (?,?,?,?,?)"
         // 사용자 입력 값
-        let date = dvdate
-        let time = timeSelect
+        let date = todoData[0].date!
+        let time = todoData[0].time!
         let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
-        let complete = Int32(completion)
-        let score = Int32(tscore)
+        let complete = Int32(todoData[0].complete!)
+        let score = Int32(todoData[0].score!)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
@@ -128,6 +151,63 @@ class DayTodoViewController: UIViewController {
         sqlite3_finalize(stmt)
     }// insert
     
+    // MARK: SQLite - update
+    private func updateActionT(_ tvContent:String, _ todoData : [Todo] ) {
+        defer{
+            sqlite3_close(db)
+        }
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "UPDATE todo SET ttime = ?, tcontent = ? WHERE tid = ?"
+        // 사용자 입력 값
+        let id = Int32(todoData[0].id)
+        let time = todoData[0].time!
+        let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing update : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, time, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, content, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_int(stmt, 3, id)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure updating : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// update
+    
+    // MARK: SQLite - update
+    private func deleteActionT(_ id: Int ) {
+        defer{
+            sqlite3_close(db)
+        }
+        var stmt:OpaquePointer?
+        let queryString = "DELETE FROM todo WHERE tid = ?"
+        // 사용자 입력 값
+        let id = Int32(id)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing update : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_int(stmt, 1, id)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure deleting : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// delete
+    
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
     private func deviceTvCount() -> Int {
         let deviceName = UIDevice.current.name
@@ -135,21 +215,17 @@ class DayTodoViewController: UIViewController {
         
         switch deviceName {
         case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
-            length = 65
+            length = 34
         case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            length = 72
-        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
-            length = 76
-        case "iPhone 14 Pro": // 393
-            length = 76
+            length = 38
+        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14","iPhone 14 Pro": // 390 , 393
+            length = 40
         case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
-            length = 84
-        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
-            length = 88
-        case "iPhone 14 Pro Max" : // 430
-            length = 88
+            length = 42
+        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus","iPhone 14 Pro Max": // 428 ,430
+            length = 46
         default : //
-            length = 75
+            length = 40
         }
         return length
     }// Func deviceTvCount
