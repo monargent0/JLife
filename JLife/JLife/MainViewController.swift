@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     var monthlyExistence = false
     var noNowMonthIndex:[Int] = []
+    let monthlyNotice = "+ 버튼을 눌러 이 달의 문구를 작성해 보세요!"
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
@@ -99,7 +100,11 @@ class MainViewController: UIViewController {
         setMonth(presentDate)
         Task{
             try await readMonthlyValues()
-            
+        }
+        if presentDate != todayDate{
+            todayButton.isEnabled = true
+        }else{
+            todayButton.isEnabled = false
         }
     }//
     
@@ -200,7 +205,7 @@ class MainViewController: UIViewController {
 //            print("no db Data")
             monthlyExistence = false
             self.lblMonthlyTitle.text = "#Monthly"
-            self.tvMContent.text = "+ 버튼을 눌러보세요!"
+            self.tvMContent.text = monthlyNotice
             self.tvMContent.textColor = UIColor(named: "AccentColor") // textview 글자색
         }
         
@@ -244,7 +249,7 @@ class MainViewController: UIViewController {
             monthlyPopUpViewController?.year = date![0]
             monthlyPopUpViewController?.month = date![1]
             monthlyPopUpViewController?.mvTitle = lblMonthlyTitle.text!
-            monthlyPopUpViewController?.mvContent = tvMContent.text == "+ 버튼을 눌러보세요!" ? "" : tvMContent.text
+            monthlyPopUpViewController?.mvContent = tvMContent.text == monthlyNotice ? "" : tvMContent.text
             monthlyPopUpViewController?.existence = monthlyExistence // DB select 존재 여부
             monthlyPopUpViewController?.monthlyID = monthlyBundle.isEmpty ? 0 : monthlyBundle[0].id
         }else if segue.identifier == "sgDay"{

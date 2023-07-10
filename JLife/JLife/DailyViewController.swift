@@ -13,12 +13,15 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var tvDaily: UITextView!
     @IBOutlet weak var cvTodo: UICollectionView!
-
+    @IBOutlet weak var lblNotice: UILabel!
+    @IBOutlet weak var lblTodayScore: UILabel!
+    
     // MARK: 변수선언
     var mvYear = 0
     var mvMonth = 0
     var mvDay = 0
     var dailyExistence = false
+    let dailyNotice = "Today's Box가 비어있어요!"
     
     // MARK: DB 변수선언
     var todoID = 0
@@ -60,7 +63,6 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
         }
-        
     }
     
     // MARK: segue 값 보내기
@@ -69,7 +71,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let todoViewController = segue.destination as? DayTodoViewController
         if segue.identifier == "sgDaily"{
             dailyPopUpViewController?.dvDate = dbDate
-            dailyPopUpViewController?.dvContent = tvDaily.text == "+ 버튼을 눌러보세요!" ? "" : tvDaily.text
+            dailyPopUpViewController?.dvContent = tvDaily.text == dailyNotice ? "" : tvDaily.text
             dailyPopUpViewController?.tvExistence = dailyExistence
             dailyPopUpViewController?.dailyID = dailyBundle.isEmpty ? 0 : dailyBundle[0].id
         }else if segue.identifier == "sgTodo"{
@@ -165,7 +167,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         }else{
 //            print("no db Data")
             dailyExistence = false
-            self.tvDaily.text = "+ 버튼을 눌러보세요!"
+            self.tvDaily.text = dailyNotice
             self.tvDaily.textColor = UIColor(named: "AccentColor") // textview 글자색
         }
         
@@ -199,8 +201,13 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             let completion = sqlite3_column_int(stmt, 3)
             let score = sqlite3_column_int(stmt, 4)
             
-            print(id,date,time,content,completion,score)
+//            print(id,date,time,content,completion,score)
             todoData.append(Todo(id: Int(id), time: time, content: content, complete: Int(completion) ,score: Int(score) ))
+        }
+        if todoData.count != 0 {
+            self.lblNotice.isHidden =  true
+        }else{
+            self.lblNotice.isHidden = false
         }
         self.cvTodo.reloadData()
 

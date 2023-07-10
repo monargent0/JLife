@@ -36,14 +36,14 @@ class DayTodoViewController: UIViewController {
         addButton.isEnabled = false
         if sgKind == "insert"{
             deleteButton.isHidden = true
-            addButton.titleLabel?.text = "추가"
+            addButton.setTitle("추가", for: .normal)
         }else{
             deleteButton.isHidden = false
-            addButton.titleLabel?.text = "수정"
+            addButton.setTitle("수정", for: .normal)
         }
         tvTodo.text = existTodoData[0].content
         lblTvCount.text = "\(tvTodo.text.count) / \(tvMaxLength)"
-        lblSelectTime.text = "일정 시간 : \(existTodoData[0].time!)"
+        lblSelectTime.text = "시간 : \(existTodoData[0].time!)"
         let firstTime = existTodoData[0].time == "선택 안함" ? false : true
         timeSwitch.isOn = firstTime
         timeSelec(firstTime)
@@ -101,7 +101,7 @@ class DayTodoViewController: UIViewController {
         if switchState == false {
             picker.isHidden = true
             existTodoData[0].time = "선택 안함"
-            lblSelectTime.text = "일정 시간: \(existTodoData[0].time!)"
+            lblSelectTime.text = "시간: \(existTodoData[0].time!)"
         }else {
             picker.isHidden = false
             let formatter = DateFormatter()
@@ -111,7 +111,7 @@ class DayTodoViewController: UIViewController {
             }else{
                 existTodoData[0].time = formatter.string(from: picker.date)
             }
-            lblSelectTime.text = "일정 시간: \(existTodoData[0].time!)"
+            lblSelectTime.text = "시간: \(existTodoData[0].time!)"
         }
     }// timeSelec
     
