@@ -125,9 +125,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-fI-d2d">
-                                                    <rect key="frame" x="45" y="33" width="23" height="14.333333333333336"/>
-                                                    <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="12"/>
-                                                    <color key="textColor" name="AccentColor"/>
+                                                    <rect key="frame" x="45.333333333333336" y="31.666666666666668" width="22.666666666666664" height="15.666666666666668"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <color key="textColor" name="TodayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -238,6 +238,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ehY-ch-cIZ">
                         <barButtonItem key="rightBarButtonItem" title="오늘" id="H53-Sv-RTg">
+                            <color key="tintColor" name="TodayColor"/>
                             <connections>
                                 <action selector="btnToday:" destination="BYZ-38-t0r" id="ZlN-z1-bPw"/>
                             </connections>
@@ -280,7 +281,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-f7-IV0">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="87"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="87" id="hax-4s-iMb"/>
                                         </constraints>
@@ -294,7 +295,7 @@
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="medium"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="default" weight="semibold"/>
-                                            <color key="baseForegroundColor" red="1" green="0.65098039220000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseForegroundColor" name="PinkColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="svw-NY-DVJ" kind="presentation" identifier="sgDaily" id="ELM-v2-73m"/>
@@ -303,7 +304,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-4I-2Hw">
                                         <rect key="frame" x="298.33333333333331" y="0.0" width="62.666666666666686" height="87"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="AccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -315,9 +316,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiK-Sz-gWn">
                                 <rect key="frame" x="16" y="738.66666666666663" width="361" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
+                                <buttonConfiguration key="configuration" style="tinted" image="plus" catalog="system">
                                     <color key="baseForegroundColor" name="AccentColor"/>
-                                    <color key="baseBackgroundColor" red="0.68235294120000001" green="0.85098039219999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" name="AccentColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="Bo0-Q5-3Ec" kind="presentation" identifier="sgTodo" id="Egr-7b-Lgb"/>
@@ -347,7 +348,7 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="semibold"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="btnComplete:" destination="CU0-qh-wOA" eventType="touchUpInside" id="FFE-4x-pnG"/>
+                                                        <action selector="checkBtn:" destination="kiu-VK-Nrx" eventType="touchUpInside" id="vvo-We-PUt"/>
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-eG-JdC">
@@ -389,10 +390,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정을 추가해 주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGG-68-GuS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="할 일을 추가해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGG-68-GuS">
                                 <rect key="frame" x="121" y="416.66666666666669" width="151" height="19"/>
                                 <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="GrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -464,7 +465,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="취소">
                                             <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                            <color key="baseForegroundColor" red="0.36862745098039218" green="0.39215686274509803" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseForegroundColor" name="GrayColor"/>
                                             <color key="baseBackgroundColor" name="Background"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -490,7 +491,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="TqF-bY-AXs">
                                 <rect key="frame" x="20" y="84.000000000000014" width="353" height="247.33333333333337"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달의 제목을 지어주세요!" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-Pl-Js1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달의 대표 타이틀" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-Pl-Js1">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -508,10 +509,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apj-fR-wNA">
                                         <rect key="frame" x="0.0" y="77.333333333333343" width="353" height="14.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="12"/>
-                                        <color key="textColor" red="0.36862745098039218" green="0.39215686274509803" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="GrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 달의 목표, 다짐 등을 작성해 보세요!  " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-ZC-1Cc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 달의 목표, 다짐 등 " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-ZC-1Cc">
                                         <rect key="frame" x="0.0" y="105.66666666666666" width="353" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -530,7 +531,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiA-Gn-rRj">
                                         <rect key="frame" x="0.0" y="233" width="353" height="14.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="12"/>
-                                        <color key="textColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="GrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -546,7 +547,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4NR-yB-drG"/>
-                        <color key="backgroundColor" red="0.68235294117647061" green="0.85098039215686272" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="LightBlueColor"/>
                         <constraints>
                             <constraint firstItem="fwL-qg-gzv" firstAttribute="centerY" secondItem="IUb-Vq-9Vu" secondAttribute="centerY" priority="250" id="B5b-Ke-WC6"/>
                             <constraint firstItem="TqF-bY-AXs" firstAttribute="centerX" secondItem="IUb-Vq-9Vu" secondAttribute="centerX" id="BHM-cu-x73"/>
@@ -586,7 +587,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="취소">
                                             <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                            <color key="baseForegroundColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseForegroundColor" name="GrayColor"/>
                                             <color key="baseBackgroundColor" name="Background"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -613,7 +614,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="yLy-XQ-6hP">
                                 <rect key="frame" x="16" y="108.99999999999999" width="361" height="184.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 듣고싶은 노래 가사 또는 나에게 보내는 응원 등 자유롭게 작성해 보세요!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3XS-Yq-z5F">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 듣고싶은 노래 가사 또는 나에게 보내는 응원 등 자유롭게 작성해 보세요" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3XS-Yq-z5F">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="40.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -632,7 +633,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v16-R4-xv6">
                                         <rect key="frame" x="0.0" y="170.33333333333331" width="361" height="14.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="12"/>
-                                        <color key="textColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="GrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -643,7 +644,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5sN-nD-Pcc"/>
-                        <color key="backgroundColor" red="0.68235294117647061" green="0.85098039215686272" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="LightBlueColor"/>
                         <constraints>
                             <constraint firstItem="yLy-XQ-6hP" firstAttribute="centerX" secondItem="FGs-h9-d6h" secondAttribute="centerX" id="BdP-lS-Pos"/>
                             <constraint firstItem="pCN-SY-ls0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yLy-XQ-6hP" secondAttribute="bottom" constant="50" id="Nbf-hK-oET"/>
@@ -686,6 +687,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Ref-de-C4i"/>
                                         </constraints>
+                                        <color key="onTintColor" name="AccentColor"/>
                                         <connections>
                                             <action selector="timeSwitchAction:" destination="Bo0-Q5-3Ec" eventType="valueChanged" id="Fxa-ye-vfC"/>
                                         </connections>
@@ -700,7 +702,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="취소">
                                             <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" systemColor="secondaryLabelColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="btnCancel:" destination="Bo0-Q5-3Ec" eventType="touchUpInside" id="k2W-oH-ZQS"/>
@@ -746,7 +748,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc0-pl-lCa">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="16.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
-                                        <color key="textColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="GrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-CY-8q0">
@@ -762,7 +764,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-Kt-y8J">
                                         <rect key="frame" x="0.0" y="96.666666666666686" width="361" height="15.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="13"/>
-                                        <color key="textColor" red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="GrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -818,8 +820,23 @@
         <namedColor name="Background">
             <color red="0.97600001096725464" green="0.97299998998641968" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="GrayColor">
+            <color red="0.36862745099999999" green="0.3921568627" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightBlueColor">
+            <color red="0.68235294120000001" green="0.85098039219999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PinkColor">
+            <color red="1" green="0.65098039220000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TodayColor">
+            <color red="0.22043707736557591" green="0.24472786392786042" blue="0.51512896825396826" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

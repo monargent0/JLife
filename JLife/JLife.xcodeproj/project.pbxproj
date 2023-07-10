@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4800FA1D2A5C101200F90A3D /* AlertViewController.swift */; };
 		48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B512A43727400D3C3B0 /* AppDelegate.swift */; };
 		48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B532A43727400D3C3B0 /* SceneDelegate.swift */; };
 		48307B592A43727400D3C3B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48307B572A43727400D3C3B0 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4800FA1D2A5C101200F90A3D /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		48307B4E2A43727400D3C3B0 /* JLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48307B512A43727400D3C3B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48307B532A43727400D3C3B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
 				48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */,
 				48E4692F2A52E5180023B03E /* DayTodoViewController.swift */,
+				4800FA1D2A5C101200F90A3D /* AlertViewController.swift */,
 			);
 			name = "View Group";
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */,
+				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */,

@@ -65,6 +65,27 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         }
     }
     
+    @IBAction func checkBtn(_ sender: UIButton) {
+        let alertVC = AlertViewController()
+        let cell = (sender.superview?.superview as? UICollectionViewCell)
+        let indexPath = self.cvTodo.indexPath(for: cell!)
+        let font = UIFont(name: "Cafe24Ssurroundair", size: 16)
+        print(todoData[indexPath!.row].content!)
+        
+        let titleText: String = "할 일을 완료하셨나요? \n성취도(몰입도)를 평가해 주세요!"
+        let attributeText = NSMutableAttributedString(string: titleText)
+        attributeText.addAttribute(.font, value: font!, range: (titleText as NSString).range(of: "\(titleText)"))
+        let alert = UIAlertController(title: titleText, message: "", preferredStyle: .alert)
+        alert.setValue(alertVC, forKey: "contentViewController")
+        alert.setValue(attributeText, forKey: "attributedTitle")
+        
+        let okAction = UIAlertAction(title: "확인", style: .default){ _ in
+            print("슬라이드 값 : \(alertVC.sliderValue)")
+        }
+        alert.addAction(okAction)
+        present(alert, animated: false, completion: nil)
+    }
+    
     // MARK: segue 값 보내기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dailyPopUpViewController = segue.destination as? DailyPopUpViewController
@@ -163,12 +184,12 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             
             dailyExistence = true
             self.tvDaily.text = content
-            self.tvDaily.textColor = UIColor.black // textview 글자색
+            self.tvDaily.textColor = UIColor(named: "TextColor") // textview 글자색
         }else{
 //            print("no db Data")
             dailyExistence = false
             self.tvDaily.text = dailyNotice
-            self.tvDaily.textColor = UIColor(named: "AccentColor") // textview 글자색
+            self.tvDaily.textColor = UIColor(named: "PinkColor") // textview 글자색
         }
         
         sqlite3_finalize(stmt)
@@ -240,7 +261,12 @@ extension DailyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             cell.lblTime.text = todoData[indexPath.row].time
         }
         cell.lblContent.text = todoData[indexPath.row].content
-        
+        // 완료
+        if todoData[indexPath.row].complete == 0 {
+            cell.checkBtnOut.setImage(UIImage(systemName: "square"), for: .normal)
+        }else{
+            cell.checkBtnOut.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        }
         return cell
     }
     

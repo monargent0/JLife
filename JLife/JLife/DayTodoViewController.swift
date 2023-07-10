@@ -35,6 +35,7 @@ class DayTodoViewController: UIViewController {
         // 화면 setting
         addButton.isEnabled = false
         if sgKind == "insert"{
+            tvTodo.becomeFirstResponder()
             deleteButton.isHidden = true
             addButton.setTitle("추가", for: .normal)
         }else{
@@ -53,7 +54,6 @@ class DayTodoViewController: UIViewController {
         tvTodo.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         tvTodo.layer.borderWidth = 0.7
         tvTodo.layer.cornerRadius = 5
-        tvTodo.becomeFirstResponder()
         // SQLite
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{

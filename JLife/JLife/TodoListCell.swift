@@ -17,7 +17,5 @@ class TodoListCell: UICollectionViewCell {
         super.prepareForReuse()
         
     }
-    @IBAction func btnComplete(_ sender: UIButton) {
-        print("btnTodo")
-    }
+    
 }

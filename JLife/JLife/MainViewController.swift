@@ -200,7 +200,7 @@ class MainViewController: UIViewController {
             monthlyExistence = true
             self.lblMonthlyTitle.text = title
             self.tvMContent.text = content
-            self.tvMContent.textColor = UIColor.black // textview 글자색
+            self.tvMContent.textColor = UIColor(named: "TextColor") // textview 글자색
         }else{
 //            print("no db Data")
             monthlyExistence = false
@@ -351,11 +351,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             cell.lblDay.textColor = .lightGray
             cell.isUserInteractionEnabled = false
         default:
-            cell.lblDay.textColor = .darkGray
+            cell.lblDay.textColor = UIColor(named: "TextColor")
             cell.isUserInteractionEnabled = true
         }
         // Today 표시
-        if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == .darkGray{
+        if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == UIColor(named: "TextColor"){
             cell.lblToday.isHidden = false
         }
 
