@@ -25,7 +25,7 @@ class DayTodoViewController: UIViewController {
     
     // Dailyview에서 넘어오는 값
     var sgKind = "insert"
-    var existTodoData:[Todo] = [Todo(id: 0, date: "", time: "선택 안함", content: "", complete: 0, score: 0)]
+    var existTodoData:[Todo] = [Todo(id: 0, date: "", time: "선택 안함", content: "", complete: 0, score: 0.0)]
     // SQLITE
     var db : OpaquePointer?
     

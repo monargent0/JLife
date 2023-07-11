@@ -64,13 +64,13 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             tvDaily.text = dailyBundle[0].content
         }
     }
-    
+    // MARK: 할일완료 check버튼
     @IBAction func checkBtn(_ sender: UIButton) {
         let alertVC = AlertViewController()
         let cell = (sender.superview?.superview as? UICollectionViewCell)
         let indexPath = self.cvTodo.indexPath(for: cell!)
         let font = UIFont(name: "Cafe24Ssurroundair", size: 16)
-        print(todoData[indexPath!.row].content!)
+//        print(todoData[indexPath!.row].content!)
         
         let titleText: String = "할 일을 완료하셨나요? \n성취도(몰입도)를 평가해 주세요!"
         let attributeText = NSMutableAttributedString(string: titleText)
@@ -79,9 +79,18 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         alert.setValue(alertVC, forKey: "contentViewController")
         alert.setValue(attributeText, forKey: "attributedTitle")
         
-        let okAction = UIAlertAction(title: "확인", style: .default){ _ in
-            print("슬라이드 값 : \(alertVC.sliderValue)")
+        let cancelAction = UIAlertAction(title: "아직 안했어요", style: .default)
+        let okAction = UIAlertAction(title: "완료!", style: .destructive){ _ in
+//            print("슬라이드 값 : \(alertVC.sliderValue)")
+            self.updateScoreActionT(self.todoData[indexPath!.row].id, alertVC.sliderValue, 1)
+            Task{
+                try await self.readTodoValues()
+            }
         }
+        
+        cancelAction.setValue(UIColor(named: "GrayColor"), forKey: "titleTextColor")
+        okAction.setValue(UIColor(named: "AccentColor"), forKey: "titleTextColor")
+        alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: false, completion: nil)
     }
@@ -147,7 +156,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
             print("error opening Todo database")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todo (tid INTEGER PRIMARY KEY AUTOINCREMENT, tdate TEXT, ttime TEXT, tcontent TEXT, tcomplete INTEGER , tscore INTEGER)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todo (tid INTEGER PRIMARY KEY AUTOINCREMENT, tdate TEXT, ttime TEXT, tcontent TEXT, tcomplete INTEGER , tscore REAL)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error creating todo table \(errmsg)")
             return
@@ -181,7 +190,6 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             let content = String(cString: sqlite3_column_text(stmt, 1))
 //            print(id, content)
             dailyBundle.append(Daily(id: Int(id) ,content: content))
-            
             dailyExistence = true
             self.tvDaily.text = content
             self.tvDaily.textColor = UIColor(named: "TextColor") // textview 글자색
@@ -191,10 +199,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             self.tvDaily.text = dailyNotice
             self.tvDaily.textColor = UIColor(named: "PinkColor") // textview 글자색
         }
-        
         sqlite3_finalize(stmt)
-
-    }
+    }//
     // MARK: sql todolist select
     private func readTodoValues() async throws {
         try await createTodoTable()
@@ -202,7 +208,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         defer{
             sqlite3_close(db)
         }
-        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END), ttime , tid"
+        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY tcomplete, (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END) "
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let date = "\(mvYear)\(mvMonth)\(mvDay)"
@@ -220,20 +226,54 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             let time = String(cString: sqlite3_column_text(stmt, 1))
             let content = String(cString: sqlite3_column_text(stmt, 2))
             let completion = sqlite3_column_int(stmt, 3)
-            let score = sqlite3_column_int(stmt, 4)
-            
+            let score = sqlite3_column_double(stmt, 4)
 //            print(id,date,time,content,completion,score)
-            todoData.append(Todo(id: Int(id), time: time, content: content, complete: Int(completion) ,score: Int(score) ))
+            todoData.append(Todo(id: Int(id), time: time, content: content, complete: Int(completion) ,score: Float(score) ))
         }
         if todoData.count != 0 {
             self.lblNotice.isHidden =  true
         }else{
             self.lblNotice.isHidden = false
         }
+        // lblScore에 값 넣기
+        
         self.cvTodo.reloadData()
-
         sqlite3_finalize(stmt)
-    }
+    }//
+    
+    // MARK: SQLite - update Score
+    private func updateScoreActionT(_ tid : Int, _ tscore : Float, _ tcompletion : Int ) {
+        defer{
+            sqlite3_close(db)
+        }
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening Todo database")
+        }
+        var stmt:OpaquePointer?
+        let queryString = "UPDATE todo SET tscore = ?, tcomplete = ? WHERE tid = ?"
+        // 사용자 입력 값
+        let id = Int32(tid)
+        let score = Double(tscore)
+        let complete = Int32(tcompletion)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing update score : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_double(stmt, 1, score)
+        sqlite3_bind_int(stmt, 2, complete)
+        sqlite3_bind_int(stmt, 3, id)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure score updating : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// update
     /*
     // MARK: - Navigation
 
@@ -264,8 +304,12 @@ extension DailyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         // 완료
         if todoData[indexPath.row].complete == 0 {
             cell.checkBtnOut.setImage(UIImage(systemName: "square"), for: .normal)
+            cell.lblTime.textColor = UIColor(named: "TextColor")
+            cell.lblContent.textColor = UIColor(named: "TextColor")
         }else{
             cell.checkBtnOut.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            cell.lblTime.textColor = UIColor(named: "GrayColor")
+            cell.lblContent.textColor = UIColor(named: "GrayColor")
         }
         return cell
     }

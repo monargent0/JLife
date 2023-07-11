@@ -13,9 +13,9 @@ class Todo{
     var time: String?
     var content: String?
     var complete: Int?
-    var score: Int?
+    var score: Float?
     
-    init(id: Int, date: String? = nil, time: String? = nil, content: String? = nil, complete: Int? = nil, score: Int? = nil) {
+    init(id: Int, date: String? = nil, time: String? = nil, content: String? = nil, complete: Int? = nil, score: Float? = nil) {
         self.id = id
         self.date = date
         self.time = time

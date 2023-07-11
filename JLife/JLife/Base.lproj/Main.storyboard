@@ -125,8 +125,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-fI-d2d">
-                                                    <rect key="frame" x="45.333333333333336" y="31.666666666666668" width="22.666666666666664" height="15.666666666666668"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <rect key="frame" x="46" y="33" width="21" height="14.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <color key="textColor" name="TodayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -830,7 +830,7 @@
             <color red="1" green="0.65098039220000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TodayColor">
-            <color red="0.22043707736557591" green="0.24472786392786042" blue="0.51512896825396826" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0055783404452071552" green="0.02228675617138904" blue="0.13384589947089942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
