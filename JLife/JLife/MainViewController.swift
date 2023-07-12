@@ -25,10 +25,11 @@ class MainViewController: UIViewController {
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     var monthlyExistence = false
     var noNowMonthIndex:[Int] = []
-    let monthlyNotice = "+ 버튼을 눌러 이 달의 문구를 작성해 보세요!"
+    let monthlyNotice = "Monthly Box를 자유롭게 채워보세요!"
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
+    var scoreData:[TotalScore] = []
     var db: OpaquePointer? // DB포인터
     
     // Did Load
@@ -41,7 +42,6 @@ class MainViewController: UIViewController {
         // SQL 구성
         Task{
             try await readMonthlyValues()
-            // readTotalScoreValues() 달력 달성도 색 표시
         }
 //        createMonthlyTable()
         // 오늘 버튼 초기세팅
@@ -64,6 +64,11 @@ class MainViewController: UIViewController {
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
         }
+        Task{
+            try await readTotalScoreValues()
+            cvCalendar.reloadData()
+        }
+        print("w")
     }
     
     // MARK: 버튼 연결
@@ -72,7 +77,7 @@ class MainViewController: UIViewController {
         setMonth(presentDate)
         Task{
             try await readMonthlyValues()
-            
+            try await readTotalScoreValues()
         }
         if presentDate != todayDate{
             todayButton.isEnabled = true
@@ -86,6 +91,7 @@ class MainViewController: UIViewController {
         setMonth(presentDate)
         Task{
             try await readMonthlyValues()
+            try await readTotalScoreValues()
             
         }
         if presentDate != todayDate{
@@ -100,6 +106,7 @@ class MainViewController: UIViewController {
         setMonth(presentDate)
         Task{
             try await readMonthlyValues()
+            try await readTotalScoreValues()
         }
         if presentDate != todayDate{
             todayButton.isEnabled = true
@@ -153,18 +160,18 @@ class MainViewController: UIViewController {
         }
     }//Monthly
     
-    private func createTodoTable() async throws{ // 쿼리문 수정 해야함
-        // TodoList
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoList.sqlite")
+    private func createTotalScoreTable() async throws{ // 쿼리문 수정 해야함
+        // TotalScore
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
         if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening Todo DB")
+            print("error opening TotalScore DB")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todolist (tid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS totalscore (sid INTEGER PRIMARY KEY AUTOINCREMENT, sdate TEXT, sday TEXT, stotal INTEGER)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating todo table \(errmsg)")
+            print("error creating TotalScore table \(errmsg)")
             return
         }
-    }//TodoList
+    }//TotalScore
     
     // MARK: SQLite 테이블 불러오기
     private func readMonthlyValues() async throws{
@@ -173,7 +180,7 @@ class MainViewController: UIViewController {
         defer{
             sqlite3_close(db)
         }
-        let queryString = "SELECT mid,mtitle,mcontent FROM monthly WHERE myear = ? and mmonth = ?;"
+        let queryString = "SELECT mid, mtitle, mcontent FROM monthly WHERE myear = ? and mmonth = ?;"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let date = lblDateTitle.text?.components(separatedBy: " ")
@@ -211,7 +218,40 @@ class MainViewController: UIViewController {
         
         sqlite3_finalize(stmt)
 
-    }
+    }//readMonthlyValues
+    
+    // MARK: total score Read
+    private func readTotalScoreValues() async throws{
+        try await createTotalScoreTable()
+        scoreData.removeAll()
+        defer{
+            sqlite3_close(db)
+        }
+        let queryString = "SELECT sid, stotal, sday FROM totalscore WHERE sdate = ?"
+        var stmt : OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let date = lblDateTitle.text
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing total select : \(errmsg)")
+            return
+        }
+        sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
+        
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            // DB 있는 경우
+            let id = sqlite3_column_int(stmt, 0)
+            let total = sqlite3_column_int(stmt, 1)
+            let day = String(cString: sqlite3_column_text(stmt, 2))
+            print("\(id),요일 \(day), 점수 \(total) ")
+            scoreData.append(TotalScore(id: Int(id) , date: date, day: day, score: Int(total)))
+            
+        }
+        cvCalendar.reloadData()
+        sqlite3_finalize(stmt)
+
+    }//readMonthlyValues
     
     // MARK: 아이폰 모델에 따라 Collection View 사이즈 조정 Function
     private func deviceWidth() -> CGFloat {
@@ -255,10 +295,20 @@ class MainViewController: UIViewController {
         }else if segue.identifier == "sgDay"{
             let cell = sender as! UICollectionViewCell
             let indexPath = self.cvCalendar.indexPath(for: cell)
-            
+            var sid = 0
             dailyViewController?.mvYear = Int(date![0].prefix(upTo:date![0].index(before: date![0].endIndex)))!
             dailyViewController?.mvMonth = Int(date![1].prefix(upTo:date![1].index(before: date![1].endIndex)))!
             dailyViewController?.mvDay = Int(allDateItems[indexPath!.row])!
+    
+            for data in scoreData{
+                if data.day == allDateItems[indexPath!.row] {
+                    sid = data.id!
+                    break
+                }else{
+                    sid = 0
+                }
+            }
+            dailyViewController?.scoreID = sid
         }
         
     }// prepare
@@ -295,7 +345,7 @@ class MainViewController: UIViewController {
                 setMonth(presentDate)
                 Task{
                     try await readMonthlyValues()
-                    
+                    try await readTotalScoreValues()
                 }
                 if presentDate != todayDate{
                     todayButton.isEnabled = true
@@ -308,7 +358,7 @@ class MainViewController: UIViewController {
                 setMonth(presentDate)
                 Task{
                     try await readMonthlyValues()
-                    
+                    try await readTotalScoreValues()
                 }
                 if presentDate != todayDate{
                     todayButton.isEnabled = true
@@ -358,7 +408,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == UIColor(named: "TextColor"){
             cell.lblToday.isHidden = false
         }
-
+        for score in scoreData{
+            if cell.lblDay.textColor == UIColor(named: "TextColor") && score.day == allDateItems[indexPath.row]{
+                cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+            }
+        }
         return cell
     }
 

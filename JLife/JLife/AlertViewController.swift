@@ -68,7 +68,7 @@ class AlertViewController: UIViewController {
     
     @objc func onChangeValue(_ sender: UISlider){
         let floatValue = floor(sender.value * 10) / 10
-        print(floatValue , sliderValue)
+//        print(floatValue , sliderValue)
         for index in 1...5 {
             if let sliderImage = view.viewWithTag(index) as? UIImageView{
                 if Float(index) <= floatValue {

@@ -25,11 +25,13 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     
     // MARK: DB 변수선언
     var todoID = 0
+    var scoreID = 0
     var db : OpaquePointer?
     let dbDateFormat = DateFormatter()
     var dbDate = ""
     var dailyBundle:[Daily] = []
     var todoData:[Todo] = []
+    var nowTScore = 0
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +65,11 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
         }
+        Task{
+            if scoreID == 0 {
+                try await insertTotalScore("\(mvYear)년 \(mvMonth)월", String(mvDay), nowTScore)
+            }
+        }
     }
     // MARK: 할일완료 check버튼
     @IBAction func checkBtn(_ sender: UIButton) {
@@ -71,20 +78,27 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let indexPath = self.cvTodo.indexPath(for: cell!)
         let font = UIFont(name: "Cafe24Ssurroundair", size: 16)
 //        print(todoData[indexPath!.row].content!)
+        let nowScore = self.todoData[indexPath!.row].score != 0.0 ? "기존 평점 : \(self.todoData[indexPath!.row].score!)" : ""
         
-        let titleText: String = "할 일을 완료하셨나요? \n성취도(몰입도)를 평가해 주세요!"
+        let titleText: String = self.todoData[indexPath!.row].score != 0.0 ? "성취도(몰입도)를 수정하시나요?" : "할 일을 완료하셨나요? \n성취도(몰입도)를 평가해 주세요!"
         let attributeText = NSMutableAttributedString(string: titleText)
         attributeText.addAttribute(.font, value: font!, range: (titleText as NSString).range(of: "\(titleText)"))
-        let alert = UIAlertController(title: titleText, message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: titleText, message: "\(nowScore)", preferredStyle: .alert)
         alert.setValue(alertVC, forKey: "contentViewController")
         alert.setValue(attributeText, forKey: "attributedTitle")
         
-        let cancelAction = UIAlertAction(title: "아직 안했어요", style: .default)
+        let cancelAction = UIAlertAction(title: "취소", style: .default)
         let okAction = UIAlertAction(title: "완료!", style: .destructive){ _ in
 //            print("슬라이드 값 : \(alertVC.sliderValue)")
-            self.updateScoreActionT(self.todoData[indexPath!.row].id, alertVC.sliderValue, 1)
+            if alertVC.sliderValue != 0.0{
+                self.updateScoreActionT(self.todoData[indexPath!.row].id, alertVC.sliderValue, 1)
+            }else{
+                self.updateScoreActionT(self.todoData[indexPath!.row].id, alertVC.sliderValue, 0)
+            }
             Task{
                 try await self.readTodoValues()
+//                print(self.nowTScore)
+                try await self.updateTotalScore("\(self.mvYear)년 \(self.mvMonth)월", String(self.mvDay), self.nowTScore)
             }
         }
         
@@ -236,7 +250,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             self.lblNotice.isHidden = false
         }
         // lblScore에 값 넣기
-        
+        nowTScore = totalCalc(todo: todoData)
+        lblTodayScore.text = "\(nowTScore)%"
         self.cvTodo.reloadData()
         sqlite3_finalize(stmt)
     }//
@@ -274,6 +289,92 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         }
         sqlite3_finalize(stmt)
     }// update
+    
+    // MARK: Total Score 계산 func
+    func totalCalc(todo : [Todo]) -> Int{
+        let count = todo.count
+        var sumScore = 0.0
+        for list in todo {
+            sumScore += Double(list.score!)
+        }
+        let percent = todo.count != 0 ? round((sumScore / (Double(count) * 5.0)) * 100) : 0.0
+        return Int(percent)
+    }// total score
+    
+    // MARK: SQLite - insert
+    private func insertTotalScore(_ mvdate : String , _ mvday : String , _ nowTscore : Int ) async throws{
+        // TotalScore
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening TotalScore DB")
+        }
+        defer{
+            sqlite3_close(db)
+        }
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "INSERT INTO totalscore (sdate, sday, stotal) VALUES (?,?,?)"
+        // 사용자 입력 값
+        let date = mvdate
+        let day = String(mvday)
+        let score = Int32(nowTscore)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing ts insert : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, day, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_int(stmt, 3, score)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure ts inserting : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }// insert
+    
+    // MARK: TotalScore update
+    func updateTotalScore(_ mvdate : String , _ mvday : String, _ nowScore: Int ) async throws{
+        try await readTodoValues()
+//        print(lblTodayScore.text!)
+        defer{
+            sqlite3_close(db)
+        }
+        // TotalScore
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
+        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+            print("error opening TotalScore DB")
+        }
+        var stmt:OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
+        let queryString = "UPDATE totalscore SET stotal = ? WHERE sdate = ? and sday = ?"
+        // 사용자 입력 값
+        let date = mvdate
+        let day = String(mvday)
+        let score = Int32(nowScore)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing ts update : \(errmsg)")
+            return
+        }
+        // ?에 데이터 매칭
+        sqlite3_bind_int(stmt, 1, score)
+        sqlite3_bind_text(stmt, 2, date, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 3, day, -1, SQLITE_TRANSIENT)
+        
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure ts updating : \(errmsg)")
+            return
+        }
+        sqlite3_finalize(stmt)
+    }
+    
     /*
     // MARK: - Navigation
 
