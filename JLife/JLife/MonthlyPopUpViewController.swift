@@ -50,9 +50,16 @@ class MonthlyPopUpViewController: UIViewController {
         EnterButton.isEnabled = false
         
         // SQLITE
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening monthly database")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("MonthlyData.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
         
         // TF 인식 NotificationCenter
@@ -111,8 +118,8 @@ class MonthlyPopUpViewController: UIViewController {
         let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing insert : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing insert : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -122,8 +129,8 @@ class MonthlyPopUpViewController: UIViewController {
         sqlite3_bind_text(stmt, 4, content, -1, SQLITE_TRANSIENT)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure inserting : \(errmsg)")
             return
         }
         sqlite3_finalize(stmt)
@@ -142,8 +149,8 @@ class MonthlyPopUpViewController: UIViewController {
         let content = tvContent.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing update : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing update : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -152,8 +159,8 @@ class MonthlyPopUpViewController: UIViewController {
         sqlite3_bind_int(stmt, 3, id)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure updating : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure updating : \(errmsg)")
             return
         }
         sqlite3_finalize(stmt)

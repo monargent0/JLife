@@ -149,17 +149,17 @@ class MainViewController: UIViewController {
         if #available(iOS 16.0, *) {
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
             if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-                print("error opening monthly database")
+//                print("error opening monthly database")
             }
         } else{
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("MonthlyData.sqlite")
             if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
-                print("error opening monthly database")
+//                print("error opening monthly database")
             }
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating monthly table \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error creating monthly table \(errmsg)")
             return
         }else{
 //            print("create monthly ok")
@@ -168,13 +168,20 @@ class MainViewController: UIViewController {
     
     private func createTotalScoreTable() async throws{ // 쿼리문 수정 해야함
         // TotalScore
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening TotalScore DB")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+                //            print("error opening TotalScore DB")
+            }
+        } else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TotalScore.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS totalscore (sid INTEGER PRIMARY KEY AUTOINCREMENT, sdate TEXT, sday TEXT, stotal INTEGER)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating TotalScore table \(errmsg)")
+//            print("error creating TotalScore table \(errmsg)")
             return
         }
     }//TotalScore
@@ -194,8 +201,8 @@ class MainViewController: UIViewController {
         let month = date![1]
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing select : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing select : \(errmsg)")
             return
         }
         sqlite3_bind_text(stmt, 1, year, -1, SQLITE_TRANSIENT)
@@ -239,8 +246,8 @@ class MainViewController: UIViewController {
         let date = lblDateTitle.text
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing total select : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing total select : \(errmsg)")
             return
         }
         sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)

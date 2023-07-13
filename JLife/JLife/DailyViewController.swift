@@ -154,13 +154,21 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     // MARK: SQLITE --
     // MARK: sql create daily
     private func createDailyTable() async throws{
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "DailyData.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening daily database")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "DailyData.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("DailyData.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
+        
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS daily (did INTEGER PRIMARY KEY AUTOINCREMENT, ddate TEXT, dcontent TEXT)", nil, nil, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating daily table \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error creating daily table \(errmsg)")
             return
         }else{
 //            print("create daily ok")
@@ -168,13 +176,21 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     }
     // MARK: sql create todolist
     private func createTodoTable() async throws{
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening Todo database")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TodoData.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
+       
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS todo (tid INTEGER PRIMARY KEY AUTOINCREMENT, tdate TEXT, ttime TEXT, tcontent TEXT, tcomplete INTEGER , tscore REAL)", nil, nil, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error creating todo table \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error creating todo table \(errmsg)")
             return
         }else{
 //            print("create todo ok")
@@ -193,8 +209,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let date = dbDate
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing d select : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing d select : \(errmsg)")
             return
         }
         sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
@@ -230,8 +246,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let date = "\(mvYear)\(mvMonth)\(mvDay)"
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing t select : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing t select : \(errmsg)")
             return
         }
         sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT)
@@ -263,10 +279,18 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         defer{
             sqlite3_close(db)
         }
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening Todo database")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TodoData.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TodoData.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
+        
         var stmt:OpaquePointer?
         let queryString = "UPDATE todo SET tscore = ?, tcomplete = ? WHERE tid = ?"
         // 사용자 입력 값
@@ -275,8 +299,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let complete = Int32(tcompletion)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing update score : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing update score : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -285,8 +309,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         sqlite3_bind_int(stmt, 3, id)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure score updating : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure score updating : \(errmsg)")
             return
         }
         sqlite3_finalize(stmt)
@@ -306,10 +330,18 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     // MARK: SQLite - insert
     private func insertTotalScore(_ mvdate : String , _ mvday : String , _ nowTscore : Int ) async throws{
         // TotalScore
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening TotalScore DB")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TotalScore.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
+        
         defer{
             sqlite3_close(db)
         }
@@ -322,8 +354,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let score = Int32(nowTscore)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing ts insert : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing ts insert : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -332,8 +364,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         sqlite3_bind_int(stmt, 3, score)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure ts inserting : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure ts inserting : \(errmsg)")
             return
         }
         sqlite3_finalize(stmt)
@@ -347,10 +379,18 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             sqlite3_close(db)
         }
         // TotalScore
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening TotalScore DB")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
+        }else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TotalScore.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+//                print("error opening monthly database")
+            }
         }
+        
         var stmt:OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let queryString = "UPDATE totalscore SET stotal = ? WHERE sdate = ? and sday = ?"
@@ -360,8 +400,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let score = Int32(nowScore)
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing ts update : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db))
+//            print("error preparing ts update : \(errmsg)")
             return
         }
         // ?에 데이터 매칭
@@ -370,8 +410,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         sqlite3_bind_text(stmt, 3, day, -1, SQLITE_TRANSIENT)
         
         if sqlite3_step(stmt) != SQLITE_DONE{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure ts updating : \(errmsg)")
+//            let errmsg = String(cString: sqlite3_errmsg(db)!)
+//            print("failure ts updating : \(errmsg)")
             return
         }
         sqlite3_finalize(stmt)
