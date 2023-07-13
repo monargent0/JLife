@@ -180,7 +180,7 @@ class MainViewController: UIViewController {
             }
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS totalscore (sid INTEGER PRIMARY KEY AUTOINCREMENT, sdate TEXT, sday TEXT, stotal INTEGER)", nil, nil, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db))
+//            let errmsg = String(cString: sqlite3_errmsg(db))
 //            print("error creating TotalScore table \(errmsg)")
             return
         }
