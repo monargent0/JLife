@@ -146,6 +146,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     private func didDismissTodoAddNotification(_ notification:Notification) {
         Task{
             try await readTodoValues()
+            try await updateTotalScore("\(mvYear)년 \(mvMonth)월", String(mvDay), nowTScore)
+            
         }
     }//TodoAdd
     

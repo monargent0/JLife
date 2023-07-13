@@ -22,6 +22,8 @@ class CalendarCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.backgroundColor = .clear
+        self.layer.borderWidth = 2.0
+        self.layer.borderColor = UIColor.clear.cgColor
         self.lblToday.isHidden = true
     }
 }

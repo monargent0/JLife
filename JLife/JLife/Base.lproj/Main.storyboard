@@ -125,8 +125,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-fI-d2d">
-                                                    <rect key="frame" x="46" y="33" width="21" height="14.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                    <rect key="frame" x="46" y="34.333333333333336" width="21" height="13"/>
+                                                    <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="11"/>
                                                     <color key="textColor" name="TodayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -280,7 +280,7 @@
                                 <rect key="frame" x="16" y="143" width="361" height="87"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-f7-IV0">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="87"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="253.33333333333334" height="87"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="87" id="hax-4s-iMb"/>
@@ -290,7 +290,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrf-i7-mYs">
-                                        <rect key="frame" x="250.00000000000003" y="0.0" width="47.333333333333343" height="87"/>
+                                        <rect key="frame" x="253.33333333333331" y="0.0" width="44" height="87"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="medium"/>

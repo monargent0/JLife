@@ -9,7 +9,7 @@ import UIKit
 import SQLite3 /**/
 
 class MainViewController: UIViewController {
-
+    
     // MARK: 스토리보드와 연결
     @IBOutlet weak var cvCalendar: UICollectionView! // 달력
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
@@ -68,7 +68,6 @@ class MainViewController: UIViewController {
             try await readTotalScoreValues()
             cvCalendar.reloadData()
         }
-        print("w")
     }
     
     // MARK: 버튼 연결
@@ -244,7 +243,7 @@ class MainViewController: UIViewController {
             let id = sqlite3_column_int(stmt, 0)
             let total = sqlite3_column_int(stmt, 1)
             let day = String(cString: sqlite3_column_text(stmt, 2))
-            print("\(id),요일 \(day), 점수 \(total) ")
+//            print("\(id),요일 \(day), 점수 \(total) ")
             scoreData.append(TotalScore(id: Int(id) , date: date, day: day, score: Int(total)))
             
         }
@@ -337,6 +336,7 @@ class MainViewController: UIViewController {
         self.cvCalendar.addGestureRecognizer(swipeRight)
         
     }
+    
     @objc func respondToSwipeGesture(_ gesture:UIGestureRecognizer){
         if let swipeGesture = gesture as? UISwipeGestureRecognizer{
             if swipeGesture.direction == UISwipeGestureRecognizer.Direction.left{
@@ -368,6 +368,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
     /*
     // MARK: - Navigation
 
@@ -401,6 +402,14 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             cell.lblDay.textColor = .lightGray
             cell.isUserInteractionEnabled = false
         default:
+            for score in scoreData{
+                if score.day == allDateItems[indexPath.row]{
+                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+                    if Double(score.score!) / 100.0 == 1.0 {
+                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
+                    }
+                }
+            }
             cell.lblDay.textColor = UIColor(named: "TextColor")
             cell.isUserInteractionEnabled = true
         }
@@ -408,11 +417,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == UIColor(named: "TextColor"){
             cell.lblToday.isHidden = false
         }
-        for score in scoreData{
-            if cell.lblDay.textColor == UIColor(named: "TextColor") && score.day == allDateItems[indexPath.row]{
-                cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
-            }
-        }
+
         return cell
     }
 
@@ -436,3 +441,4 @@ extension MainViewController:UICollectionViewDelegateFlowLayout{
     //
     
 }// DelegateFlowLayout
+
