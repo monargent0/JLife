@@ -146,9 +146,16 @@ class MainViewController: UIViewController {
     // MARK: SQLite 테이블 생성
     private func createMonthlyTable() async throws{
         // Monthly
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
-        if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
-            print("error opening monthly database")
+        if #available(iOS 16.0, *) {
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
+            if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
+                print("error opening monthly database")
+            }
+        } else{
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("MonthlyData.sqlite")
+            if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
+                print("error opening monthly database")
+            }
         }
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS monthly (mid INTEGER PRIMARY KEY AUTOINCREMENT, myear TEXT, mmonth TEXT, mtitle TEXT, mcontent TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db))
