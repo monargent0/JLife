@@ -16,7 +16,7 @@ class DailyPopUpViewController: UIViewController {
     @IBOutlet weak var lblTvCount: UILabel!
     
     // MARK: 변수 선언
-    var tvMaxLength = 0
+    var tvMaxLength = 100
     let DidDismissDailyViewController:Notification.Name = Notification.Name("DidDismissDailyViewController")
     
     // MARK: DB관련 변수
@@ -36,7 +36,7 @@ class DailyPopUpViewController: UIViewController {
             tvExistence = true
         }
         // 기종별 textview길이 변동 적용 function
-        tvMaxLength = deviceTvCount()
+//        tvMaxLength = deviceTvCount()
         // 글자 갯수 카운팅 라벨
         lblTvCount.text = "\(String(tvDContent.text!.count)) / \(tvMaxLength)"
         // 버튼 비활성화
@@ -144,30 +144,30 @@ class DailyPopUpViewController: UIViewController {
     }//update
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
-    private func deviceTvCount() -> Int {
-        let deviceName = UIDevice.current.name
-        var length : Int
-        
-        switch deviceName {
-        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
-            length = 55
-        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            length = 60
-        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
-            length = 64
-        case "iPhone 14 Pro": // 393
-            length = 64
-        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
-            length = 72
-        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
-            length = 76
-        case "iPhone 14 Pro Max" : // 430
-            length = 76
-        default : //
-            length = 60
-        }
-        return length
-    }// Func deviceTvCount
+//    private func deviceTvCount() -> Int {
+//        let deviceName = UIDevice.current.name
+//        var length : Int
+//
+//        switch deviceName {
+//        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
+//            length = 55
+//        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
+//            length = 60
+//        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
+//            length = 64
+//        case "iPhone 14 Pro": // 393
+//            length = 64
+//        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
+//            length = 72
+//        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428
+//            length = 76
+//        case "iPhone 14 Pro Max" : // 430
+//            length = 76
+//        default : //
+//            length = 60
+//        }
+//        return length
+//    }// Func deviceTvCount
     
     // MARK: 아무곳이나 눌러 softkeyboard 지우기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
