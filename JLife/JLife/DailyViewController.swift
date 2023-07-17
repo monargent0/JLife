@@ -468,7 +468,7 @@ extension DailyViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension DailyViewController:UICollectionViewDelegateFlowLayout{
     // 위아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0.5
     }
     // 좌우 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -476,7 +476,7 @@ extension DailyViewController:UICollectionViewDelegateFlowLayout{
     }
     // cell 크기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width
+        let width = CGFloat(collectionView.frame.size.width - 2)
         let height = CGFloat(60)
         let size = CGSize(width: width, height: height)
         return size

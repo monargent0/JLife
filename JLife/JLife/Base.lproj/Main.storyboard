@@ -357,14 +357,14 @@
                                                     <rect key="frame" x="35" y="2" width="274" height="76"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간을 적은 공간입니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idv-rr-MTe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="274" height="21.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="274" height="23"/>
                                                             <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="할일을 적은 공간입니다할일을 적은 공간입니다할일을 적은 공간입니다" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ga-gu-OSK">
-                                                            <rect key="frame" x="0.0" y="21.666666666666668" width="274" height="54.333333333333329"/>
-                                                            <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="15"/>
+                                                            <rect key="frame" x="0.0" y="23" width="274" height="53"/>
+                                                            <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
