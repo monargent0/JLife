@@ -199,26 +199,35 @@ class MonthlyPopUpViewController: UIViewController {
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
     private func deviceTvCount() -> Int {
-        let deviceName = UIDevice.current.name
+        let screenHeight = UIScreen.main.bounds.size.height
         var length : Int
         
-        switch deviceName {
-        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
-            length = 100
-        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            length = 110
-        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390
-            length = 115
-        case "iPhone 14 Pro": // 393
-            length = 120
-        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
-            length = 125
-        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus","iPhone 14 Pro Max": // 428 , 430
-            length = 130
+        switch screenHeight {
+        case 480 : //"iPhone 3gs","iPhone 4","iPhone 4s": // 320 , 480
+            length = 210
+        case 568: //"iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320 568
+            length = 210
+        case 667://"iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone SE (2nd generation)", "iPhone SE (3rd generation)": // 375 667 - ios15
+            length = 160
+        case 812://"iPhone 12 mini","iPhone 13 mini","iPhone X","iPhone Xs","iPhone 11 Pro" : // 375 812
+            length = 280
+        case 844://"iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14": // 390 844
+            length = 290
+        case 852://"iPhone 14 Pro": // 393 852
+            length = 300
+        case 736://"iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus": // 414 736
+            length = 210
+        case 896://"iPhone Xʀ","iPhone 11", "iPhone Xs Max","iPhone 11 Pro Max": // 414 896
+            length = 360
+        case 926://"iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus": // 428 926
+            length = 400
+        case 932://"iPhone 14 Pro Max" : // 430 932
+            length = 400
         default : //
-            length = 110
+            length = Int(200 + (screenHeight - 736))
         }
         return length
+
     }// Func deviceTvCount
     
     // MARK: 아무곳이나 눌러 softkeyboard 지우기

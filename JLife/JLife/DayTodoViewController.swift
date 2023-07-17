@@ -217,24 +217,24 @@ class DayTodoViewController: UIViewController {
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
     private func deviceTvCount() -> Int {
-        let deviceName = UIDevice.current.name
+        let screenWidth = UIScreen.main.bounds.size.width
         var length : Int
         
-        switch deviceName {
-        case "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
-            length = 34
-        case "iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
-            length = 38
-        case "iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14","iPhone 14 Pro": // 390 , 393
-            length = 40
-        case "iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
+        switch screenWidth {
+        case 320: // "iPhone 3gs","iPhone 4","iPhone 4s","iPhone 5","iPhone 5c","iPhone 5s","iPhone SE (1st generation)" : // 320
             length = 42
-        case "iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus","iPhone 14 Pro Max": // 428 ,430
-            length = 46
+        case 375: //"iPhone 6","iPhone 6s","iPhone 7","iPhone 8","iPhone 12 mini","iPhone 13 mini","iPhone SE (2nd generation)", "iPhone SE (3rd generation)", "iPhone X","iPhone Xs","iPhone 11 Pro" : // 375
+            length = 48
+        case 390, 393: //"iPhone 12","iPhone 12 Pro","iPhone 13","iPhone 13 Pro","iPhone 14","iPhone 14 Pro": // 390 , 393
+            length = 54
+        case 414: //"iPhone 6 Plus","iPhone 6s Plus","iPhone 7 Plus","iPhone 8 Plus","iPhone Xʀ","iPhone 11","iPhone Xs Max","iPhone 11 Pro Max": // 414
+            length = 58
+        case 428, 430: //"iPhone 12 Pro Max","iPhone 13 Pro Max","iPhone 14 Plus","iPhone 14 Pro Max": // 428 ,430
+            length = 62
         default : //
-            length = 40
+            length = Int(round(screenWidth * 0.14))
         }
-        return length
+        return length        
     }// Func deviceTvCount
     
     // MARK: 아무곳이나 눌러 softkeyboard 지우기

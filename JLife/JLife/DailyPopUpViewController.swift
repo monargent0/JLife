@@ -16,7 +16,7 @@ class DailyPopUpViewController: UIViewController {
     @IBOutlet weak var lblTvCount: UILabel!
     
     // MARK: 변수 선언
-    var tvMaxLength = 100
+    var tvMaxLength = 150
     let DidDismissDailyViewController:Notification.Name = Notification.Name("DidDismissDailyViewController")
     
     // MARK: DB관련 변수

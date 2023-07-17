@@ -73,7 +73,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     }
     // MARK: 할일완료 check버튼
     @IBAction func checkBtn(_ sender: UIButton) {
-        let alertVC = AlertViewController()
+        
         let cell = (sender.superview?.superview as? UICollectionViewCell)
         let indexPath = self.cvTodo.indexPath(for: cell!)
         let font = UIFont(name: "Cafe24Ssurroundair", size: 16)
@@ -84,11 +84,18 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         let attributeText = NSMutableAttributedString(string: titleText)
         attributeText.addAttribute(.font, value: font!, range: (titleText as NSString).range(of: "\(titleText)"))
         let alert = UIAlertController(title: titleText, message: "\(nowScore)", preferredStyle: .alert)
+        let constraintHeight = NSLayoutConstraint(
+            item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 170)
+        alert.view.addConstraint(constraintHeight)
+        let alertVC = AlertViewController()
+        let constraintV = NSLayoutConstraint(
+            item: alertVC.slider, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: alertVC.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        alertVC.view.addConstraint(constraintV)
         alert.setValue(alertVC, forKey: "contentViewController")
         alert.setValue(attributeText, forKey: "attributedTitle")
         
-        let cancelAction = UIAlertAction(title: "취소", style: .default)
-        let okAction = UIAlertAction(title: "완료!", style: .destructive){ _ in
+        let cancelAction = UIAlertAction(title: "취소", style: .default , handler: nil)
+        let okAction = UIAlertAction(title: "완료!", style: .default ){_ in
 //            print("슬라이드 값 : \(alertVC.sliderValue)")
             if alertVC.sliderValue != 0.0{
                 self.updateScoreActionT(self.todoData[indexPath!.row].id, alertVC.sliderValue, 1)
@@ -106,7 +113,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         okAction.setValue(UIColor(named: "AccentColor"), forKey: "titleTextColor")
         alert.addAction(cancelAction)
         alert.addAction(okAction)
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: segue 값 보내기
@@ -240,7 +247,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         defer{
             sqlite3_close(db)
         }
-        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY tcomplete, (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END), ttime "
+        let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY tcomplete, (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END), ttime, tid"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글
         let date = "\(mvYear)\(mvMonth)\(mvDay)"

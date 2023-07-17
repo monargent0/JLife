@@ -9,12 +9,8 @@ import UIKit
 
 class AlertViewController: UIViewController {
     
-    private let slider = UISlider()
-    private let img1 = UIImageView()
-    private let img2 = UIImageView()
-    private let img3 = UIImageView()
-    private let img4 = UIImageView()
-    private let img5 = UIImageView()
+    let slider = UISlider()
+
     
     var sliderValue:Float{
         if slider.value - Float(Int(slider.value)) >= 0.5{
@@ -26,10 +22,16 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let img1 = UIImageView()
+        let img2 = UIImageView()
+        let img3 = UIImageView()
+        let img4 = UIImageView()
+        let img5 = UIImageView()
+        
         self.slider.minimumValue = 0
         self.slider.maximumValue = 5
         self.slider.frame = CGRect(x: 0, y: 0, width: 170, height: 33)
-        self.view.addSubview(slider)
+        self.view.addSubview(self.slider)
         
         img1.image = UIImage(systemName: "star")
         img1.frame = CGRect(x: 0, y: 0, width: 33, height: 33)
@@ -56,13 +58,13 @@ class AlertViewController: UIViewController {
         img5.tag = 5
         self.view.addSubview(img5)
         
-        self.preferredContentSize = CGSize(width: slider.frame.width, height: slider.frame.height + 10)
-        
         slider.addTarget(self, action: #selector(onChangeValue(_ :)), for: .valueChanged)
         
         self.slider.minimumTrackTintColor = .clear
         self.slider.maximumTrackTintColor = .clear
         self.slider.thumbTintColor = .clear
+//
+//        self.preferredContentSize = CGSize(width: self.slider.frame.width, height: self.slider.frame.height + 10) // 에러가 나서 사용하지 못함
         // Do any additional setup after loading the view.
     }
     
