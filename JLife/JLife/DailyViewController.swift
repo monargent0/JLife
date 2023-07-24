@@ -247,6 +247,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         defer{
             sqlite3_close(db)
         }
+        // AM,PM으로 설정되는표기 
         let queryString = "SELECT tid, ttime, tcontent, tcomplete, tscore FROM todo WHERE tdate = ? ORDER BY tcomplete, (CASE WHEN ttime LIKE '오전__시%' THEN 1  WHEN ttime LIKE '오전___시%' THEN 2 WHEN ttime LIKE '오후__시%' THEN 3 WHEN ttime LIKE '오후___시%' THEN 4 ELSE 5 END), ttime, tid"
         var stmt : OpaquePointer?
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글

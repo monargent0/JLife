@@ -98,6 +98,7 @@ class DayTodoViewController: UIViewController {
     @IBAction func timePicker(_ sender: UIDatePicker) {
         let senderTP = sender
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_kr") // 해외출시할때 고민
         formatter.dateFormat = "a h시 mm분"
         let time = formatter.string(from: senderTP.date)
         existTodoData[0].time = time
@@ -112,6 +113,7 @@ class DayTodoViewController: UIViewController {
         }else {
             picker.isHidden = false
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "ko_kr")// 해외출시할때,,
             formatter.dateFormat = "a h시 mm분"
             if sgKind == "update" && existTodoData[0].time != "선택 안함" {
                 picker.date = formatter.date(from: existTodoData[0].time!)!
