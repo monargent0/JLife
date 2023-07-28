@@ -102,7 +102,7 @@ class DayTodoViewController: UIViewController {
         formatter.dateFormat = "a h시 mm분"
         let time = formatter.string(from: senderTP.date)
         existTodoData[0].time = time
-        lblSelectTime.text = "일정 시간: \(time)"
+        lblSelectTime.text = "일정 시간: \(time)" // 시간:으로 수정 필요
     }
     
     private func timeSelec(_ switchState : Bool) {
