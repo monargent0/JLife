@@ -28,6 +28,7 @@ class DayTodoViewController: UIViewController {
     var existTodoData:[Todo] = [Todo(id: 0, date: "", time: "선택 안함", content: "", complete: 0, score: 0.0)]
     // SQLITE
     var db : OpaquePointer?
+    var firstTimeTxt = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class DayTodoViewController: UIViewController {
         let firstTime = existTodoData[0].time == "선택 안함" ? false : true
         timeSwitch.isOn = firstTime
         timeSelec(firstTime)
+        firstTimeTxt = existTodoData[0].time!
         //delegate
         tvTodo.delegate = self
         // 레이아웃
@@ -71,6 +73,13 @@ class DayTodoViewController: UIViewController {
     // switch
     @IBAction func timeSwitchAction(_ sender: UISwitch) {
         timeSelec(timeSwitch.isOn)
+        if sgKind == "update" {
+            if firstTimeTxt != existTodoData[0].time{
+                addButton.isEnabled = true
+            }else{
+                addButton.isEnabled = false
+            }
+        }
     }
     // 취소
     @IBAction func btnCancel(_ sender: UIButton) {
@@ -102,7 +111,12 @@ class DayTodoViewController: UIViewController {
         formatter.dateFormat = "a h시 mm분"
         let time = formatter.string(from: senderTP.date)
         existTodoData[0].time = time
-        lblSelectTime.text = "일정 시간: \(time)" // 시간:으로 수정 필요
+        lblSelectTime.text = "시간: \(time)" //수정
+        if sgKind == "update" {
+            if firstTimeTxt != existTodoData[0].time{
+                addButton.isEnabled = true
+            }
+        }
     }
     
     private func timeSelec(_ switchState : Bool) {
