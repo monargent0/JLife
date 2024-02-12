@@ -17,6 +17,23 @@
         </array>
     </customFonts>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="bLI-Ch-G3Q">
+            <objects>
+                <viewController id="TRL-Kz-7G1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3rG-Cv-Scl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0HB-R5-L1H"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <color key="tintColor" name="AccentColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oYZ-wA-5Dv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YnE-5R-QMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="-708"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -239,6 +256,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ehY-ch-cIZ">
+                        <barButtonItem key="leftBarButtonItem" title="Setting" style="plain" id="eyK-Sk-6AZ">
+                            <imageReference key="image" image="gearshape" catalog="system" symbolScale="medium"/>
+                            <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <segue destination="TRL-Kz-7G1" kind="show" identifier="sgSet" id="EgL-np-qje"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="오늘" id="H53-Sv-RTg">
                             <color key="tintColor" name="TodayColor"/>
                             <connections>
@@ -496,7 +520,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달의 대표 타이틀을 정해주세요" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-Pl-Js1">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="19"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-NB-AL6">
@@ -517,7 +541,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 달의 목표, 다짐 등 무엇이든 작성할 수 있어요!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-ZC-1Cc">
                                         <rect key="frame" x="0.0" y="104.33333333333334" width="353" height="19"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcp-jk-B3U">
@@ -602,7 +626,7 @@
                                         <buttonConfiguration key="configuration" style="filled" title="확인">
                                             <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="16"/>
                                             <color key="baseForegroundColor" name="Background"/>
-                                            <color key="baseBackgroundColor" red="1" green="0.65098039215686276" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseBackgroundColor" red="0.60784313725490191" green="0.84327614910281012" blue="0.87154844576719581" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="btnEnter:" destination="svw-NY-DVJ" eventType="touchUpInside" id="TIl-wp-aBc"/>
@@ -619,7 +643,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 듣고싶은 노래 가사 또는 나에게 보내는 응원, 감사 일기 등 자유롭게 작성해 보세요" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3XS-Yq-z5F">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="40.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-Cg-3R0">
@@ -646,7 +670,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5sN-nD-Pcc"/>
-                        <color key="backgroundColor" name="LightBlueColor"/>
+                        <color key="backgroundColor" red="0.99215686274509807" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yLy-XQ-6hP" firstAttribute="centerX" secondItem="FGs-h9-d6h" secondAttribute="centerX" id="BdP-lS-Pos"/>
                             <constraint firstItem="pCN-SY-ls0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yLy-XQ-6hP" secondAttribute="bottom" constant="50" id="Nbf-hK-oET"/>
@@ -813,6 +837,7 @@
     <resources>
         <image name="chevron.left" catalog="system" width="32" height="32"/>
         <image name="chevron.right" catalog="system" width="32" height="32"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="plus" catalog="system" width="32" height="32"/>
         <image name="plus.circle" catalog="system" width="32" height="32"/>
         <image name="square" catalog="system" width="32" height="32"/>

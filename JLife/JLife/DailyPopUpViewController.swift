@@ -57,7 +57,7 @@ class DailyPopUpViewController: UIViewController {
         // Delegate
         tvDContent.delegate = self
         // 레이아웃
-        tvDContent.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+        tvDContent.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
         tvDContent.layer.borderWidth = 0.7
         tvDContent.layer.cornerRadius = 5
         // 화면 half 사이즈 지정
