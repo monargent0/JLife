@@ -99,13 +99,13 @@
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
 				48E4692A2A50A3740023B03E /* View Group */,
 				48E4692B2A50A3A30023B03E /* Cell Group */,
-				48E469282A50A3140023B03E /* Model */,
+				48E469282A50A3140023B03E /* DB Group */,
 				48E4692C2A50A3CC0023B03E /* Builder */,
 			);
 			path = JLife;
 			sourceTree = "<group>";
 		};
-		48E469282A50A3140023B03E /* Model */ = {
+		48E469282A50A3140023B03E /* DB Group */ = {
 			isa = PBXGroup;
 			children = (
 				48C344512A4889550061F930 /* Monthly.swift */,
@@ -113,7 +113,7 @@
 				486368DC2A58077B007CE00A /* Todo.swift */,
 				4800FA1F2A5DA28200F90A3D /* TotalScore.swift */,
 			);
-			name = Model;
+			name = "DB Group";
 			sourceTree = "<group>";
 		};
 		48E4692A2A50A3740023B03E /* View Group */ = {
