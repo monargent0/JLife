@@ -24,15 +24,60 @@
                     <view key="view" contentMode="scaleToFill" id="3rG-Cv-Scl">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달력 배경 색상" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XX-Ip-wMT">
+                                <rect key="frame" x="133.66666666666666" y="108" width="125.99999999999997" height="23.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-vF-gCA">
+                                <rect key="frame" x="76" y="188" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COQ-sR-gLy">
+                                <rect key="frame" x="0.0" y="345" width="393" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-XF-zLT">
+                                <rect key="frame" x="16" y="703.66666666666663" width="361" height="34.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3u-V1-1Yn">
+                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="취소">
+                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lA-7p-MIA">
+                                        <rect key="frame" x="185.66666666666663" y="0.0" width="175.33333333333337" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="저장">
+                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0HB-R5-L1H"/>
                         <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="dc6-XF-zLT" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="16" id="4L0-li-E9k"/>
+                            <constraint firstItem="0XX-Ip-wMT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="143" id="Bhy-5k-hSD"/>
+                            <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" secondItem="dc6-XF-zLT" secondAttribute="trailing" constant="16" id="GwB-jj-zng"/>
+                            <constraint firstItem="0XX-Ip-wMT" firstAttribute="top" secondItem="0HB-R5-L1H" secondAttribute="top" constant="5" id="R0K-0P-55Q"/>
+                            <constraint firstItem="0XX-Ip-wMT" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="Vlr-Cs-FC5"/>
+                            <constraint firstItem="dc6-XF-zLT" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="X05-X3-4bn"/>
+                            <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0XX-Ip-wMT" secondAttribute="trailing" constant="143" id="nsE-dt-Z0u"/>
+                            <constraint firstItem="0HB-R5-L1H" firstAttribute="bottom" secondItem="dc6-XF-zLT" secondAttribute="bottom" constant="80" id="vpr-0q-OGZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oYZ-wA-5Dv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnE-5R-QMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734" y="-708"/>
+            <point key="canvasLocation" x="1733.5877862595419" y="-708.45070422535218"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
