@@ -12,10 +12,20 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var themeImgView: UIImageView!
     @IBOutlet weak var themePicker: UIPickerView!
     
+    var imageName = ["Basic.jpeg","Beige.jpeg","Coral.jpeg","CoolGray.jpeg","Blue.jpeg","Green.jpeg","Pink.jpeg","Purple.jpeg","WarmGray.jpeg","Yellow.jpeg"]
+    var imageArray = [UIImage?]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        for i in 0..<10{
+            let image = UIImage(named: imageName[i])
+            imageArray.append(image)
+        }
+        themeImgView.image = UIImage(named: "Basic.jpeg")
+        themeImgView.layer.cornerRadius = 50
+        themeImgView.layer.borderWidth = 4
+        themeImgView.layer.borderColor = UIColor.white.cgColor
         //-
         themePicker.dataSource = self
         themePicker.delegate = self
@@ -32,8 +42,20 @@ class SettingViewController: UIViewController {
     }
     */
 
+    
 }//SettingViewController
 
-extension SettingViewController: UIPickerViewDataSource, UIPickerViewDelegate{
-        
+extension SettingViewController:UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerview : UIPickerView) -> Int{
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return imageName.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return imageName[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        themeImgView.image = imageArray[row]
+    }
 }
