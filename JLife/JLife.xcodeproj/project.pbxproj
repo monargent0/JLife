@@ -24,6 +24,7 @@
 		486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368E02A5807BD007CE00A /* TodoListCell.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
+		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
 		48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */; };
 		48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692F2A52E5180023B03E /* DayTodoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		486368E02A5807BD007CE00A /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
+		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPopUpViewController.swift; sourceTree = "<group>"; };
 		48E4692F2A52E5180023B03E /* DayTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */,
 				48E4692F2A52E5180023B03E /* DayTodoViewController.swift */,
 				4800FA1D2A5C101200F90A3D /* AlertViewController.swift */,
+				48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */,
 			);
 			name = "View Group";
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */,
 				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
+				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,

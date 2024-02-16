@@ -427,11 +427,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         default:
             for score in scoreData{
                 if score.day == allDateItems[indexPath.row]{ // Color Theme 변경 위치
-//                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
-                    cell.backgroundColor = UIColor(named: "ZTheme")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+//                    cell.backgroundColor = UIColor(named: "ZTheme")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
                     if Double(score.score!) / 100.0 == 1.0 {
-//                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
-                        cell.layer.borderColor = UIColor(named: "ZBorder")?.cgColor
+                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
+//                        cell.layer.borderColor = UIColor(named: "ZBorder")?.cgColor
                     }
                 }
             }
