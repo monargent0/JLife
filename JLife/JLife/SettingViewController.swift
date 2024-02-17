@@ -12,7 +12,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var themeImgView: UIImageView!
     @IBOutlet weak var themePicker: UIPickerView!
     
-    var imageName = ["Basic.jpeg","Beige.jpeg","Coral.jpeg","CoolGray.jpeg","Blue.jpeg","Green.jpeg","Pink.jpeg","Purple.jpeg","WarmGray.jpeg","Yellow.jpeg"]
+    var imageName = ["Basic","Beige","Coral","CoolGray","Blue","Green","Pink","Purple","WarmGray","Yellow"]
     var imageArray = [UIImage?]()
     
     
@@ -22,7 +22,7 @@ class SettingViewController: UIViewController {
             let image = UIImage(named: imageName[i])
             imageArray.append(image)
         }
-        themeImgView.image = UIImage(named: "Basic.jpeg")
+        themeImgView.image = UIImage(named: "Basic")
         themeImgView.layer.cornerRadius = 10
         themeImgView.layer.borderWidth = 4
         themeImgView.layer.borderColor = UIColor.systemGray5.cgColor
