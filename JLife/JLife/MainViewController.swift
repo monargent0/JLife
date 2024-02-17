@@ -26,6 +26,9 @@ class MainViewController: UIViewController {
     var monthlyExistence = false
     var noNowMonthIndex:[Int] = []
     let monthlyNotice = "Monthly Box를 자유롭게 채워보세요!"
+    let colorNameList = ColorTheme().colorName
+    let defaultsTheme = UserDefaults.standard // UserDefaults
+    var nowTheme : String = "" // 사용자 설정 테마
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
@@ -35,6 +38,9 @@ class MainViewController: UIViewController {
     // Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        // userDefaults 테마 설정 값
+        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Blue"
+        //
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
         // 달력 구성
@@ -427,11 +433,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         default:
             for score in scoreData{
                 if score.day == allDateItems[indexPath.row]{ // Color Theme 변경 위치
-                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
-//                    cell.backgroundColor = UIColor(named: "ZTheme")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+//                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
+                    cell.backgroundColor = UIColor(named: colorNameList[nowTheme]!.mainColor )?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
                     if Double(score.score!) / 100.0 == 1.0 {
-                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
-//                        cell.layer.borderColor = UIColor(named: "ZBorder")?.cgColor
+//                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
+                       cell.layer.borderColor = UIColor(named: colorNameList[nowTheme]!.border )?.cgColor
                     }
                 }
             }
