@@ -23,9 +23,9 @@ class SettingViewController: UIViewController {
             imageArray.append(image)
         }
         themeImgView.image = UIImage(named: "Basic.jpeg")
-        themeImgView.layer.cornerRadius = 50
+        themeImgView.layer.cornerRadius = 10
         themeImgView.layer.borderWidth = 4
-        themeImgView.layer.borderColor = UIColor.white.cgColor
+        themeImgView.layer.borderColor = UIColor.systemGray5.cgColor
         //-
         themePicker.dataSource = self
         themePicker.delegate = self
