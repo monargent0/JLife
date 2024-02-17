@@ -51,7 +51,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-vF-gCA">
-                                <rect key="frame" x="127.33333333333333" y="193" width="138.33333333333337" height="138.33333333333337"/>
+                                <rect key="frame" x="122.33333333333333" y="193" width="148.33333333333337" height="148.33333333333337"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tMj-vF-gCA" secondAttribute="height" multiplier="1:1" id="x1i-yg-wfV"/>
                                 </constraints>
@@ -72,7 +72,7 @@
                         <color key="tintColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="dc6-XF-zLT" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="16" id="4L0-li-E9k"/>
-                            <constraint firstItem="COQ-sR-gLy" firstAttribute="top" secondItem="tMj-vF-gCA" secondAttribute="bottom" constant="40" id="5dX-Xc-To8"/>
+                            <constraint firstItem="COQ-sR-gLy" firstAttribute="top" secondItem="tMj-vF-gCA" secondAttribute="bottom" constant="30" id="5dX-Xc-To8"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="5xY-YW-6LN"/>
                             <constraint firstItem="dc6-XF-zLT" firstAttribute="top" relation="lessThanOrEqual" secondItem="COQ-sR-gLy" secondAttribute="bottom" constant="169.66999999999999" id="8vG-IH-AQC"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="60" id="9L0-aj-8Qe"/>

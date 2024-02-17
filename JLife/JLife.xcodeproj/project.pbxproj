@@ -22,6 +22,7 @@
 		486368DB2A580770007CE00A /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DA2A580770007CE00A /* Daily.swift */; };
 		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
 		486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368E02A5807BD007CE00A /* TodoListCell.swift */; };
+		486652342B80F86400870EA1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486652332B80F86400870EA1 /* ColorTheme.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -47,6 +48,7 @@
 		486368DA2A580770007CE00A /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		486368DC2A58077B007CE00A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		486368E02A5807BD007CE00A /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
+		486652332B80F86400870EA1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
+				486652332B80F86400870EA1 /* ColorTheme.swift */,
 			);
 			name = Builder;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				486652342B80F86400870EA1 /* ColorTheme.swift in Sources */,
 				48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */,
 				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
