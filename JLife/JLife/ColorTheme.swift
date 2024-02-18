@@ -10,13 +10,14 @@ import Foundation
 struct ColorTheme {
     let themeList = ["Basic","Beige","Yellow","Green","Blue","Pink","Purple","Coral","CoolGray","WarmGray"]
     
-    typealias theme = (mainColor:String , border:String)
+    typealias theme = (mainColor:String , border:String , kr:String)
     var colorName : [String : theme] = [
-        "Basic":("ScoreColor","PinkColor"),"Beige":("BeigeTheme","BeigeBorder"),
-        "Yellow":("YellowTheme","YellowBorder"),"Green":("GreenTheme","GreenBorder"),
-        "Blue":("BlueTheme","BlueBorder"),"Pink":("PinkTheme","PinkBorder"),
-        "Purple":("PurpleTheme","PurpleBorder"),"Coral":("CoralTheme","CoralBorder"),
-        "CoolGray":("CoolGrayTheme","CoolGrayBorder"),"WarmGray":("WarmGrayTheme","WarmGrayBorder")]
+        "Basic":("ScoreColor","PinkColor","기본"),"Beige":("BeigeTheme","BeigeBorder","베이지"),
+        "Yellow":("YellowTheme","YellowBorder","연노랑"),"Green":("GreenTheme","GreenBorder","연녹색"),
+        "Blue":("BlueTheme","BlueBorder","하늘색"),"Pink":("PinkTheme","PinkBorder","분홍색"),
+        "Purple":("PurpleTheme","PurpleBorder","연보라"),"Coral":("CoralTheme","CoralBorder","다홍색"),
+        "CoolGray":("CoolGrayTheme","CoolGrayBorder","청회색"),
+        "WarmGray":("WarmGrayTheme","WarmGrayBorder","적회색")]
 }
 
 /*  ---사용처---

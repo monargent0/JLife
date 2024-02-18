@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // userDefaults 테마 설정 값
-        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Blue"
+        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
         //
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
