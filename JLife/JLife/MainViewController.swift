@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
-    let todayDate = Date() // 오늘 표시
+    var todayDate = Date() // 오늘 표시
     var allDateItems : [String] = [] // 달력 cell items
     var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     var monthlyExistence = false
@@ -28,18 +28,16 @@ class MainViewController: UIViewController {
     let monthlyNotice = "Monthly Box를 자유롭게 채워보세요!"
     let colorNameList = ColorTheme().colorName
     let defaultsTheme = UserDefaults.standard // UserDefaults
-    var nowTheme : String = "" // 사용자 설정 테마
+    var nowTheme : String = "Basic" // 사용자 설정 테마
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
     var scoreData:[TotalScore] = []
     var db: OpaquePointer? // DB포인터
     
-    // Did Load
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        // userDefaults 테마 설정 값
-        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
         //
         cvCalendar.dataSource = self
         cvCalendar.delegate = self
@@ -61,13 +59,17 @@ class MainViewController: UIViewController {
         cvCalendar.isScrollEnabled = false
         tvMContent.translatesAutoresizingMaskIntoConstraints = false
         tvMContent.heightAnchor.constraint(equalToConstant: deviceSize()).isActive = true
-        // modal dismiss notification
+        // modal dismiss notification - 월별목표View
         NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
         //
         makeSwipe()
-    }
+    }//
+    
     // Will Appear
     override func viewWillAppear(_ animated: Bool) {
+        // userDefaults 테마 설정 값
+        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
+        
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
@@ -76,7 +78,7 @@ class MainViewController: UIViewController {
             try await readTotalScoreValues()
             cvCalendar.reloadData()
         }
-    }
+    }//
     
     // MARK: 버튼 연결
     @IBAction func btnPrevMonth(_ sender: UIButton) {
@@ -433,10 +435,8 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         default:
             for score in scoreData{
                 if score.day == allDateItems[indexPath.row]{ // Color Theme 변경 위치
-//                    cell.backgroundColor = UIColor(named: "ScoreColor")?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
                     cell.backgroundColor = UIColor(named: colorNameList[nowTheme]!.mainColor )?.withAlphaComponent(CGFloat(Double(score.score!) / 100.0))
                     if Double(score.score!) / 100.0 == 1.0 {
-//                        cell.layer.borderColor = UIColor(named: "PinkColor")?.cgColor
                        cell.layer.borderColor = UIColor(named: colorNameList[nowTheme]!.border )?.cgColor
                     }
                 }

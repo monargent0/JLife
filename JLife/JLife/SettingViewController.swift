@@ -13,15 +13,15 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var themePicker: UIPickerView!
     @IBOutlet weak var nowThemeLbl: UILabel!
     
+    // MARK: 변수 선언
     var imageArray = [UIImage?]()
     let colorList = ColorTheme().themeList
     let colorNameKR = ColorTheme().colorName
     let defaultsTheme = UserDefaults.standard // UserDefaults
-    var nowTheme : String = "" // 사용자 설정 테마
-    var selectColor = "" // 새로 선택한 테마
-    //defaultsTheme.set("색이름" ,forKey: "theme")
+    var nowTheme : String = "Basic" // 사용자 설정 테마
+    var selectColor = "Basic" // 새로 선택한 테마
     
-    
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
@@ -42,10 +42,12 @@ class SettingViewController: UIViewController {
         //-
         nowThemeLbl.text = "현재 테마 색상 : \(colorNameKR[nowTheme]!.kr)"
     }
-    
 
-
-
+    // MARK: 적용 버튼 동작
+    @IBAction func btnSave(_ sender: UIButton) {
+        defaultsTheme.set(selectColor ,forKey: "theme")
+        nowThemeLbl.text = "현재 테마 색상 : \(colorNameKR[selectColor]!.kr)"
+    }
 
     
 }//SettingViewController
@@ -71,7 +73,7 @@ extension SettingViewController:UIPickerViewDelegate, UIPickerViewDataSource{
                 label = v as! UILabel
             }
             label.font = UIFont (name: "Cafe24Ssurroundair", size: 17)
-            label.text = colorNameKR[colorList[row]]?.kr
+            label.text = colorNameKR[colorList[row]]?.kr // 한글색상명
             label.textAlignment = .center
             return label
         }

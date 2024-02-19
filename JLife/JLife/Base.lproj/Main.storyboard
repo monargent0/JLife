@@ -31,40 +31,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-XF-zLT">
-                                <rect key="frame" x="16" y="713.66666666666663" width="361" height="34.333333333333371"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3u-V1-1Yn">
-                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="취소">
-                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lA-7p-MIA">
-                                        <rect key="frame" x="185.66666666666663" y="0.0" width="175.33333333333337" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="저장">
-                                            <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-vF-gCA">
-                                <rect key="frame" x="114.66666666666667" y="173" width="163.66666666666663" height="163.33333333333337"/>
+                                <rect key="frame" x="114" y="173" width="165" height="164.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tMj-vF-gCA" secondAttribute="height" multiplier="1:1" id="x1i-yg-wfV"/>
                                 </constraints>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COQ-sR-gLy">
-                                <rect key="frame" x="60" y="371.33333333333331" width="273" height="109.33333333333331"/>
+                                <rect key="frame" x="90" y="372.66666666666669" width="213" height="106.66666666666669"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="COQ-sR-gLy" secondAttribute="height" multiplier="2.5:1" id="Qrx-6y-a1x"/>
+                                    <constraint firstAttribute="width" secondItem="COQ-sR-gLy" secondAttribute="height" multiplier="2:1" id="Qrx-6y-a1x"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="TRL-Kz-7G1" id="rhL-QF-IxC"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lA-7p-MIA">
+                                <rect key="frame" x="50" y="713.66666666666663" width="293" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="적용">
+                                    <fontDescription key="titleFontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="btnSave:" destination="TRL-Kz-7G1" eventType="touchUpInside" id="Bfd-BS-8UT"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 테마 색상 : 기본" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLx-Mv-U0G">
                                 <rect key="frame" x="16" y="675.66666666666663" width="361" height="18"/>
                                 <fontDescription key="fontDescription" name="Cafe24Ssurroundair" family="Cafe24 Ssurround air" pointSize="15"/>
@@ -76,23 +67,23 @@
                         <color key="tintColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" secondItem="XLx-Mv-U0G" secondAttribute="trailing" constant="16" id="0wU-c1-gm8"/>
-                            <constraint firstAttribute="trailing" secondItem="COQ-sR-gLy" secondAttribute="trailing" constant="60" id="2ID-NQ-uNu"/>
-                            <constraint firstItem="dc6-XF-zLT" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="16" id="4L0-li-E9k"/>
+                            <constraint firstAttribute="trailing" secondItem="COQ-sR-gLy" secondAttribute="trailing" constant="90" id="2ID-NQ-uNu"/>
+                            <constraint firstItem="7lA-7p-MIA" firstAttribute="top" secondItem="XLx-Mv-U0G" secondAttribute="bottom" constant="20" id="5zz-0T-BpK"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="top" secondItem="tMj-vF-gCA" secondAttribute="bottom" constant="35" id="8eD-SA-A4E"/>
                             <constraint firstItem="0XX-Ip-wMT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="143" id="Bhy-5k-hSD"/>
                             <constraint firstItem="tMj-vF-gCA" firstAttribute="top" secondItem="0HB-R5-L1H" secondAttribute="top" constant="70" id="ELQ-ny-nWG"/>
-                            <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" secondItem="dc6-XF-zLT" secondAttribute="trailing" constant="16" id="GwB-jj-zng"/>
-                            <constraint firstItem="dc6-XF-zLT" firstAttribute="top" secondItem="XLx-Mv-U0G" secondAttribute="bottom" constant="20" id="Hx5-qC-BhF"/>
+                            <constraint firstItem="7lA-7p-MIA" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="50" id="Gza-xr-v6S"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="MOO-JS-Ief"/>
+                            <constraint firstItem="7lA-7p-MIA" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="MmW-TF-MSJ"/>
                             <constraint firstItem="0XX-Ip-wMT" firstAttribute="top" secondItem="0HB-R5-L1H" secondAttribute="top" constant="5" id="R0K-0P-55Q"/>
                             <constraint firstItem="0XX-Ip-wMT" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="Vlr-Cs-FC5"/>
-                            <constraint firstItem="dc6-XF-zLT" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="X05-X3-4bn"/>
+                            <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" secondItem="7lA-7p-MIA" secondAttribute="trailing" constant="50" id="aUY-UE-LnG"/>
                             <constraint firstItem="tMj-vF-gCA" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="bAP-9B-2Bp"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="centerY" secondItem="3rG-Cv-Scl" secondAttribute="centerY" id="dKr-wR-tn9"/>
-                            <constraint firstItem="COQ-sR-gLy" firstAttribute="leading" secondItem="3rG-Cv-Scl" secondAttribute="leading" constant="60" id="fS0-vH-Jag"/>
+                            <constraint firstItem="COQ-sR-gLy" firstAttribute="leading" secondItem="3rG-Cv-Scl" secondAttribute="leading" constant="90" id="fS0-vH-Jag"/>
                             <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0XX-Ip-wMT" secondAttribute="trailing" constant="143" id="nsE-dt-Z0u"/>
+                            <constraint firstItem="0HB-R5-L1H" firstAttribute="bottom" secondItem="7lA-7p-MIA" secondAttribute="bottom" constant="70" id="p7p-v2-RcC"/>
                             <constraint firstItem="XLx-Mv-U0G" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="16" id="psW-Rr-k4x"/>
-                            <constraint firstItem="0HB-R5-L1H" firstAttribute="bottom" secondItem="dc6-XF-zLT" secondAttribute="bottom" constant="70" id="vpr-0q-OGZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oYZ-wA-5Dv"/>
@@ -330,7 +321,7 @@
                     <navigationItem key="navigationItem" id="ehY-ch-cIZ">
                         <barButtonItem key="leftBarButtonItem" title="Setting" style="plain" id="eyK-Sk-6AZ">
                             <imageReference key="image" image="gearshape" catalog="system" symbolScale="medium"/>
-                            <color key="tintColor" name="AccentColor"/>
+                            <color key="tintColor" name="TextColor"/>
                             <connections>
                                 <segue destination="TRL-Kz-7G1" kind="show" identifier="sgSet" id="EgL-np-qje"/>
                             </connections>
@@ -927,6 +918,9 @@
         </namedColor>
         <namedColor name="PinkColor">
             <color red="1" green="0.65098039220000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColor">
+            <color red="0.13300000131130219" green="0.14000000059604645" blue="0.15800000727176666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TodayColor">
             <color red="0.0060000000521540642" green="0.02199999988079071" blue="0.13400000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
