@@ -195,6 +195,8 @@ class MonthlyPopUpViewController: UIViewController {
             let count = String(tfMTitle.text!.count)
             lblTfCount.text = "\(count) / \(tfMaxLength)"
         }
+        // removeObserver
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }//textFieldDidChange
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function

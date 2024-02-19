@@ -61,6 +61,9 @@ class MainViewController: UIViewController {
         tvMContent.heightAnchor.constraint(equalToConstant: deviceSize()).isActive = true
         // modal dismiss notification - 월별목표View
         NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
+        // Backgroung - Foreground
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundUpdateToday), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cleanObserver), name: UIApplication.didEnterBackgroundNotification, object: nil)
         //
         makeSwipe()
     }//
@@ -69,7 +72,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // userDefaults 테마 설정 값
         nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
-        
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
@@ -124,6 +126,23 @@ class MainViewController: UIViewController {
         }
     }//
     
+    // MARK: Foregroung - Background Function
+    @objc func enterForegroundUpdateToday() {
+        todayDate = Date() // 백그라운드에서 포어그라운드로 올 시
+//        todayDate = Calendar.current.date(byAdding: .month, value: 2, to: todayDate)!
+        presentDate = todayDate
+        setMonth(presentDate)
+        Task{
+            try await readMonthlyValues()
+            try await readTotalScoreValues()
+            cvCalendar.reloadData()
+        }
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+        }//
+    @objc func cleanObserver(){ // 백그라운드로 넘어갈때 observer remove
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
+    }
+
     // MARK: Setting Calendar Function
     private func setMonth(_ date:Date){
         // Properties
@@ -176,7 +195,7 @@ class MainViewController: UIViewController {
         }
     }//Monthly
     
-    private func createTotalScoreTable() async throws{ // 쿼리문 수정 해야함
+    private func createTotalScoreTable() async throws{ 
         // TotalScore
         if #available(iOS 16.0, *) {
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
@@ -353,9 +372,8 @@ class MainViewController: UIViewController {
             lblMonthlyTitle.text = monthlyBundle[0].title
             tvMContent.text = monthlyBundle[0].content
         }
-
     }//
-    
+
     //MARK: 달력 스와이프 제스쳐
     func makeSwipe() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.respondToSwipeGesture(_ :)))
@@ -448,7 +466,6 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if cell.lblDay.text == CalendarBuilder().dayString(date: todayDate) &&  CalendarBuilder().monthString(date: todayDate) == CalendarBuilder().monthString(date: presentDate) && cell.lblDay.textColor == UIColor(named: "TextColor"){
             cell.lblToday.isHidden = false
         }
-
         return cell
     }
 
