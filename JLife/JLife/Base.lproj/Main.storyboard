@@ -74,7 +74,6 @@
                             <constraint firstItem="tMj-vF-gCA" firstAttribute="top" secondItem="0HB-R5-L1H" secondAttribute="top" constant="70" id="ELQ-ny-nWG"/>
                             <constraint firstItem="7lA-7p-MIA" firstAttribute="leading" secondItem="0HB-R5-L1H" secondAttribute="leading" constant="50" id="Gza-xr-v6S"/>
                             <constraint firstItem="COQ-sR-gLy" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="MOO-JS-Ief"/>
-                            <constraint firstItem="7lA-7p-MIA" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="MmW-TF-MSJ"/>
                             <constraint firstItem="0XX-Ip-wMT" firstAttribute="top" secondItem="0HB-R5-L1H" secondAttribute="top" constant="5" id="R0K-0P-55Q"/>
                             <constraint firstItem="0XX-Ip-wMT" firstAttribute="centerX" secondItem="3rG-Cv-Scl" secondAttribute="centerX" id="Vlr-Cs-FC5"/>
                             <constraint firstItem="0HB-R5-L1H" firstAttribute="trailing" secondItem="7lA-7p-MIA" secondAttribute="trailing" constant="50" id="aUY-UE-LnG"/>
@@ -319,7 +318,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ehY-ch-cIZ">
-                        <barButtonItem key="leftBarButtonItem" title="Setting" style="plain" id="eyK-Sk-6AZ">
+                        <barButtonItem key="leftBarButtonItem" title="Setting" id="eyK-Sk-6AZ">
                             <imageReference key="image" image="gearshape" catalog="system" symbolScale="medium"/>
                             <color key="tintColor" name="TextColor"/>
                             <connections>
@@ -523,6 +522,7 @@
         <scene sceneID="k0f-r8-xJ7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fgo-lN-oro" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k1B-k7-Xsn">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -897,7 +897,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="C3Z-9g-cem"/>
+        <segue reference="Egr-7b-Lgb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemTealColor"/>
     <resources>
