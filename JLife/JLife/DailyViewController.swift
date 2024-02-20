@@ -56,11 +56,8 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             try await readDailyValues()
             try await readTodoValues()
         }
-        // modal dismiss notification
-        NotificationCenter.default.addObserver(self, selector: #selector(didDismissDailyNotification(_ :)), name: Notification.Name("DidDismissDailyViewController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didDismissTodoAddNotification(_ :)), name: Notification.Name("DidDismissTodoAddViewController"), object: nil)
-        
-    }
+    }// viewdidload
+    
     override func viewWillAppear(_ animated: Bool) {
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
@@ -125,16 +122,21 @@ class DailyViewController: UIViewController , UITextViewDelegate {
             dailyPopUpViewController?.dvContent = tvDaily.text == dailyNotice ? "" : tvDaily.text
             dailyPopUpViewController?.tvExistence = dailyExistence
             dailyPopUpViewController?.dailyID = dailyBundle.isEmpty ? 0 : dailyBundle[0].id
+            // modal dismiss notification
+            NotificationCenter.default.addObserver(self, selector: #selector(didDismissDailyNotification(_ :)), name: Notification.Name("DidDismissDailyViewController"), object: nil)
         }else if segue.identifier == "sgTodo"{
             todoViewController?.sgKind = "insert"
             todoViewController?.existTodoData[0].date = "\(mvYear)\(mvMonth)\(mvDay)"
-            
+            // modal dismiss notification
+            NotificationCenter.default.addObserver(self, selector: #selector(didDismissTodoAddNotification(_ :)), name: Notification.Name("DidDismissTodoAddViewController"), object: nil)
         }else if segue.identifier == "sgTodoCell"{ // time,content
             let cell = sender as! UICollectionViewCell
             let indexPath = self.cvTodo.indexPath(for: cell)
             
             todoViewController?.sgKind = "update"
             todoViewController?.existTodoData[0] = todoData[indexPath!.row]
+            // modal dismiss notification
+            NotificationCenter.default.addObserver(self, selector: #selector(didDismissTodoAddNotification(_ :)), name: Notification.Name("DidDismissTodoAddViewController"), object: nil)
         }
     }// prepare
     
@@ -143,6 +145,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
     private func didDismissDailyNotification(_ notification:Notification) {
         Task{
             try await readDailyValues()
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDismissDailyViewController"), object: nil)
         }
         if dailyExistence == true{
             tvDaily.text = dailyBundle[0].content
@@ -154,7 +157,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         Task{
             try await readTodoValues()
             try await updateTotalScore("\(mvYear)년 \(mvMonth)월", String(mvDay), nowTScore)
-            
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDismissTodoAddViewController"), object: nil)
         }
     }//TodoAdd
     

@@ -59,11 +59,6 @@ class MainViewController: UIViewController {
         cvCalendar.isScrollEnabled = false
         tvMContent.translatesAutoresizingMaskIntoConstraints = false
         tvMContent.heightAnchor.constraint(equalToConstant: deviceSize()).isActive = true
-        // modal dismiss notification - 월별목표View
-        NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
-        // Backgroung - Foreground
-        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundUpdateToday), name: UIApplication.willEnterForegroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(cleanObserver), name: UIApplication.didEnterBackgroundNotification, object: nil)
         //
         makeSwipe()
     }//
@@ -80,6 +75,8 @@ class MainViewController: UIViewController {
             try await readTotalScoreValues()
             cvCalendar.reloadData()
         }
+        // Backgroung - Foreground
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundUpdateToday), name: UIApplication.willEnterForegroundNotification, object: nil)
     }//
     
     // MARK: 버튼 연결
@@ -129,7 +126,6 @@ class MainViewController: UIViewController {
     // MARK: Foregroung - Background Function
     @objc func enterForegroundUpdateToday() {
         todayDate = Date() // 백그라운드에서 포어그라운드로 올 시
-//        todayDate = Calendar.current.date(byAdding: .month, value: 2, to: todayDate)!
         presentDate = todayDate
         setMonth(presentDate)
         Task{
@@ -137,11 +133,13 @@ class MainViewController: UIViewController {
             try await readTotalScoreValues()
             cvCalendar.reloadData()
         }
+        if presentDate != todayDate{
+            todayButton.isEnabled = true
+        }else{
+            todayButton.isEnabled = false
+        }
         NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         }//
-    @objc func cleanObserver(){ // 백그라운드로 넘어갈때 observer remove
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
-    }
 
     // MARK: Setting Calendar Function
     private func setMonth(_ date:Date){
@@ -195,7 +193,7 @@ class MainViewController: UIViewController {
         }
     }//Monthly
     
-    private func createTotalScoreTable() async throws{ 
+    private func createTotalScoreTable() async throws{
         // TotalScore
         if #available(iOS 16.0, *) {
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "TotalScore.sqlite")
@@ -341,6 +339,8 @@ class MainViewController: UIViewController {
             monthlyPopUpViewController?.mvContent = tvMContent.text == monthlyNotice ? "" : tvMContent.text
             monthlyPopUpViewController?.existence = monthlyExistence // DB select 존재 여부
             monthlyPopUpViewController?.monthlyID = monthlyBundle.isEmpty ? 0 : monthlyBundle[0].id
+            // modal dismiss notification - 월별목표View
+            NotificationCenter.default.addObserver(self, selector: #selector(didDismissMonthlyNotification(_ :)), name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
         }else if segue.identifier == "sgDay"{
             let cell = sender as! UICollectionViewCell
             let indexPath = self.cvCalendar.indexPath(for: cell)
@@ -367,6 +367,8 @@ class MainViewController: UIViewController {
     private func didDismissMonthlyNotification(_ notification:Notification) {
         Task{
             try await readMonthlyValues()
+            // modal dismiss notification Remove - 월별목표View
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDismissMonthlyViewController"), object: nil)
         }
         if monthlyExistence == true{
             lblMonthlyTitle.text = monthlyBundle[0].title

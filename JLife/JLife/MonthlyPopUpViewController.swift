@@ -79,13 +79,17 @@ class MonthlyPopUpViewController: UIViewController {
         if let sheet = sheetPresentationController {
             sheet.detents = [.medium()]
         }
-    }
+    }//viewdidload
     
     // MARK: 버튼
     // 취소
     @IBAction func btnBack(_ sender: UIButton) {
+        // removeObserver
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
+        // dismiss notification post (보내기)
         NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
+        
     }
     // 수정
     // select(main에서 해서 segue로 보내기) 해서 없으면 insert 있으면 update 쿼리를 사용해야함
@@ -97,6 +101,9 @@ class MonthlyPopUpViewController: UIViewController {
             // update
             updateActionM(monthlyID, tfMTitle.text!, tvMContent.text!)
         }
+        // removeObserver
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
+        // dismiss notification post (보내기)
         NotificationCenter.default.post(name: DidDismissMonthlyViewController, object: nil)
         dismiss(animated: true)
     }
@@ -195,8 +202,6 @@ class MonthlyPopUpViewController: UIViewController {
             let count = String(tfMTitle.text!.count)
             lblTfCount.text = "\(count) / \(tfMaxLength)"
         }
-        // removeObserver
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }//textFieldDidChange
     
     // MARK: 아이폰 모델에 따라 Max 글자수 조정 Function
