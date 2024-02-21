@@ -68,6 +68,7 @@ class DayTodoViewController: UIViewController {
 //                print("error opening monthly database")
             }
         }
+        view.snapshotView(afterScreenUpdates: true)
     }
     // MARK: 버튼
     // switch

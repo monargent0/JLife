@@ -41,6 +41,7 @@ class SettingViewController: UIViewController {
         themePicker.delegate = self
         //-
         nowThemeLbl.text = "현재 테마 색상 : \(colorNameKR[nowTheme]!.kr)"
+        view.snapshotView(afterScreenUpdates: true)
     }
 
     // MARK: 적용 버튼 동작

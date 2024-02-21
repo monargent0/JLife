@@ -61,6 +61,7 @@ class MainViewController: UIViewController {
         tvMContent.heightAnchor.constraint(equalToConstant: deviceSize()).isActive = true
         //
         makeSwipe()
+        view.snapshotView(afterScreenUpdates: true)
     }//
     
     // Will Appear

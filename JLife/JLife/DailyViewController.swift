@@ -55,6 +55,7 @@ class DailyViewController: UIViewController , UITextViewDelegate {
         Task{
             try await readDailyValues()
             try await readTodoValues()
+            view.snapshotView(afterScreenUpdates: true)
         }
     }// viewdidload
     
