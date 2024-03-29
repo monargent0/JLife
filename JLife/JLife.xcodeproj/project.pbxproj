@@ -19,6 +19,8 @@
 		48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B692A43740000D3C3B0 /* DailyViewController.swift */; };
 		48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */; };
 		48307B6E2A43788800D3C3B0 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B6D2A43788800D3C3B0 /* CalendarCell.swift */; };
+		484CE8762BB6F2D30006AE67 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 484CE8752BB6F2D30006AE67 /* RxCocoa */; };
+		484CE8782BB6F2D30006AE67 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 484CE8772BB6F2D30006AE67 /* RxRelay */; };
 		486368DB2A580770007CE00A /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DA2A580770007CE00A /* Daily.swift */; };
 		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
 		486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368E02A5807BD007CE00A /* TodoListCell.swift */; };
@@ -61,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				484CE8782BB6F2D30006AE67 /* RxRelay in Frameworks */,
+				484CE8762BB6F2D30006AE67 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,10 @@
 			dependencies = (
 			);
 			name = JLife;
+			packageProductDependencies = (
+				484CE8752BB6F2D30006AE67 /* RxCocoa */,
+				484CE8772BB6F2D30006AE67 /* RxRelay */,
+			);
 			productName = JLife;
 			productReference = 48307B4E2A43727400D3C3B0 /* JLife.app */;
 			productType = "com.apple.product-type.application";
@@ -180,7 +188,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					48307B4D2A43727400D3C3B0 = {
 						CreatedOnToolsVersion = 14.2;
@@ -196,6 +204,9 @@
 				Base,
 			);
 			mainGroup = 48307B452A43727400D3C3B0;
+			packageReferences = (
+				484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 48307B4F2A43727400D3C3B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +313,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -362,6 +374,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -476,6 +489,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		484CE8752BB6F2D30006AE67 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		484CE8772BB6F2D30006AE67 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48307B462A43727400D3C3B0 /* Project object */;
 }
