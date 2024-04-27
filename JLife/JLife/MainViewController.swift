@@ -139,7 +139,8 @@ class MainViewController: UIViewController {
         }else{
             todayButton.isEnabled = false
         }
-        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+        // 굳이 옵저버 삭제 안해도 된다. 백그라운드에서 포어로 돌아올때 오늘 날짜 업데이트 되는지 확인하기!
+//        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         }//
 
     // MARK: Setting Calendar Function
