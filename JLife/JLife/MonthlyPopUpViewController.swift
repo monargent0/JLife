@@ -19,7 +19,7 @@ class MonthlyPopUpViewController: UIViewController {
     // MARK: 변수 선언
     let tfMaxLength = 20
     var tvMaxLength = 0
-    let DidDismissMonthlyViewController:Notification.Name = Notification.Name("DidDismissMonthlyViewController")
+    let DidDismissMonthlyViewController: Notification.Name = Notification.Name("DidDismissMonthlyViewController")
     
     // MARK: DB 관련 변수
     var monthlyID = 0

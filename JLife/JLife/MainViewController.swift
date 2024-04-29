@@ -9,7 +9,6 @@ import UIKit
 import SQLite3 /**/
 
 class MainViewController: UIViewController {
-    
     // MARK: 스토리보드와 연결
     @IBOutlet weak var cvCalendar: UICollectionView! // 달력
     @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
@@ -21,14 +20,14 @@ class MainViewController: UIViewController {
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
     var todayDate = Date() // 오늘 표시
-    var allDateItems : [String] = [] // 달력 cell items
-    var items : (daysInMonth : Int , startWeekDay : Int) = (0,0) //
+    var allDateItems: [String] = [] // 달력 cell items
+    var items: (daysInMonth : Int , startWeekDay : Int) = (0,0) //
     var monthlyExistence = false
-    var noNowMonthIndex:[Int] = []
+    var noNowMonthIndex: [Int] = []
     let monthlyNotice = "Monthly Box를 자유롭게 채워보세요!"
     let colorNameList = ColorTheme().colorName
     let defaultsTheme = UserDefaults.standard // UserDefaults
-    var nowTheme : String = "Basic" // 사용자 설정 테마
+    var nowTheme: String = "Basic" // 사용자 설정 테마
     
     // MARK: Monthly SQLite
     var monthlyBundle: [Monthly] = []
