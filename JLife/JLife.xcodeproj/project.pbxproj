@@ -23,6 +23,7 @@
 		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
 		486652342B80F86400870EA1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486652332B80F86400870EA1 /* ColorTheme.swift */; };
 		488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */; };
+		488FA60A2BDFE15900CA4567 /* JLifeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 488FA6082BDFE15900CA4567 /* JLifeData.xcdatamodeld */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -47,6 +48,7 @@
 		486368DC2A58077B007CE00A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		486652332B80F86400870EA1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		488FA6092BDFE15900CA4567 /* JLifeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JLifeData.xcdatamodel; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
 				488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */,
 				D207B2D92BDFB03F00A81B70 /* App */,
+				488FA6042BDFCBBC00CA4567 /* CoreData */,
 				D207B2D82BDFB02400A81B70 /* Resource */,
 				48E469282A50A3140023B03E /* Model */,
 				48E4692A2A50A3740023B03E /* ViewController */,
@@ -104,6 +107,14 @@
 				48E4692C2A50A3CC0023B03E /* Service */,
 			);
 			path = JLife;
+			sourceTree = "<group>";
+		};
+		488FA6042BDFCBBC00CA4567 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				488FA6082BDFE15900CA4567 /* JLifeData.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		48E469282A50A3140023B03E /* Model */ = {
@@ -283,6 +294,7 @@
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
+				488FA60A2BDFE15900CA4567 /* JLifeData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +572,20 @@
 			productName = "plugin:SwiftLintPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		488FA6082BDFE15900CA4567 /* JLifeData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				488FA6092BDFE15900CA4567 /* JLifeData.xcdatamodel */,
+			);
+			currentVersion = 488FA6092BDFE15900CA4567 /* JLifeData.xcdatamodel */;
+			name = JLifeData.xcdatamodeld;
+			path = /Users/ojeongeun/GitHub/JLife/JLife/JLife/JLifeData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 48307B462A43727400D3C3B0 /* Project object */;
 }
