@@ -26,7 +26,6 @@
 		486368E12A5807BD007CE00A /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368E02A5807BD007CE00A /* TodoListCell.swift */; };
 		486652342B80F86400870EA1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486652332B80F86400870EA1 /* ColorTheme.swift */; };
 		488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */; };
-		488FA5FC2BDF9FA700CA4567 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 488FA5FB2BDF9FA700CA4567 /* SwiftLintFramework */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -68,7 +67,6 @@
 			files = (
 				484CE8782BB6F2D30006AE67 /* RxRelay in Frameworks */,
 				484CE8762BB6F2D30006AE67 /* RxCocoa in Frameworks */,
-				488FA5FC2BDF9FA700CA4567 /* SwiftLintFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +101,7 @@
 		48307B502A43727400D3C3B0 /* JLife */ = {
 			isa = PBXGroup;
 			children = (
+				488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */,
 				4800FA1C2A5BFD6C00F90A3D /* Fonts */,
 				48307B512A43727400D3C3B0 /* AppDelegate.swift */,
 				48307B532A43727400D3C3B0 /* SceneDelegate.swift */,
@@ -114,7 +113,6 @@
 				48E4692B2A50A3A30023B03E /* Cell Group */,
 				48E469282A50A3140023B03E /* DB Group */,
 				48E4692C2A50A3CC0023B03E /* Builder */,
-				488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */,
 			);
 			path = JLife;
 			sourceTree = "<group>";
@@ -190,7 +188,6 @@
 			packageProductDependencies = (
 				484CE8752BB6F2D30006AE67 /* RxCocoa */,
 				484CE8772BB6F2D30006AE67 /* RxRelay */,
-				488FA5FB2BDF9FA700CA4567 /* SwiftLintFramework */,
 			);
 			productName = JLife;
 			productReference = 48307B4E2A43727400D3C3B0 /* JLife.app */;
@@ -222,7 +219,6 @@
 			mainGroup = 48307B452A43727400D3C3B0;
 			packageReferences = (
 				484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				488FA5F32BDF9E3000CA4567 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 48307B4F2A43727400D3C3B0 /* Products */;
 			projectDirPath = "";
@@ -251,6 +247,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		488FA5F02BDF999E00CA4567 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -264,7 +261,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/SwiftLint\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the SwiftLint script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\nCURRENT_DIR=`pwd`\n\ncd \"${SCRIPT_PATH}\"/Source\n\n/usr/bin/xcrun --sdk macosx swift run swiftlint \"${CURRENT_DIR}\"\n\nif test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -447,6 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V66F4B3KJ5;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JLife/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JLife;
@@ -469,6 +467,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -484,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V66F4B3KJ5;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JLife/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JLife;
@@ -506,6 +506,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -569,11 +570,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 488FA5F32BDF9E3000CA4567 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintPlugin";
-		};
-		488FA5FB2BDF9FA700CA4567 /* SwiftLintFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 488FA5F32BDF9E3000CA4567 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = SwiftLintFramework;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

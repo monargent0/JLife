@@ -172,14 +172,14 @@ class MainViewController: UIViewController {
     }// Func setMonth
     
     // MARK: SQLite 테이블 생성
-    private func createMonthlyTable() async throws{
+    private func createMonthlyTable() async throws {
         // Monthly
         if #available(iOS 16.0, *) {
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: "MonthlyData.sqlite")
             if sqlite3_open(fileURL.path(percentEncoded: false), &db) != SQLITE_OK{
 //                print("error opening monthly database")
             }
-        } else{
+        } else {
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("MonthlyData.sqlite")
             if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
 //                print("error opening monthly database")
