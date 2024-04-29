@@ -2,7 +2,7 @@
 //  MonthlyPopUpViewController.swift
 //  JLife
 //
-//  Created by 오정은 on 2023/06/27.
+//  Created by OoO on 2023/06/27.
 //
 
 import UIKit

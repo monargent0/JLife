@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  JLife
 //
-//  Created by 오정은 on 2024/02/16.
+//  Created by OoO on 2024/02/16.
 //
 
 import UIKit

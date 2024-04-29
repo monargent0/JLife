@@ -2,7 +2,7 @@
 //  DailyPopUpViewController.swift
 //  JLife
 //
-//  Created by 오정은 on 2023/07/02.
+//  Created by OoO on 2023/07/02.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  TotalScore.swift
 //  JLife
 //
-//  Created by 오정은 on 2023/07/11.
+//  Created by OoO on 2023/07/11.
 //
 
 import Foundation

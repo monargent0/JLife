@@ -2,7 +2,7 @@
 //  ColorTheme.swift
 //  JLife
 //
-//  Created by 오정은 on 2024/02/17.
+//  Created by OoO on 2024/02/17.
 //
 
 import Foundation

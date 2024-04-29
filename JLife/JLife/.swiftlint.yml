@@ -3,3 +3,5 @@ disabled_rules:
 - vertical_whitespace
 - trailing_whitespace
 - function_body_length
+- trailing_newline
+- unused_optional_binding

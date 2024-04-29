@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  JLife
 //
-//  Created by 오정은 on 2023/06/22.
+//  Created by OoO on 2023/06/22.
 //
 
 import UIKit
