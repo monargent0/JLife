@@ -2,7 +2,7 @@
 //  MonthlyBoxEntity+CoreDataProperties.swift
 //  JLife
 //
-//  Created by 오정은 on 4/30/24.
+//  Created by OoO on 5/1/24.
 //
 //
 
@@ -16,11 +16,10 @@ extension MonthlyBoxEntity {
         return NSFetchRequest<MonthlyBoxEntity>(entityName: "MonthlyBoxEntity")
     }
 
-    @NSManaged public var year: Int64
-    @NSManaged public var month: Int64
+    @NSManaged public var id: UUID?
+    @NSManaged public var date: String?
     @NSManaged public var title: String?
     @NSManaged public var content: String?
-    @NSManaged public var id: UUID?
 
 }
 

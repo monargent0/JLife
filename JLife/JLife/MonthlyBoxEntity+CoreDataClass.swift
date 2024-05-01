@@ -2,7 +2,7 @@
 //  MonthlyBoxEntity+CoreDataClass.swift
 //  JLife
 //
-//  Created by 오정은 on 4/30/24.
+//  Created by OoO on 5/1/24.
 //
 //
 
