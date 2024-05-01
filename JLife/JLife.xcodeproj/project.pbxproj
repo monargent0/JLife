@@ -40,6 +40,8 @@
 		48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D59E902BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift */; };
 		48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */; };
 		48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692F2A52E5180023B03E /* DayTodoViewController.swift */; };
+		D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3012BE218C200A81B70 /* CoreDataManager.swift */; };
+		D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3042BE2221700A81B70 /* CoreDataError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		48D59E902BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TotalScoreEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPopUpViewController.swift; sourceTree = "<group>"; };
 		48E4692F2A52E5180023B03E /* DayTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTodoViewController.swift; sourceTree = "<group>"; };
+		D207B3012BE218C200A81B70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D207B3042BE2221700A81B70 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,9 @@
 				D207B2D92BDFB03F00A81B70 /* App */,
 				488FA6042BDFCBBC00CA4567 /* CoreData */,
 				D207B2D82BDFB02400A81B70 /* Resource */,
+				D207B3032BE221AA00A81B70 /* Error */,
 				48E469282A50A3140023B03E /* Model */,
+				D207B2FF2BE2188E00A81B70 /* Manager */,
 				48E4692A2A50A3740023B03E /* ViewController */,
 				D207B2DA2BDFB38300A81B70 /* View */,
 				48E4692C2A50A3CC0023B03E /* Service */,
@@ -240,6 +246,22 @@
 			children = (
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D207B2FF2BE2188E00A81B70 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D207B3012BE218C200A81B70 /* CoreDataManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		D207B3032BE221AA00A81B70 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				D207B3042BE2221700A81B70 /* CoreDataError.swift */,
+			);
+			name = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +384,7 @@
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
 				48D59E952BE21646005278EC /* DailyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E962BE21646005278EC /* DailyBoxEntity+CoreDataProperties.swift in Sources */,
+				D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */,
 				48D59E972BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift in Sources */,
 				48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */,
 				48D59E852BE214F8005278EC /* MonthlyBox.xcdatamodeld in Sources */,
@@ -370,6 +393,7 @@
 				486368DB2A580770007CE00A /* Daily.swift in Sources */,
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */,
+				D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
