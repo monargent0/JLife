@@ -42,6 +42,11 @@
 		48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692F2A52E5180023B03E /* DayTodoViewController.swift */; };
 		D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3012BE218C200A81B70 /* CoreDataManager.swift */; };
 		D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3042BE2221700A81B70 /* CoreDataError.swift */; };
+		D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */; };
+		D207B3352BE3197800A81B70 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3342BE3197800A81B70 /* ImageButton.swift */; };
+		D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3362BE31BD800A81B70 /* HorizontalSatckView.swift */; };
+		D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3382BE31C5A00A81B70 /* SeparatorView.swift */; };
+		D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* DayLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +85,11 @@
 		48E4692F2A52E5180023B03E /* DayTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTodoViewController.swift; sourceTree = "<group>"; };
 		D207B3012BE218C200A81B70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D207B3042BE2221700A81B70 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
+		D207B3342BE3197800A81B70 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		D207B3362BE31BD800A81B70 /* HorizontalSatckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSatckView.swift; sourceTree = "<group>"; };
+		D207B3382BE31C5A00A81B70 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		D207B33A2BE31CCF00A81B70 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +254,8 @@
 		D207B2DA2BDFB38300A81B70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D207B3332BE3191C00A81B70 /* Custom */,
+				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -262,6 +274,17 @@
 				D207B3042BE2221700A81B70 /* CoreDataError.swift */,
 			);
 			name = Error;
+			sourceTree = "<group>";
+		};
+		D207B3332BE3191C00A81B70 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				D207B3342BE3197800A81B70 /* ImageButton.swift */,
+				D207B3362BE31BD800A81B70 /* HorizontalSatckView.swift */,
+				D207B3382BE31C5A00A81B70 /* SeparatorView.swift */,
+				D207B33A2BE31CCF00A81B70 /* DayLabel.swift */,
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,11 +389,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */,
 				486652342B80F86400870EA1 /* ColorTheme.swift in Sources */,
 				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
+				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
+				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
 				48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */,
 				48D59E882BE21508005278EC /* TotalScore.xcdatamodeld in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
@@ -380,8 +406,10 @@
 				48D59E7F2BE214D7005278EC /* DailyBox.xcdatamodeld in Sources */,
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
 				48D59E922BE21646005278EC /* DailyTodoEntity+CoreDataProperties.swift in Sources */,
+				D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
+				D207B3352BE3197800A81B70 /* ImageButton.swift in Sources */,
 				48D59E952BE21646005278EC /* DailyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E962BE21646005278EC /* DailyBoxEntity+CoreDataProperties.swift in Sources */,
 				D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */,
