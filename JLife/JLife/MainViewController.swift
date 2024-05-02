@@ -9,14 +9,6 @@ import UIKit
 import SQLite3 /**/
 
 class MainViewController: UIViewController {
-    // MARK: 스토리보드와 연결
-    @IBOutlet weak var cvCalendar: UICollectionView! // 달력
-    @IBOutlet weak var lblDateTitle: UILabel! // 상단 년월
-    @IBOutlet weak var tvMContent: UITextView!
-    @IBOutlet weak var svWeek: UIStackView! // 상단 요일
-    @IBOutlet weak var lblMonthlyTitle: UILabel!
-    @IBOutlet weak var todayButton: UIBarButtonItem!
-    
     // MARK: 변수 선언
     var presentDate = Date() // 달력 생성용
     var todayDate = Date() // 오늘 표시
