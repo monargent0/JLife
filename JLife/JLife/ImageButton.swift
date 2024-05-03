@@ -15,7 +15,7 @@ class ImageButton: UIButton {
     init(with imageName: String) {
         super.init(frame: .zero)
         
-        let image = UIImage(systemName: "gearshape.fill",
+        let image = UIImage(systemName: imageName,
                              withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         
         setImage(image, for: .normal)
