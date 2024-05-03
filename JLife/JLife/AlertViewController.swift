@@ -7,8 +7,9 @@
 
 import UIKit
 
-class AlertViewController: UIViewController {
-//    
+final class AlertViewController: UIViewController {
+    
+//
 //    let slider = UISlider()
 //
 //    

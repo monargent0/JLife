@@ -6,10 +6,13 @@
 //
 
 import UIKit
-import SQLite3 /**/
+//import SQLite3
 
-class MainViewController: UIViewController {
-//    // MARK: 변수 선언
+final class MainViewController: UIViewController {
+    
+    // MARK: 변수 선언
+    let launchLogoGifView = LogoGifView(frame: .zero)
+    private let mainCalendarView = MainCalendarView(frame: .zero)
 //    var presentDate = Date() // 달력 생성용
 //    var todayDate = Date() // 오늘 표시
 //    var allDateItems: [String] = [] // 달력 cell items
@@ -25,10 +28,13 @@ class MainViewController: UIViewController {
 //    var monthlyBundle: [Monthly] = []
 //    var scoreData:[TotalScore] = []
 //    var db: OpaquePointer? // DB포인터
-//    
-    let launchLogoGifView = LogoGifView(frame: .zero)
+//
+    // MARK: - LoadView()
+    override func loadView() {
+        view = mainCalendarView
+    }
     
-//    // MARK: ViewDidLoad
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
 
         NotificationCenter.default.addObserver(self,

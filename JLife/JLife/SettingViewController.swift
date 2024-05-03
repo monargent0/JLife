@@ -7,7 +7,8 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
+    
 //
 //    @IBOutlet weak var themeImgView: UIImageView!
 //    @IBOutlet weak var themePicker: UIPickerView!

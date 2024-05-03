@@ -8,7 +8,8 @@
 import UIKit
 import SQLite3 /**/
 
-class MonthlyPopUpViewController: UIViewController {
+final class MonthlyPopUpViewController: UIViewController {
+    
 //    // MARK: 스토리보드 연결
 //    @IBOutlet weak var tfMTitle: UITextField!
 //    @IBOutlet weak var tvMContent: UITextView!

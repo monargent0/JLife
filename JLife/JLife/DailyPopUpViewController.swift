@@ -8,7 +8,8 @@
 import UIKit
 import SQLite3
 
-class DailyPopUpViewController: UIViewController {
+final class DailyPopUpViewController: UIViewController {
+    
 //
 //    // MARK: 스토리보드 연결
 //    @IBOutlet weak var tvDContent: UITextView!

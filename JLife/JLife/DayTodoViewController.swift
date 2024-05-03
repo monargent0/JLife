@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import SQLite3
+//import SQLite3
 
-class DayTodoViewController: UIViewController {
-//    
+final class DayTodoViewController: UIViewController {
+    
+//
 //    // MARK: 스토리보드 연결
 //    @IBOutlet weak var tvTodo: UITextView!
 //    @IBOutlet weak var addButton: UIButton!

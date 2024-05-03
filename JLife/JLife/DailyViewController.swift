@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import SQLite3
+//import SQLite3
 
-class DailyViewController: UIViewController , UITextViewDelegate {
+final class DailyViewController: UIViewController , UITextViewDelegate {
+    
 //    // MARK: 스토리보드 연결
 //    @IBOutlet weak var lblDate: UILabel!
 //    @IBOutlet weak var tvDaily: UITextView!

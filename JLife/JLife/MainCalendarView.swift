@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MainCalendarView: UIView {
+final class MainCalendarView: UIView {
+    
     private let buttonStackView: UIStackView = HorizontalSatckView()
     
     private let settingButton: UIButton = ImageButton(with: "gearshape.fill")

@@ -22,7 +22,7 @@
 		486368DB2A580770007CE00A /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DA2A580770007CE00A /* Daily.swift */; };
 		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
 		488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */; };
-		48912A7A2BE5174B003FE078 /* LogoGifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A792BE5174B003FE078 /* LogoGifView.swift */; };
+		48912A7A2BE5174B003FE078 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A792BE5174B003FE078 /* LoadingView.swift */; };
 		48912A7D2BE51769003FE078 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = 48912A7C2BE51769003FE078 /* Gifu */; };
 		48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48912A7E2BE5190E003FE078 /* JLifeLogo.gif */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
@@ -49,6 +49,7 @@
 		D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3362BE31BD800A81B70 /* HorizontalSatckView.swift */; };
 		D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3382BE31C5A00A81B70 /* SeparatorView.swift */; };
 		D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* DayLabel.swift */; };
+		D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D220BA162BE51BD2007892AB /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,7 @@
 		486368DA2A580770007CE00A /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		486368DC2A58077B007CE00A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		48912A792BE5174B003FE078 /* LogoGifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGifView.swift; sourceTree = "<group>"; };
+		48912A792BE5174B003FE078 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		48912A7E2BE5190E003FE078 /* JLifeLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = JLifeLogo.gif; path = "../../자료/IMG/JLifeLogo.gif"; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		D207B3362BE31BD800A81B70 /* HorizontalSatckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSatckView.swift; sourceTree = "<group>"; };
 		D207B3382BE31C5A00A81B70 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		D207B33A2BE31CCF00A81B70 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
+		D220BA162BE51BD2007892AB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				48307B5C2A43727500D3C3B0 /* LaunchScreen.storyboard */,
+				D220BA162BE51BD2007892AB /* LoadingViewController.swift */,
 				48307B672A4373ED00D3C3B0 /* MainViewController.swift */,
 				48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */,
 				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
@@ -259,8 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				D207B3332BE3191C00A81B70 /* Custom */,
+				48912A792BE5174B003FE078 /* LoadingView.swift */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
-				48912A792BE5174B003FE078 /* LogoGifView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
+				D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */,
 				48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */,
 				48D59E882BE21508005278EC /* TotalScore.xcdatamodeld in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
@@ -413,7 +417,7 @@
 				48D59E7F2BE214D7005278EC /* DailyBox.xcdatamodeld in Sources */,
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
 				48D59E922BE21646005278EC /* DailyTodoEntity+CoreDataProperties.swift in Sources */,
-				48912A7A2BE5174B003FE078 /* LogoGifView.swift in Sources */,
+				48912A7A2BE5174B003FE078 /* LoadingView.swift in Sources */,
 				D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,

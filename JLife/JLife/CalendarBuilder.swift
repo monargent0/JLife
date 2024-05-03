@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CalendarBuilder{
+final class CalendarBuilder{
     
     let calendar = Calendar.current
     
