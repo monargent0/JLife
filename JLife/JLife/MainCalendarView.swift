@@ -10,13 +10,9 @@ import UIKit
 final class MainCalendarView: UIView {
     
     private let buttonStackView: UIStackView = HorizontalSatckView()
-    
     private let settingButton: UIButton = ImageButton(with: "gearshape.fill")
-    
     private let searchingButton: UIButton = ImageButton(with: "magnifyingglass")
-    
     private let monthlyStackView: UIStackView = HorizontalSatckView()
-    
     private let previousMonthButton: UIButton = ImageButton(with: "chevron.left")
     
     private let currentMonthLabel: UILabel = {
@@ -28,24 +24,16 @@ final class MainCalendarView: UIView {
     }()
     
     private let nextMonthButton: UIButton = ImageButton(with: "chevron.right")
-    
     private let firstSeparatorView: UIView = SeparatorView()
     
     // MARK: - Week Labels
     private let daysOfWeekStackView: UIStackView = HorizontalSatckView()
-    
     private let sundayLabel: UILabel = DayLabel(for: "일")
-    
     private let mondayLabel: UILabel = DayLabel(for: "월")
-    
     private let tuesdayLabel: UILabel = DayLabel(for: "화")
-    
     private let wednesdayLabel: UILabel = DayLabel(for: "수")
-    
     private let thursdayLabel: UILabel = DayLabel(for: "목")
-    
     private let fridayLabel: UILabel = DayLabel(for: "금")
-    
     private let saturdayLabel: UILabel = DayLabel(for: "토")
     
     private let compositionalLayout: UICollectionViewCompositionalLayout = {

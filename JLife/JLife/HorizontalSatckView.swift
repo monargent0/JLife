@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HorizontalSatckView: UIStackView {
+final class HorizontalSatckView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
