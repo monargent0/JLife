@@ -26,7 +26,21 @@ class MainViewController: UIViewController {
 //    var scoreData:[TotalScore] = []
 //    var db: OpaquePointer? // DB포인터
 //    
+    let launchLogoGifView = LogoGifView(frame: .zero)
+    
 //    // MARK: ViewDidLoad
+    override func viewDidLoad() {
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(disappearLogoGifView),
+                                               name: NSNotification.Name("isGifDone"),
+                                               object: nil)
+    }
+    
+    @objc
+    private func disappearLogoGifView() {
+        launchLogoGifView.removeFromSuperview()
+    }
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //        //
@@ -55,6 +69,13 @@ class MainViewController: UIViewController {
 //        view.snapshotView(afterScreenUpdates: true)
 //    }//
 //    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.addSubview(launchLogoGifView)
+        launchLogoGifView.frame = view.bounds
+    }
+    
 //    // Will Appear
 //    override func viewWillAppear(_ animated: Bool) {
 //        // userDefaults 테마 설정 값

@@ -22,6 +22,9 @@
 		486368DB2A580770007CE00A /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DA2A580770007CE00A /* Daily.swift */; };
 		486368DD2A58077B007CE00A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486368DC2A58077B007CE00A /* Todo.swift */; };
 		488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */; };
+		48912A7A2BE5174B003FE078 /* LogoGifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A792BE5174B003FE078 /* LogoGifView.swift */; };
+		48912A7D2BE51769003FE078 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = 48912A7C2BE51769003FE078 /* Gifu */; };
+		48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48912A7E2BE5190E003FE078 /* JLifeLogo.gif */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -64,6 +67,8 @@
 		486368DA2A580770007CE00A /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		486368DC2A58077B007CE00A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		48912A792BE5174B003FE078 /* LogoGifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoGifView.swift; sourceTree = "<group>"; };
+		48912A7E2BE5190E003FE078 /* JLifeLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = JLifeLogo.gif; path = "../../자료/IMG/JLifeLogo.gif"; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 			files = (
 				484CE8782BB6F2D30006AE67 /* RxRelay in Frameworks */,
 				484CE8762BB6F2D30006AE67 /* RxCocoa in Frameworks */,
+				48912A7D2BE51769003FE078 /* Gifu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +239,7 @@
 		D207B2D82BDFB02400A81B70 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				48912A7E2BE5190E003FE078 /* JLifeLogo.gif */,
 				48307B5A2A43727500D3C3B0 /* Assets.xcassets */,
 				4800FA1C2A5BFD6C00F90A3D /* Fonts */,
 			);
@@ -253,6 +260,7 @@
 			children = (
 				D207B3332BE3191C00A81B70 /* Custom */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
+				48912A792BE5174B003FE078 /* LogoGifView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 			packageProductDependencies = (
 				484CE8752BB6F2D30006AE67 /* RxCocoa */,
 				484CE8772BB6F2D30006AE67 /* RxRelay */,
+				48912A7C2BE51769003FE078 /* Gifu */,
 			);
 			productName = JLife;
 			productReference = 48307B4E2A43727400D3C3B0 /* JLife.app */;
@@ -336,6 +345,7 @@
 			mainGroup = 48307B452A43727400D3C3B0;
 			packageReferences = (
 				484CE8742BB6F2D30006AE67 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				48912A7B2BE51769003FE078 /* XCRemoteSwiftPackageReference "Gifu" */,
 			);
 			productRefGroup = 48307B4F2A43727400D3C3B0 /* Products */;
 			projectDirPath = "";
@@ -352,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */,
+				48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */,
 				48307B662A43730500D3C3B0 /* Cafe24SsurroundAir.ttf in Resources */,
 				48307B5E2A43727500D3C3B0 /* LaunchScreen.storyboard in Resources */,
 				48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */,
@@ -402,6 +413,7 @@
 				48D59E7F2BE214D7005278EC /* DailyBox.xcdatamodeld in Sources */,
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
 				48D59E922BE21646005278EC /* DailyTodoEntity+CoreDataProperties.swift in Sources */,
+				48912A7A2BE5174B003FE078 /* LogoGifView.swift in Sources */,
 				D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
@@ -677,6 +689,14 @@
 				minimumVersion = 0.54.0;
 			};
 		};
+		48912A7B2BE51769003FE078 /* XCRemoteSwiftPackageReference "Gifu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kaishin/Gifu.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 488FA5F32BDF9E3000CA4567 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintPlugin";
+		};
+		48912A7C2BE51769003FE078 /* Gifu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48912A7B2BE51769003FE078 /* XCRemoteSwiftPackageReference "Gifu" */;
+			productName = Gifu;
 		};
 /* End XCSwiftPackageProductDependency section */
 
