@@ -11,7 +11,7 @@ import UIKit
 final class MainViewController: UIViewController {
     
     // MARK: 변수 선언
-    let launchLogoGifView = LogoGifView(frame: .zero)
+    private let isLaunchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
     private let mainCalendarView = MainCalendarView(frame: .zero)
 //    var presentDate = Date() // 달력 생성용
 //    var todayDate = Date() // 오늘 표시
@@ -36,16 +36,7 @@ final class MainViewController: UIViewController {
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(disappearLogoGifView),
-                                               name: NSNotification.Name("isGifDone"),
-                                               object: nil)
-    }
-    
-    @objc
-    private func disappearLogoGifView() {
-        launchLogoGifView.removeFromSuperview()
+        startLoadingViewController()
     }
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -78,8 +69,7 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.addSubview(launchLogoGifView)
-        launchLogoGifView.frame = view.bounds
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
 //    // Will Appear
@@ -97,7 +87,18 @@ final class MainViewController: UIViewController {
 //        // Backgroung - Foreground
 //        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundUpdateToday), name: UIApplication.willEnterForegroundNotification, object: nil)
 //    }//
-//    
+
+    // MARK: - Private Func
+    private func startLoadingViewController() {
+        if !isLaunchedBefore {
+            let loadingViewController = LoadingViewController()
+            
+            navigationController?.pushViewController(loadingViewController,
+                                                     animated: true)
+            
+            UserDefaults.standard.setValue(true, forKey: "launchedBefore")
+        }
+    }
 //    // MARK: 버튼 연결
 //    @IBAction func btnPrevMonth(_ sender: UIButton) {
 //        presentDate = CalendarBuilder().minusMonth(date: presentDate)

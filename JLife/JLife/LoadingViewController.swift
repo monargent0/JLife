@@ -9,5 +9,21 @@ import UIKit
 
 final class LoadingViewController: UIViewController {
     
-    private let loadingView = L
+    private let loadingView = LoadingView(frame: .zero)
+    
+    override func loadView() {
+        view = loadingView
+    }
+    
+    override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(popToMainViewController),
+                                               name: NSNotification.Name("isGifDone"),
+                                               object: nil)
+    }
+    
+    @objc
+    private func popToMainViewController() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
