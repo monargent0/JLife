@@ -9,12 +9,12 @@ import UIKit
 
 final class SettingViewController: UIViewController {
     
-//
 //    @IBOutlet weak var themeImgView: UIImageView!
 //    @IBOutlet weak var themePicker: UIPickerView!
 //    @IBOutlet weak var nowThemeLbl: UILabel!
 //    
-//    // MARK: 변수 선언
+    // MARK: - 변수 선언
+    private let settingView = SettingView(frame: .zero)
 //    var imageArray = [UIImage?]()
 //    let colorList = ColorTheme().themeList
 //    let colorNameKR = ColorTheme().colorName
@@ -22,7 +22,18 @@ final class SettingViewController: UIViewController {
 //    var nowTheme : String = "Basic" // 사용자 설정 테마
 //    var selectColor = "Basic" // 새로 선택한 테마
 //    
-//    // MARK: ViewDidLoad
+    override func loadView() {
+        view = settingView
+    }
+    
+    // MARK: - ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(popToMainViewControllerWithApplyTheme),
+                                               name: NSNotification.Name("touchApplyButton"),
+                                               object: nil)
+    }
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //        nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
@@ -45,7 +56,14 @@ final class SettingViewController: UIViewController {
 //        view.snapshotView(afterScreenUpdates: true)
 //    }
 //
-//    // MARK: 적용 버튼 동작
+    // MARK: - 적용 버튼 동작
+    @objc
+    private func popToMainViewControllerWithApplyTheme() {
+        
+        // 적용버튼을 누른거니까 색상 테마를 여기서 적용해야함
+        self.dismiss(animated: true)
+    }
+    
 //    @IBAction func btnSave(_ sender: UIButton) {
 //        defaultsTheme.set(selectColor ,forKey: "theme")
 //        nowThemeLbl.text = "현재 테마 색상 : \(colorNameKR[selectColor]!.kr)"
