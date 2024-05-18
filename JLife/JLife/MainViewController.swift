@@ -106,12 +106,10 @@ final class MainViewController: UIViewController {
         }
     }
     
-    // temporary code --
     @objc
     private func presentModalSettingViewController() {
+        
         let settingVC = SettingViewController()
-        settingVC.modalTransitionStyle = .coverVertical
-        settingVC.modalPresentationStyle = .automatic
         self.present(settingVC, animated: true)
     }
     
