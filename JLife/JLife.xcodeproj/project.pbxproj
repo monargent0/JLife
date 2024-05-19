@@ -25,6 +25,8 @@
 		48912A7A2BE5174B003FE078 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A792BE5174B003FE078 /* LoadingView.swift */; };
 		48912A7D2BE51769003FE078 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = 48912A7C2BE51769003FE078 /* Gifu */; };
 		48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48912A7E2BE5190E003FE078 /* JLifeLogo.gif */; };
+		48912A872BEB91DC003FE078 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A862BEB91DC003FE078 /* SettingView.swift */; };
+		48912AF02BF7CD38003FE078 /* CalendarColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -70,6 +72,8 @@
 		488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		48912A792BE5174B003FE078 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		48912A7E2BE5190E003FE078 /* JLifeLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = JLifeLogo.gif; path = "../../자료/IMG/JLifeLogo.gif"; sourceTree = "<group>"; };
+		48912A862BEB91DC003FE078 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarColorPalette.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				48E4692A2A50A3740023B03E /* ViewController */,
 				D207B2DA2BDFB38300A81B70 /* View */,
 				48E4692C2A50A3CC0023B03E /* Service */,
+				48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */,
 			);
 			path = JLife;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				D207B3332BE3191C00A81B70 /* Custom */,
 				48912A792BE5174B003FE078 /* LoadingView.swift */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
+				48912A862BEB91DC003FE078 /* SettingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -421,9 +427,11 @@
 				D207B3372BE31BD800A81B70 /* HorizontalSatckView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
+				48912A872BEB91DC003FE078 /* SettingView.swift in Sources */,
 				D207B3352BE3197800A81B70 /* ImageButton.swift in Sources */,
 				48D59E952BE21646005278EC /* DailyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E962BE21646005278EC /* DailyBoxEntity+CoreDataProperties.swift in Sources */,
+				48912AF02BF7CD38003FE078 /* CalendarColorPalette.swift in Sources */,
 				D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */,
 				48D59E972BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift in Sources */,
 				48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */,

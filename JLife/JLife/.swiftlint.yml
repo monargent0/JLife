@@ -5,3 +5,5 @@ disabled_rules:
 - function_body_length
 - trailing_newline
 - unused_optional_binding
+- force_cast
+- identifier_name

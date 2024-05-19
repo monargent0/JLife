@@ -37,6 +37,12 @@ final class MainViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         startLoadingViewController()
+        
+        // temporary code --
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(presentModalSettingViewController),
+                                               name: NSNotification.Name("pressedSettingButton"),
+                                               object: nil)
     }
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -99,6 +105,14 @@ final class MainViewController: UIViewController {
             UserDefaults.standard.setValue(true, forKey: "launchedBefore")
         }
     }
+    
+    @objc
+    private func presentModalSettingViewController() {
+        
+        let settingVC = SettingViewController()
+        self.present(settingVC, animated: true)
+    }
+    
 //    // MARK: 버튼 연결
 //    @IBAction func btnPrevMonth(_ sender: UIButton) {
 //        presentDate = CalendarBuilder().minusMonth(date: presentDate)
