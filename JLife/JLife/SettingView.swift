@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum Custom {
+    static let mainFont: String = "Cafe24Ssurroundair"
+}
+
 final class SettingView: UIView {
     
     // TODO: - 테마 사용자 설정값 userdefaults
@@ -15,7 +19,7 @@ final class SettingView: UIView {
     // MARK: - Components
     private let titleLabel: UILabel = {
         let label = UILabel()
-        let customFont = UIFont(name: "Cafe24Ssurroundair",
+        let customFont = UIFont(name: Custom.mainFont,
                                 size: UIFont.labelFontSize)
         ?? UIFont.preferredFont(forTextStyle: .largeTitle)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +52,7 @@ final class SettingView: UIView {
     
     private let nowThemeLabel: UILabel = {
         let label = UILabel()
-        let customFont =  UIFont(name: "Cafe24Ssurroundair", 
+        let customFont =  UIFont(name: Custom.mainFont,
                                  size: UIFont.systemFontSize)
         ?? UIFont.preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +68,7 @@ final class SettingView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("적용", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Cafe24Ssurroundair",
+        button.titleLabel?.font = UIFont(name: Custom.mainFont,
                                          size: UIFont.buttonFontSize)
         button.configuration = .tinted()
         button.setTitleColor( UIColor(resource: .accent), for: .normal)
@@ -111,7 +115,7 @@ final class SettingView: UIView {
     private func configureUserDefaultsTheme() {
 //        let nowTheme = defaultsTheme.string(forKey: "theme") ?? "Basic"
         let nowTheme = "Basic"
-        nowThemeLabel.text = "현재 테마 색상: \(String(describing: CalendarColorPalette(rawValue: nowTheme)?.getTheme().kr ?? "기본"))"
+        nowThemeLabel.text = "현재 테마 색상: \(String(describing: CalendarColorPalette(rawValue: nowTheme)?.theme.kr ?? "기본"))"
     }
     
     private func setUpPickerViewMethods() {
@@ -153,7 +157,6 @@ final class SettingView: UIView {
     private func setUpThemePickerViewConstraints() {
         themePickerView.heightAnchor.constraint(equalTo: themePickerView.widthAnchor, multiplier: 0.5).isActive = true
     }
-    
 }
 // MARK: - Extension Pickerview Methods
 extension SettingView: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -168,7 +171,7 @@ extension SettingView: UIPickerViewDelegate, UIPickerViewDataSource {
     // TODO: - 선택한 테마 값 넘기는 작업
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         themeImageView.image = UIImage(named: String(describing: CalendarColorPalette.allCases[row]))
-        nowThemeLabel.text = "현재 테마 색상: \(CalendarColorPalette.allCases[row].getTheme().kr)"
+        nowThemeLabel.text = "현재 테마 색상: \(CalendarColorPalette.allCases[row].theme.kr)"
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -176,14 +179,13 @@ extension SettingView: UIPickerViewDelegate, UIPickerViewDataSource {
             if let labelView = view {
                 label = labelView as? UILabel ?? UILabel()
             }
-            let customFont = UIFont(name: "Cafe24Ssurroundair",
+        let customFont = UIFont(name: Custom.mainFont,
                                 size: UIFont.labelFontSize)
             ?? UIFont.preferredFont(forTextStyle: .body)
             label.font =  UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
             label.textAlignment = .center
             label.adjustsFontForContentSizeCategory = true
-            label.text = CalendarColorPalette.allCases[row].getTheme().kr
+            label.text = CalendarColorPalette.allCases[row].theme.kr
             return label
         }
-    
 }

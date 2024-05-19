@@ -23,7 +23,7 @@ final class SettingViewController: UIViewController {
     }
     
     // MARK: - Private Function
-    private func tappedApplyButton(){
+    private func tappedApplyButton() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(popToMainViewControllerWithApplyTheme),
                                                name: NSNotification.Name("tapApplyButton"),
@@ -35,5 +35,4 @@ final class SettingViewController: UIViewController {
     private func popToMainViewControllerWithApplyTheme() {
         self.dismiss(animated: true)
     }
-    
 }
