@@ -37,13 +37,9 @@ final class MainViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         startLoadingViewController()
-        
-        // temporary code --
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(presentModalSettingViewController),
-                                               name: NSNotification.Name("pressedSettingButton"),
-                                               object: nil)
+        tappedSettingButton() // temporary code
     }
+    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //        //
@@ -74,8 +70,7 @@ final class MainViewController: UIViewController {
 //    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        setNavBarHidden()
     }
     
 //    // Will Appear
@@ -95,6 +90,10 @@ final class MainViewController: UIViewController {
 //    }//
 
     // MARK: - Private Func
+    private func setNavBarHidden() {
+       navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private func startLoadingViewController() {
         if !isLaunchedBefore {
             let loadingViewController = LoadingViewController()
@@ -106,9 +105,16 @@ final class MainViewController: UIViewController {
         }
     }
     
+    // temporary code
+    private func tappedSettingButton() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(presentModalSettingViewController),
+                                               name: NSNotification.Name("tapSettingButton"),
+                                               object: nil)
+    }
+    
     @objc
     private func presentModalSettingViewController() {
-        
         let settingVC = SettingViewController()
         self.present(settingVC, animated: true)
     }
@@ -526,4 +532,3 @@ final class MainViewController: UIViewController {
 //    //
 //    
 }// DelegateFlowLayout
-

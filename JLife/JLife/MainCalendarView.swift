@@ -58,19 +58,21 @@ final class MainCalendarView: UIView {
         configureBackgroundColor()
         configureUI()
         setUpAllConstraints()
-        
-        // temporary code --
-        settingButton.addTarget( self, action: #selector(pressedSettingButton), for: .touchUpInside)
+        tapSettingButton() // temporary code
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // temporary code --
+    // temporary code
+    private func tapSettingButton() {
+        settingButton.addTarget( self, action: #selector(pressedSettingButton), for: .touchUpInside)
+    }
+    
     @objc
     private func pressedSettingButton() {
-         NotificationCenter.default.post(name: NSNotification.Name("pressedSettingButton"), object: nil)
+         NotificationCenter.default.post(name: NSNotification.Name("tapSettingButton"), object: nil)
     }
     
     // MARK: - Configure UI
