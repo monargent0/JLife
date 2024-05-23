@@ -11,5 +11,5 @@ import CoreData
 
 @objc(DailyTodoEntity)
 public class DailyTodoEntity: NSManagedObject {
-
+  
 }
