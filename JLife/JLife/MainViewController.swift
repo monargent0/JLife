@@ -9,7 +9,8 @@ import UIKit
 
 final class MainViewController: UIViewController {
   
-  private let isLaunchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+  private let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+  private let launchedVersion = UserDefaults.standard.string(forKey: "launchedVersion")
   private let mainCalendarView = MainCalendarView(frame: .zero)
   
   // MARK: - View LifeCycle
@@ -33,13 +34,14 @@ final class MainViewController: UIViewController {
   }
   
   private func startLoadingViewController() {
-    if !isLaunchedBefore {
+    if launchedVersion == nil || launchedVersion != currentVersion {
       let loadingViewController = LoadingViewController()
       
       navigationController?.pushViewController(loadingViewController,
                                                animated: true)
-      
-      UserDefaults.standard.setValue(true, forKey: "launchedBefore")
+    
+      UserDefaults.standard.set(currentVersion, forKey: "launchedVersion")
+      UserDefaults.standard.synchronize()
     }
   }
   
