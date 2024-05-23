@@ -6,7 +6,7 @@
 //
 
 enum CoreDataError: Error {
-    case failToLoadPersistentStores
-    case failToSaveContext
-    case failToFetchData
+  case failToLoadPersistentStores
+  case failToSaveContext
+  case failToFetchData
 }

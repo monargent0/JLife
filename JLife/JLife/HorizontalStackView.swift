@@ -1,13 +1,13 @@
 //
-//  SeparatorView.swift
+//  HorizontalSatckView.swift
 //  JLife
 //
-//  Created by Hyun A Song on 5/2/24.
+//  Created by OoO on 5/2/24.
 //
 
 import UIKit
 
-final class SeparatorView: UIView {
+final class HorizontalStackView: UIStackView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -16,11 +16,13 @@ final class SeparatorView: UIView {
   init() {
     super.init(frame: .zero)
     
-    backgroundColor = UIColor(resource: .customGray)
+    axis = .horizontal
+    alignment = .center
+    distribution = .equalSpacing
     translatesAutoresizingMaskIntoConstraints = false
   }
   
-  required init?(coder: NSCoder) {
+  required init(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }
