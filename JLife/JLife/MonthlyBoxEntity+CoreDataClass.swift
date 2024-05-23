@@ -11,5 +11,5 @@ import CoreData
 
 @objc(MonthlyBoxEntity)
 public class MonthlyBoxEntity: NSManagedObject {
-
+  
 }

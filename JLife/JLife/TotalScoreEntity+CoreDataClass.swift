@@ -11,5 +11,5 @@ import CoreData
 
 @objc(TotalScoreEntity)
 public class TotalScoreEntity: NSManagedObject {
-
+  
 }
