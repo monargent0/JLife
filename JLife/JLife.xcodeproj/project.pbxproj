@@ -27,6 +27,8 @@
 		48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48912A7E2BE5190E003FE078 /* JLifeLogo.gif */; };
 		48912A872BEB91DC003FE078 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912A862BEB91DC003FE078 /* SettingView.swift */; };
 		48912AF02BF7CD38003FE078 /* CalendarColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */; };
+		48912AF22BFF4896003FE078 /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912AF12BFF4896003FE078 /* TodoDetailView.swift */; };
+		48912AF42BFF67AF003FE078 /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48912AF32BFF67AF003FE078 /* TodoDetailViewController.swift */; };
 		48C344522A4889550061F930 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344512A4889550061F930 /* Monthly.swift */; };
 		48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */; };
 		48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */; };
@@ -43,7 +45,6 @@
 		48D59E972BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D59E8F2BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift */; };
 		48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D59E902BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift */; };
 		48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */; };
-		48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4692F2A52E5180023B03E /* DayTodoViewController.swift */; };
 		D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3012BE218C200A81B70 /* CoreDataManager.swift */; };
 		D207B3052BE2221700A81B70 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3042BE2221700A81B70 /* CoreDataError.swift */; };
 		D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */; };
@@ -75,6 +76,8 @@
 		48912A7E2BE5190E003FE078 /* JLifeLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = JLifeLogo.gif; path = "../../자료/IMG/JLifeLogo.gif"; sourceTree = "<group>"; };
 		48912A862BEB91DC003FE078 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarColorPalette.swift; sourceTree = "<group>"; };
+		48912AF12BFF4896003FE078 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
+		48912AF32BFF67AF003FE078 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		48C344512A4889550061F930 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPopUpViewController.swift; sourceTree = "<group>"; };
 		48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 		48D59E8F2BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TotalScoreEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		48D59E902BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TotalScoreEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPopUpViewController.swift; sourceTree = "<group>"; };
-		48E4692F2A52E5180023B03E /* DayTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTodoViewController.swift; sourceTree = "<group>"; };
 		D207B3012BE218C200A81B70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D207B3042BE2221700A81B70 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
@@ -229,9 +231,9 @@
 				48C344552A4AEA2C0061F930 /* MonthlyPopUpViewController.swift */,
 				48307B692A43740000D3C3B0 /* DailyViewController.swift */,
 				48E4692D2A50A4140023B03E /* DailyPopUpViewController.swift */,
-				48E4692F2A52E5180023B03E /* DayTodoViewController.swift */,
 				4800FA1D2A5C101200F90A3D /* AlertViewController.swift */,
 				48C84A4F2B7F7CA600CE1276 /* SettingViewController.swift */,
+				48912AF32BFF67AF003FE078 /* TodoDetailViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -270,6 +272,7 @@
 				48912A792BE5174B003FE078 /* LoadingView.swift */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
 				48912A862BEB91DC003FE078 /* SettingView.swift */,
+				48912AF12BFF4896003FE078 /* TodoDetailView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -418,15 +421,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */,
+				48912AF42BFF67AF003FE078 /* TodoDetailViewController.swift in Sources */,
 				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
+				48912AF22BFF4896003FE078 /* TodoDetailView.swift in Sources */,
 				D2E7C4B02BFF08CF0007BEC8 /* Font.swift in Sources */,
 				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
 				D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */,
-				48E469302A52E5180023B03E /* DayTodoViewController.swift in Sources */,
 				48D59E882BE21508005278EC /* TotalScore.xcdatamodeld in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,

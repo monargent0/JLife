@@ -20,7 +20,7 @@ final class MainViewController: UIViewController {
   
   override func viewDidLoad() {
     startLoadingViewController()
-    tappedSettingButton()
+    tappedNavBarButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -45,16 +45,26 @@ final class MainViewController: UIViewController {
     }
   }
   
-  private func tappedSettingButton() {
+  private func tappedNavBarButton() {
     NotificationCenter.default.addObserver(self,
-                                           selector: #selector(presentModalSettingViewController),
-                                           name: NSNotification.Name("tapSettingButton"),
+                                           selector: #selector(presentSettingViewController),
+                                           name: NSNotification.Name("tappedSettingButton"),
+                                           object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(presentSearchingViewController),
+                                           name: NSNotification.Name("tappedSearchingButton"),
                                            object: nil)
   }
   
   @objc
-  private func presentModalSettingViewController() {
+  private func presentSettingViewController() {
     let settingVC = SettingViewController()
     self.present(settingVC, animated: true)
+  }
+  // TODO: - 임시로 TodoDerail 뷰 연결 중 Search View 생성 시 변경하기
+  @objc
+  private func presentSearchingViewController() {
+    let searchingVC = TodoDetailViewController()
+    navigationController?.pushViewController(searchingVC, animated: true)
   }
 }
