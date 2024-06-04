@@ -53,7 +53,12 @@
 		D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3382BE31C5A00A81B70 /* SeparatorView.swift */; };
 		D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* DayLabel.swift */; };
 		D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D220BA162BE51BD2007892AB /* LoadingViewController.swift */; };
-		D2E7C4B02BFF08CF0007BEC8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */; };
+		D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */; };
+		D2A04DEF2C0EC25F00B2C603 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */; };
+		D2A04DF12C0EC2A500B2C603 /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF02C0EC2A500B2C603 /* FontSize.swift */; };
+		D2A04DF32C0EC2EC00B2C603 /* UIFontMetrics+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */; };
+		D2A04DF52C0ECDA200B2C603 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF42C0ECDA200B2C603 /* Font.swift */; };
+		D2A04DF72C0ECF1800B2C603 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF62C0ECF1800B2C603 /* FontManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +107,12 @@
 		D207B3382BE31C5A00A81B70 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		D207B33A2BE31CCF00A81B70 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
 		D220BA162BE51BD2007892AB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Simplehae-v2.0.ttf"; sourceTree = "<group>"; };
+		D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		D2A04DF02C0EC2A500B2C603 /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontMetrics+.swift"; sourceTree = "<group>"; };
+		D2A04DF42C0ECDA200B2C603 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D2A04DF62C0ECF1800B2C603 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +133,12 @@
 			isa = PBXGroup;
 			children = (
 				48307B652A43730500D3C3B0 /* Cafe24SsurroundAir.ttf */,
+				D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */,
+				D2A04DF62C0ECF1800B2C603 /* FontManager.swift */,
+				D2A04DF42C0ECDA200B2C603 /* Font.swift */,
+				D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */,
+				D2A04DF02C0EC2A500B2C603 /* FontSize.swift */,
+				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -216,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */,
-				D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */,
 				D2E7C4AE2BFF08490007BEC8 /* CoreData */,
 			);
 			name = Model;
@@ -388,6 +403,7 @@
 				48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */,
 				48307B662A43730500D3C3B0 /* Cafe24SsurroundAir.ttf in Resources */,
 				48307B5E2A43727500D3C3B0 /* LaunchScreen.storyboard in Resources */,
+				D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */,
 				48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,13 +442,15 @@
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
 				48912AF22BFF4896003FE078 /* TodoDetailView.swift in Sources */,
-				D2E7C4B02BFF08CF0007BEC8 /* Font.swift in Sources */,
+				D2A04DF72C0ECF1800B2C603 /* FontManager.swift in Sources */,
 				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
 				D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */,
+				D2A04DF32C0EC2EC00B2C603 /* UIFontMetrics+.swift in Sources */,
 				48D59E882BE21508005278EC /* TotalScore.xcdatamodeld in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
+				D2A04DF12C0EC2A500B2C603 /* FontSize.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,
 				48D59E822BE214E7005278EC /* DailyTodo.xcdatamodeld in Sources */,
 				48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */,
@@ -440,6 +458,7 @@
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
 				48D59E922BE21646005278EC /* DailyTodoEntity+CoreDataProperties.swift in Sources */,
 				48912A7A2BE5174B003FE078 /* LoadingView.swift in Sources */,
+				D2A04DEF2C0EC25F00B2C603 /* FontStyle.swift in Sources */,
 				D207B3372BE31BD800A81B70 /* HorizontalStackView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
@@ -453,6 +472,7 @@
 				48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */,
 				48D59E852BE214F8005278EC /* MonthlyBox.xcdatamodeld in Sources */,
 				486368DD2A58077B007CE00A /* Todo.swift in Sources */,
+				D2A04DF52C0ECDA200B2C603 /* Font.swift in Sources */,
 				48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */,
 				486368DB2A580770007CE00A /* Daily.swift in Sources */,
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
