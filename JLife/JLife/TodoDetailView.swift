@@ -146,7 +146,7 @@ final class TodoDetailView: UIView {
     setUpPreference()
     configureUI()
     configureBackgroundColor()
-    setUpConstraints()
+    setUpAllConstraints()
     setUpTextViewMethod()
     pickerAndSwitchAddTarget()
     tappedBottomButton()
@@ -228,7 +228,7 @@ final class TodoDetailView: UIView {
   }
   
   // MARK: - Constraints
-  private func setUpConstraints() {
+  private func setUpAllConstraints() {
     setUpTextViewConstraints()
     setUpDatePickerConstraints()
     setUpHalfStackViewConstraints()
