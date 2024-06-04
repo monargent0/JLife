@@ -8,11 +8,14 @@
 enum Preference {
   enum Bundle {
     case appVersion
+    case weatherAPI
     
     var key: String {
       switch self {
       case .appVersion:
         "CFBundleShortVersionString"
+      case .weatherAPI:
+        "WEATHER_API_KEY"
       }
     }
   }

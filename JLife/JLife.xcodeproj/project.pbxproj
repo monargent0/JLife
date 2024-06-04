@@ -62,6 +62,8 @@
 		D2A04DFB2C0EEF8C00B2C603 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFA2C0EEF8C00B2C603 /* Preference.swift */; };
 		D2A04DFE2C0EF38600B2C603 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFD2C0EF38600B2C603 /* AppColor.swift */; };
 		D2A04E002C0F02E500B2C603 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */; };
+		D2A04E032C0F65D400B2C603 /* WeatherAPIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */; };
+		D2A04E052C0F662500B2C603 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E042C0F662500B2C603 /* Bundle+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,8 @@
 		D2A04DFA2C0EEF8C00B2C603 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		D2A04DFD2C0EF38600B2C603 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherAPIKey.plist; sourceTree = "<group>"; };
+		D2A04E042C0F662500B2C603 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
+				D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */,
 				488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */,
 				D207B2D92BDFB03F00A81B70 /* App */,
 				488FA6042BDFCBBC00CA4567 /* CoreData */,
@@ -234,6 +239,7 @@
 		48E469282A50A3140023B03E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2A04E012C0F643200B2C603 /* Weather */,
 				D2E7C4AE2BFF08490007BEC8 /* CoreData */,
 			);
 			name = Model;
@@ -352,6 +358,14 @@
 			path = Color;
 			sourceTree = "<group>";
 		};
+		D2A04E012C0F643200B2C603 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04E042C0F662500B2C603 /* Bundle+.swift */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
 		D2E7C4AE2BFF08490007BEC8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +449,7 @@
 				488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */,
 				48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */,
 				48307B662A43730500D3C3B0 /* Cafe24SsurroundAir.ttf in Resources */,
+				D2A04E032C0F65D400B2C603 /* WeatherAPIKey.plist in Resources */,
 				48307B5E2A43727500D3C3B0 /* LaunchScreen.storyboard in Resources */,
 				D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */,
 				48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */,
@@ -514,6 +529,7 @@
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */,
 				D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */,
+				D2A04E052C0F662500B2C603 /* Bundle+.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
