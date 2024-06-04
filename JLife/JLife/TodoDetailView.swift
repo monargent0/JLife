@@ -13,8 +13,7 @@ final class TodoDetailView: UIView {
   private let timeLabel: UILabel = {
     let label = UILabel()
     let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .headline)
+                            size: UIFont.labelFontSize) ?? UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .left
     label.adjustsFontForContentSizeCategory = true
@@ -41,7 +40,7 @@ final class TodoDetailView: UIView {
     return textView
   }()
   
-  private let txtCountLabel: UILabel = {
+  private let textCountLabel: UILabel = {
     let label = UILabel()
     let customFont = UIFont(name: AppFont.cafe24Font,
                             size: UIFont.labelFontSize)
@@ -151,13 +150,13 @@ final class TodoDetailView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    firstSetting()
+    setUpPreference()
     configureUI()
     configureBackgroundColor()
-    setUpAllConstraints()
+    setUpConstraints()
     setUpTextViewMethod()
     pickerAndSwitchAddTarget()
-    tapBottomButton()
+    tappedBottomButton()
   }
   
   required init?(coder: NSCoder) {
@@ -169,25 +168,25 @@ final class TodoDetailView: UIView {
     todoTextView.delegate = self
   }
   
-  private func firstSetting() {
+  private func setUpPreference() {
     timeLabel.text = "시간 없음"
     timeSetSwitch.isOn = false
-    txtCountLabel.text = String(todoTextView.text.count)
+    textCountLabel.text = String(todoTextView.text.count)
     timeSetDatePicker.isHidden = timeSetSwitch.isOn ? false : true
     todoTextView.becomeFirstResponder()
   }
   
   private func pickerAndSwitchAddTarget() {
     timeSetDatePicker.addTarget(self,
-                                action: #selector(isTimeChange),
+                                action: #selector(pickTime),
                                 for: .valueChanged)
     timeSetSwitch.addTarget(self,
-                            action: #selector(isSwitchChange),
+                            action: #selector(changeSwitch),
                             for: .valueChanged)
   }
   
   @objc
-  private func isTimeChange(_ sender: UIDatePicker) {
+  private func pickTime(_ sender: UIDatePicker) {
     timeLabel.text = dateFormat(sender.date)
   }
   
@@ -200,7 +199,7 @@ final class TodoDetailView: UIView {
   }
   
   @objc
-  private func isSwitchChange(_ sender: UISwitch) {
+  private func changeSwitch(_ sender: UISwitch) {
     if sender.isOn {
       timeSetDatePicker.isHidden = false
       timeLabel.text = dateFormat(timeSetDatePicker.date)
@@ -210,7 +209,7 @@ final class TodoDetailView: UIView {
     }
   }
   
-  private func tapBottomButton() {
+  private func tappedBottomButton() {
     cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
   }
   
@@ -227,7 +226,7 @@ final class TodoDetailView: UIView {
   private func configureUI() {
     [halfStackView, timeSetDatePicker, buttonStackView]
       .forEach { addSubview($0) }
-    [timeLabel, todoTextView, txtCountLabel, timeSetStackView]
+    [timeLabel, todoTextView, textCountLabel, timeSetStackView]
       .forEach {halfStackView.addArrangedSubview($0)}
     [timeSetLabel, timeSetSwitch]
       .forEach {timeSetStackView.addArrangedSubview($0)}
@@ -236,7 +235,7 @@ final class TodoDetailView: UIView {
   }
   
   // MARK: - Constraints
-  private func setUpAllConstraints() {
+  private func setUpConstraints() {
     setUpTextViewConstraints()
     setUpDatePickerConstraints()
     setUpHalfStackViewConstraints()
@@ -285,7 +284,7 @@ extension TodoDetailView: UITextViewDelegate {
       saveButton.isEnabled = true
     }
     let txtCount = String(todoTextView.text.count)
-    txtCountLabel.text = txtCount
+    textCountLabel.text = txtCount
   }
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
