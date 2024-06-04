@@ -134,11 +134,6 @@
 			children = (
 				48307B652A43730500D3C3B0 /* Cafe24SsurroundAir.ttf */,
 				D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */,
-				D2A04DF62C0ECF1800B2C603 /* FontManager.swift */,
-				D2A04DF42C0ECDA200B2C603 /* Font.swift */,
-				D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */,
-				D2A04DF02C0EC2A500B2C603 /* FontSize.swift */,
-				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -169,6 +164,7 @@
 				D207B2D82BDFB02400A81B70 /* Resource */,
 				D207B3032BE221AA00A81B70 /* Error */,
 				48E469282A50A3140023B03E /* Model */,
+				D2A04DF82C0EE89200B2C603 /* Font */,
 				D207B2FF2BE2188E00A81B70 /* Manager */,
 				48E4692A2A50A3740023B03E /* ViewController */,
 				D207B2DA2BDFB38300A81B70 /* View */,
@@ -317,6 +313,18 @@
 				D207B33A2BE31CCF00A81B70 /* DayLabel.swift */,
 			);
 			name = Custom;
+			sourceTree = "<group>";
+		};
+		D2A04DF82C0EE89200B2C603 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04DF62C0ECF1800B2C603 /* FontManager.swift */,
+				D2A04DF42C0ECDA200B2C603 /* Font.swift */,
+				D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */,
+				D2A04DF02C0EC2A500B2C603 /* FontSize.swift */,
+				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
+			);
+			name = Font;
 			sourceTree = "<group>";
 		};
 		D2E7C4AE2BFF08490007BEC8 /* CoreData */ = {
