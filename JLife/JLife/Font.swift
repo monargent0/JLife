@@ -2,9 +2,12 @@
 //  Font.swift
 //  JLife
 //
-//  Created by OoO on 5/23/24.
+//  Created by Hyun A Song on 6/4/24.
 //
 
-enum AppFont {
-  static let cafe24Font: String = "Cafe24Ssurroundair"
+class Font {
+  static let shared = Font()
+  var style: String?
+  
+  private init() { }
 }
