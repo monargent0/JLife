@@ -19,6 +19,7 @@ final class MainCalendarView: UIView {
     let label = UILabel()
     label.text = "TEST MONTH"
     label.textColor = UIColor(resource: .reversedSystem)
+    label.font = UIFont.setUpFont(with: AppFont.shared.style, of: FontSize.headline1.size)
     
     return label
   }()

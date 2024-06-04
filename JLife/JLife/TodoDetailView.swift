@@ -12,12 +12,12 @@ final class TodoDetailView: UIView {
   // MARK: - Components
   private let timeLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize) ?? UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .left
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.title1.size,
+                                          for: .headline)
     label.textColor = UIColor(resource: .reversedSystem)
     
     return label
@@ -26,45 +26,42 @@ final class TodoDetailView: UIView {
   // TODO: - border 색상 사용자 테마 색으로 적용
   private let todoTextView: UITextView = {
     let textView = UITextView()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .body)
     textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
     textView.textColor = UIColor(resource: .reversedSystem)
     textView.layer.borderColor = UIColor(resource: .accent).cgColor
     textView.layer.borderWidth = 0.7
     textView.layer.masksToBounds = true
     textView.layer.cornerRadius = 5
+    let customFont = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .body)
     
     return textView
   }()
   
   private let textCountLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .caption1)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .right
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: customFont)
     label.textColor = UIColor(resource: .reversedSystem)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .caption1)
     
     return label
   }()
   
   private let timeSetLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .largeTitle)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "시간"
     label.textAlignment = .center
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: customFont)
     label.textColor = UIColor(resource: .reversedSystem)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .largeTitle)
     
     return label
   }()
@@ -105,21 +102,19 @@ final class TodoDetailView: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("취소", for: .normal)
-    button.titleLabel?.font = UIFont(name: AppFont.cafe24Font,
-                                     size: UIFont.buttonFontSize)
+    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
+                                               of: FontSize.body1.size)
     button.configuration = .tinted()
     button.tintColor = .gray
     
     return button
   }()
   
-  // TODO: - title 색상 사용자 테마 색으로 적용
   private let saveButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("저장", for: .normal)
-    button.titleLabel?.font = UIFont(name: AppFont.cafe24Font,
-                                     size: UIFont.buttonFontSize)
+    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
+                                               of: FontSize.body1.size)
     button.configuration = .tinted()
     button.setTitleColor( UIColor(resource: .accent), for: .normal)
     

@@ -15,11 +15,11 @@ struct UserDefaultsManager<T> {
     self.key = key
   }
   
-  func getFont() -> T {
-    UserDefaults.standard.value(forKey: key) as! T
+  func getUserDefaultsValue() -> T? {
+    UserDefaults.standard.value(forKey: key) as? T
   }
   
-  func setFont(with value: T) {
+  func setUserDefaultsValue(with value: T) {
     UserDefaults.standard.setValue(value, forKey: key)
   }
 }

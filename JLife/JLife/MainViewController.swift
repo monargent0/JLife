@@ -8,10 +8,23 @@
 import UIKit
 
 final class MainViewController: UIViewController {
+  let fontManager: UserDefaultsManager<String>
+  let colorManager: UserDefaultsManager<Theme>
   
-  private let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-  private let launchedVersion = UserDefaults.standard.string(forKey: "launchedVersion")
+  private let currentVersion = Bundle.main.object(forInfoDictionaryKey: Preference.Bundle.appVersion.key) as? String ?? ""
+  private let launchedVersion = UserDefaults.standard.string(forKey: Preference.UserDefaults.launchedBefore.key)
   private let mainCalendarView = MainCalendarView(frame: .zero)
+  
+  init(fontManager: UserDefaultsManager<String>, colorManager: UserDefaultsManager<Theme>) {
+    self.fontManager = fontManager
+    self.colorManager = colorManager
+    
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - View LifeCycle
   override func loadView() {
@@ -19,7 +32,7 @@ final class MainViewController: UIViewController {
   }
   
   override func viewDidLoad() {
-    setUpFont()
+    setUpUserDefaults()
     startLoadingViewController()
     tappedNavBarButton()
   }
@@ -34,8 +47,9 @@ final class MainViewController: UIViewController {
     navigationController?.setNavigationBarHidden(true, animated: true)
   }
   
-  private func setUpFont() {
-    Font.shared.style = FontManager.getFont()
+  private func setUpUserDefaults() {
+    AppFont.shared.style = fontManager.getUserDefaultsValue()
+    AppColor.shared.theme = colorManager.getUserDefaultsValue()
   }
   
   private func startLoadingViewController() {
@@ -46,7 +60,6 @@ final class MainViewController: UIViewController {
                                                animated: true)
     
       UserDefaults.standard.set(currentVersion, forKey: "launchedVersion")
-      UserDefaults.standard.synchronize()
     }
   }
   

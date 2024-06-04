@@ -8,7 +8,7 @@
 class AppColor {
   
   static let shared = AppColor()
-  let theme: Theme?
+  var theme: Theme?
   
   private init() { }
 }
