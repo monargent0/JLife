@@ -13,13 +13,12 @@ struct FontManager {
   static func getFont() -> String {
     if let font = UserDefaults.standard.value(forKey: fontKey) as? String {
       return font
-    } else if {
+    } else {
       return FontStyle.surroundAirStyle.name
     }
   }
   
   static func setFont(with font: String) {
     UserDefaults.standard.setValue(font, forKey: fontKey)
-    UserDefaults.standard.synchronize()
   }
 }
