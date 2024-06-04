@@ -19,6 +19,10 @@ final class DayLabel: UILabel {
     text = day
     textAlignment = .center
     textColor = UIColor(resource: .reversedSystem)
+    adjustsFontForContentSizeCategory = true
+    font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.body1.size,
+                                          for: .body)
   }
   
   required init?(coder: NSCoder) {

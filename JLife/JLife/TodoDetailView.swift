@@ -23,12 +23,11 @@ final class TodoDetailView: UIView {
     return label
   }()
   
-  // TODO: - border 색상 사용자 테마 색으로 적용
   private let todoTextView: UITextView = {
     let textView = UITextView()
     textView.translatesAutoresizingMaskIntoConstraints = false
     textView.textColor = UIColor(resource: .reversedSystem)
-    textView.layer.borderColor = UIColor(resource: .accent).cgColor
+    textView.layer.borderColor = UIColor(named: AppColor.shared.theme?.border ?? "")?.cgColor
     textView.layer.borderWidth = 0.7
     textView.layer.masksToBounds = true
     textView.layer.cornerRadius = 5
@@ -66,11 +65,10 @@ final class TodoDetailView: UIView {
     return label
   }()
   
-  // TODO: - tint 색상 사용자 테마 색으로 적용
   private let timeSetSwitch: UISwitch = {
     let setSwitch = UISwitch()
     setSwitch.translatesAutoresizingMaskIntoConstraints = false
-    setSwitch.onTintColor = UIColor(resource: .accent)
+    setSwitch.onTintColor = UIColor(named: AppColor.shared.theme?.mainColor ?? "")
     
     return setSwitch
   }()
