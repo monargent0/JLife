@@ -9,7 +9,18 @@ import UIKit
 
 final class SettingViewController: UIViewController {
   
+  private let fontManager: UserDefaultsManager<String>
+  private let colorManager: UserDefaultsManager<Theme>
   private let settingView = SettingView(frame: .zero)
+  
+  init(fontManager: UserDefaultsManager<String>, colorManager: UserDefaultsManager<Theme>) {
+    self.fontManager = fontManager
+    self.colorManager = colorManager
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func loadView() {
     view = settingView
