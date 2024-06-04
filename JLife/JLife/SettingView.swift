@@ -84,6 +84,7 @@ final class SettingView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
     configureUI()
     configureBackgroundColor()
     configureUserDefaultsTheme()

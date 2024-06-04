@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class DailyViewController: UIViewController , UITextViewDelegate {
+final class DailyViewController: UIViewController, UITextViewDelegate {
   
 }

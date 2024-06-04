@@ -32,15 +32,15 @@ final class LoadingView: UIView {
   }
   
   // MARK: - Configure UI
-  private func configureBackgroundColor(){
+  private func configureBackgroundColor() {
     backgroundColor = .systemBackground
   }
   
-  private func configureUI(){
+  private func configureUI() {
     addSubview(gifImageView)
   }
   
-  private func configureImage(){
+  private func configureImage() {
     gifImageView.animate(withGIFNamed: "JLifeLogo",
                          loopCount: 1,
                          loopBlock: {
@@ -51,7 +51,7 @@ final class LoadingView: UIView {
   }
   
   // MARK: - Constraints
-  private func setUpGifImageConstraints(){
+  private func setUpGifImageConstraints() {
     NSLayoutConstraint.activate([
       gifImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
       gifImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
