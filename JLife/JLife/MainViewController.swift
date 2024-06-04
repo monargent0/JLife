@@ -19,18 +19,23 @@ final class MainViewController: UIViewController {
   }
   
   override func viewDidLoad() {
+    setUpFont()
     startLoadingViewController()
     tappedNavBarButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    setNavBarHidden()
+    setUpNavigationBar()
   }
   
   // MARK: - Private Function
-  private func setNavBarHidden() {
+  private func setUpNavigationBar() {
     navigationController?.setNavigationBarHidden(true, animated: true)
+  }
+  
+  private func setUpFont() {
+    Font.shared.style = FontManager.getFont()
   }
   
   private func startLoadingViewController() {
