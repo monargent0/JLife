@@ -2,7 +2,7 @@
 //  LocationError.swift
 //  JLife
 //
-//  Created by Hyun A Song on 6/5/24.
+//  Created by OoO on 6/5/24.
 //
 
 enum LocationError: Error {
