@@ -53,7 +53,23 @@
 		D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3382BE31C5A00A81B70 /* SeparatorView.swift */; };
 		D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* DayLabel.swift */; };
 		D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D220BA162BE51BD2007892AB /* LoadingViewController.swift */; };
-		D2E7C4B02BFF08CF0007BEC8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */; };
+		D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */; };
+		D2A04DEF2C0EC25F00B2C603 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */; };
+		D2A04DF12C0EC2A500B2C603 /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF02C0EC2A500B2C603 /* FontSize.swift */; };
+		D2A04DF32C0EC2EC00B2C603 /* UIFontMetrics+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */; };
+		D2A04DF52C0ECDA200B2C603 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF42C0ECDA200B2C603 /* AppFont.swift */; };
+		D2A04DF72C0ECF1800B2C603 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DF62C0ECF1800B2C603 /* UserDefaultsManager.swift */; };
+		D2A04DFB2C0EEF8C00B2C603 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFA2C0EEF8C00B2C603 /* Preference.swift */; };
+		D2A04DFE2C0EF38600B2C603 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFD2C0EF38600B2C603 /* AppColor.swift */; };
+		D2A04E002C0F02E500B2C603 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */; };
+		D2A04E032C0F65D400B2C603 /* WeatherAPIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */; };
+		D2A04E052C0F662500B2C603 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E042C0F662500B2C603 /* Bundle+.swift */; };
+		D2A04E072C0F697A00B2C603 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E062C0F697A00B2C603 /* WeatherInformation.swift */; };
+		D2A04E092C0F69C100B2C603 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E082C0F69C100B2C603 /* Weather.swift */; };
+		D2A04E0B2C0F6A0F00B2C603 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E0A2C0F6A0F00B2C603 /* NetworkManager.swift */; };
+		D2A04E0E2C0F6ADA00B2C603 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E0D2C0F6ADA00B2C603 /* OpenWeather.swift */; };
+		D2A04E102C0F6E3F00B2C603 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E0F2C0F6E3F00B2C603 /* LocationDataManager.swift */; };
+		D2A04E122C0F6E6700B2C603 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04E112C0F6E6700B2C603 /* LocationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +118,23 @@
 		D207B3382BE31C5A00A81B70 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		D207B33A2BE31CCF00A81B70 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
 		D220BA162BE51BD2007892AB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Simplehae-v2.0.ttf"; sourceTree = "<group>"; };
+		D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		D2A04DF02C0EC2A500B2C603 /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontMetrics+.swift"; sourceTree = "<group>"; };
+		D2A04DF42C0ECDA200B2C603 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		D2A04DF62C0ECF1800B2C603 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		D2A04DFA2C0EEF8C00B2C603 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		D2A04DFD2C0EF38600B2C603 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherAPIKey.plist; sourceTree = "<group>"; };
+		D2A04E042C0F662500B2C603 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		D2A04E062C0F697A00B2C603 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
+		D2A04E082C0F69C100B2C603 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		D2A04E0A2C0F6A0F00B2C603 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D2A04E0D2C0F6ADA00B2C603 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
+		D2A04E0F2C0F6E3F00B2C603 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
+		D2A04E112C0F6E6700B2C603 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				48307B652A43730500D3C3B0 /* Cafe24SsurroundAir.ttf */,
+				D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -147,12 +180,16 @@
 			isa = PBXGroup;
 			children = (
 				48307B5F2A43727500D3C3B0 /* Info.plist */,
+				D2A04E022C0F65D400B2C603 /* WeatherAPIKey.plist */,
 				488FA5F12BDF9A6D00CA4567 /* .swiftlint.yml */,
 				D207B2D92BDFB03F00A81B70 /* App */,
 				488FA6042BDFCBBC00CA4567 /* CoreData */,
 				D207B2D82BDFB02400A81B70 /* Resource */,
 				D207B3032BE221AA00A81B70 /* Error */,
 				48E469282A50A3140023B03E /* Model */,
+				D2A04E0C2C0F6A9C00B2C603 /* Weather */,
+				D2A04DF82C0EE89200B2C603 /* Font */,
+				D2A04DFC2C0EF1E700B2C603 /* Color */,
 				D207B2FF2BE2188E00A81B70 /* Manager */,
 				48E4692A2A50A3740023B03E /* ViewController */,
 				D207B2DA2BDFB38300A81B70 /* View */,
@@ -215,8 +252,7 @@
 		48E469282A50A3140023B03E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */,
-				D2E7C4AF2BFF08CF0007BEC8 /* Font.swift */,
+				D2A04E012C0F643200B2C603 /* Weather */,
 				D2E7C4AE2BFF08490007BEC8 /* CoreData */,
 			);
 			name = Model;
@@ -251,6 +287,7 @@
 			children = (
 				48912A7E2BE5190E003FE078 /* JLifeLogo.gif */,
 				48307B5A2A43727500D3C3B0 /* Assets.xcassets */,
+				D2A04DF92C0EEF7B00B2C603 /* Preference */,
 				4800FA1C2A5BFD6C00F90A3D /* Fonts */,
 			);
 			name = Resource;
@@ -268,6 +305,7 @@
 		D207B2DA2BDFB38300A81B70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D23D886C2C101C0900227F33 /* NameSpace */,
 				D207B3332BE3191C00A81B70 /* Custom */,
 				48912A792BE5174B003FE078 /* LoadingView.swift */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
@@ -281,6 +319,9 @@
 			isa = PBXGroup;
 			children = (
 				D207B3012BE218C200A81B70 /* CoreDataManager.swift */,
+				D2A04DF62C0ECF1800B2C603 /* UserDefaultsManager.swift */,
+				D2A04E0A2C0F6A0F00B2C603 /* NetworkManager.swift */,
+				D2A04E0F2C0F6E3F00B2C603 /* LocationDataManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -289,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				D207B3042BE2221700A81B70 /* CoreDataError.swift */,
+				D2A04E112C0F6E6700B2C603 /* LocationError.swift */,
 			);
 			name = Error;
 			sourceTree = "<group>";
@@ -302,6 +344,60 @@
 				D207B33A2BE31CCF00A81B70 /* DayLabel.swift */,
 			);
 			name = Custom;
+			sourceTree = "<group>";
+		};
+		D23D886C2C101C0900227F33 /* NameSpace */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NameSpace;
+			sourceTree = "<group>";
+		};
+		D2A04DF82C0EE89200B2C603 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04DF42C0ECDA200B2C603 /* AppFont.swift */,
+				D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */,
+				D2A04DF02C0EC2A500B2C603 /* FontSize.swift */,
+				D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */,
+				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		D2A04DF92C0EEF7B00B2C603 /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04DFA2C0EEF8C00B2C603 /* Preference.swift */,
+			);
+			name = Preference;
+			sourceTree = "<group>";
+		};
+		D2A04DFC2C0EF1E700B2C603 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04DFD2C0EF38600B2C603 /* AppColor.swift */,
+				48912AEF2BF7CD38003FE078 /* CalendarColorPalette.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		D2A04E012C0F643200B2C603 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04E062C0F697A00B2C603 /* WeatherInformation.swift */,
+				D2A04E082C0F69C100B2C603 /* Weather.swift */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		D2A04E0C2C0F6A9C00B2C603 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				D2A04E042C0F662500B2C603 /* Bundle+.swift */,
+				D2A04E0D2C0F6ADA00B2C603 /* OpenWeather.swift */,
+			);
+			name = Weather;
 			sourceTree = "<group>";
 		};
 		D2E7C4AE2BFF08490007BEC8 /* CoreData */ = {
@@ -387,7 +483,9 @@
 				488FA5F22BDF9A6D00CA4567 /* .swiftlint.yml in Resources */,
 				48912A7F2BE5190E003FE078 /* JLifeLogo.gif in Resources */,
 				48307B662A43730500D3C3B0 /* Cafe24SsurroundAir.ttf in Resources */,
+				D2A04E032C0F65D400B2C603 /* WeatherAPIKey.plist in Resources */,
 				48307B5E2A43727500D3C3B0 /* LaunchScreen.storyboard in Resources */,
+				D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */,
 				48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,13 +524,17 @@
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
 				48912AF22BFF4896003FE078 /* TodoDetailView.swift in Sources */,
-				D2E7C4B02BFF08CF0007BEC8 /* Font.swift in Sources */,
+				D2A04DF72C0ECF1800B2C603 /* UserDefaultsManager.swift in Sources */,
 				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
 				D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */,
+				D2A04DF32C0EC2EC00B2C603 /* UIFontMetrics+.swift in Sources */,
 				48D59E882BE21508005278EC /* TotalScore.xcdatamodeld in Sources */,
 				48C344522A4889550061F930 /* Monthly.swift in Sources */,
+				D2A04E0E2C0F6ADA00B2C603 /* OpenWeather.swift in Sources */,
+				D2A04E092C0F69C100B2C603 /* Weather.swift in Sources */,
+				D2A04DF12C0EC2A500B2C603 /* FontSize.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,
 				48D59E822BE214E7005278EC /* DailyTodo.xcdatamodeld in Sources */,
 				48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */,
@@ -440,11 +542,19 @@
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
 				48D59E922BE21646005278EC /* DailyTodoEntity+CoreDataProperties.swift in Sources */,
 				48912A7A2BE5174B003FE078 /* LoadingView.swift in Sources */,
+				D2A04E002C0F02E500B2C603 /* UIFont+.swift in Sources */,
+				D2A04DEF2C0EC25F00B2C603 /* FontStyle.swift in Sources */,
+				D2A04E102C0F6E3F00B2C603 /* LocationDataManager.swift in Sources */,
 				D207B3372BE31BD800A81B70 /* HorizontalStackView.swift in Sources */,
 				48D59E932BE21646005278EC /* MonthlyBoxEntity+CoreDataClass.swift in Sources */,
+				D2A04E0B2C0F6A0F00B2C603 /* NetworkManager.swift in Sources */,
+				D2A04DFB2C0EEF8C00B2C603 /* Preference.swift in Sources */,
 				48D59E942BE21646005278EC /* MonthlyBoxEntity+CoreDataProperties.swift in Sources */,
 				48912A872BEB91DC003FE078 /* SettingView.swift in Sources */,
+				D2A04E122C0F6E6700B2C603 /* LocationError.swift in Sources */,
 				D207B3352BE3197800A81B70 /* ImageButton.swift in Sources */,
+				D2A04E072C0F697A00B2C603 /* WeatherInformation.swift in Sources */,
+				D2A04DFE2C0EF38600B2C603 /* AppColor.swift in Sources */,
 				48D59E952BE21646005278EC /* DailyBoxEntity+CoreDataClass.swift in Sources */,
 				48D59E962BE21646005278EC /* DailyBoxEntity+CoreDataProperties.swift in Sources */,
 				48912AF02BF7CD38003FE078 /* CalendarColorPalette.swift in Sources */,
@@ -453,11 +563,13 @@
 				48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */,
 				48D59E852BE214F8005278EC /* MonthlyBox.xcdatamodeld in Sources */,
 				486368DD2A58077B007CE00A /* Todo.swift in Sources */,
+				D2A04DF52C0ECDA200B2C603 /* AppFont.swift in Sources */,
 				48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */,
 				486368DB2A580770007CE00A /* Daily.swift in Sources */,
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */,
 				D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */,
+				D2A04E052C0F662500B2C603 /* Bundle+.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

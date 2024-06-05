@@ -22,6 +22,6 @@ extension DailyBoxEntity {
   
 }
 
-extension DailyBoxEntity : Identifiable {
+extension DailyBoxEntity: Identifiable {
   
 }

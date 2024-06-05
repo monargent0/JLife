@@ -18,6 +18,7 @@ final class SettingViewController: UIViewController {
   // MARK: - ViewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     tappedApplyButton()
   }
   

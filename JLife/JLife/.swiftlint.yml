@@ -7,3 +7,5 @@ disabled_rules:
 - unused_optional_binding
 - force_cast
 - identifier_name
+- large_tuple
+- unneeded_synthesized_initializer

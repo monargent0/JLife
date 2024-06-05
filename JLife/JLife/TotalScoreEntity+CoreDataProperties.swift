@@ -22,6 +22,6 @@ extension TotalScoreEntity {
   
 }
 
-extension TotalScoreEntity : Identifiable {
+extension TotalScoreEntity: Identifiable {
   
 }

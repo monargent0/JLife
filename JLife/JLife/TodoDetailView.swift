@@ -12,69 +12,63 @@ final class TodoDetailView: UIView {
   // MARK: - Components
   private let timeLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .left
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.title1.size,
+                                          for: .headline)
     label.textColor = UIColor(resource: .reversedSystem)
     
     return label
   }()
   
-  // TODO: - border 색상 사용자 테마 색으로 적용
   private let todoTextView: UITextView = {
     let textView = UITextView()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .body)
     textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
     textView.textColor = UIColor(resource: .reversedSystem)
-    textView.layer.borderColor = UIColor(resource: .accent).cgColor
+    textView.layer.borderColor = UIColor(named: AppColor.shared.theme?.border ?? "")?.cgColor
     textView.layer.borderWidth = 0.7
     textView.layer.masksToBounds = true
     textView.layer.cornerRadius = 5
+    let customFont = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .body)
     
     return textView
   }()
   
-  private let txtCountLabel: UILabel = {
+  private let textCountLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .caption1)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .right
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: customFont)
     label.textColor = UIColor(resource: .reversedSystem)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .caption1)
     
     return label
   }()
   
   private let timeSetLabel: UILabel = {
     let label = UILabel()
-    let customFont = UIFont(name: AppFont.cafe24Font,
-                            size: UIFont.labelFontSize)
-    ?? UIFont.preferredFont(forTextStyle: .largeTitle)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "시간"
     label.textAlignment = .center
     label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: customFont)
     label.textColor = UIColor(resource: .reversedSystem)
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                              of: FontSize.label.size,
+                                              for: .largeTitle)
     
     return label
   }()
   
-  // TODO: - tint 색상 사용자 테마 색으로 적용
   private let timeSetSwitch: UISwitch = {
     let setSwitch = UISwitch()
     setSwitch.translatesAutoresizingMaskIntoConstraints = false
-    setSwitch.onTintColor = UIColor(resource: .accent)
+    setSwitch.onTintColor = UIColor(named: AppColor.shared.theme?.mainColor ?? "")
     
     return setSwitch
   }()
@@ -106,21 +100,19 @@ final class TodoDetailView: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("취소", for: .normal)
-    button.titleLabel?.font = UIFont(name: AppFont.cafe24Font,
-                                     size: UIFont.buttonFontSize)
+    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
+                                               of: FontSize.body1.size)
     button.configuration = .tinted()
     button.tintColor = .gray
     
     return button
   }()
   
-  // TODO: - title 색상 사용자 테마 색으로 적용
   private let saveButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("저장", for: .normal)
-    button.titleLabel?.font = UIFont(name: AppFont.cafe24Font,
-                                     size: UIFont.buttonFontSize)
+    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
+                                               of: FontSize.body1.size)
     button.configuration = .tinted()
     button.setTitleColor( UIColor(resource: .accent), for: .normal)
     
@@ -151,13 +143,13 @@ final class TodoDetailView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    firstSetting()
+    setUpPreference()
     configureUI()
     configureBackgroundColor()
     setUpAllConstraints()
     setUpTextViewMethod()
     pickerAndSwitchAddTarget()
-    tapBottomButton()
+    tappedBottomButton()
   }
   
   required init?(coder: NSCoder) {
@@ -169,25 +161,25 @@ final class TodoDetailView: UIView {
     todoTextView.delegate = self
   }
   
-  private func firstSetting() {
+  private func setUpPreference() {
     timeLabel.text = "시간 없음"
     timeSetSwitch.isOn = false
-    txtCountLabel.text = String(todoTextView.text.count)
+    textCountLabel.text = String(todoTextView.text.count)
     timeSetDatePicker.isHidden = timeSetSwitch.isOn ? false : true
     todoTextView.becomeFirstResponder()
   }
   
   private func pickerAndSwitchAddTarget() {
     timeSetDatePicker.addTarget(self,
-                                action: #selector(isTimeChange),
+                                action: #selector(pickTime),
                                 for: .valueChanged)
     timeSetSwitch.addTarget(self,
-                            action: #selector(isSwitchChange),
+                            action: #selector(changeSwitch),
                             for: .valueChanged)
   }
   
   @objc
-  private func isTimeChange(_ sender: UIDatePicker) {
+  private func pickTime(_ sender: UIDatePicker) {
     timeLabel.text = dateFormat(sender.date)
   }
   
@@ -200,7 +192,7 @@ final class TodoDetailView: UIView {
   }
   
   @objc
-  private func isSwitchChange(_ sender: UISwitch) {
+  private func changeSwitch(_ sender: UISwitch) {
     if sender.isOn {
       timeSetDatePicker.isHidden = false
       timeLabel.text = dateFormat(timeSetDatePicker.date)
@@ -210,7 +202,7 @@ final class TodoDetailView: UIView {
     }
   }
   
-  private func tapBottomButton() {
+  private func tappedBottomButton() {
     cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
   }
   
@@ -227,7 +219,7 @@ final class TodoDetailView: UIView {
   private func configureUI() {
     [halfStackView, timeSetDatePicker, buttonStackView]
       .forEach { addSubview($0) }
-    [timeLabel, todoTextView, txtCountLabel, timeSetStackView]
+    [timeLabel, todoTextView, textCountLabel, timeSetStackView]
       .forEach {halfStackView.addArrangedSubview($0)}
     [timeSetLabel, timeSetSwitch]
       .forEach {timeSetStackView.addArrangedSubview($0)}
@@ -285,7 +277,7 @@ extension TodoDetailView: UITextViewDelegate {
       saveButton.isEnabled = true
     }
     let txtCount = String(todoTextView.text.count)
-    txtCountLabel.text = txtCount
+    textCountLabel.text = txtCount
   }
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

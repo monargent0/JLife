@@ -19,6 +19,10 @@ final class MainCalendarView: UIView {
     let label = UILabel()
     label.text = "TEST MONTH"
     label.textColor = UIColor(resource: .reversedSystem)
+    label.adjustsFontForContentSizeCategory = true
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.headline3.size,
+                                          for: .headline)
     
     return label
   }()
@@ -50,6 +54,51 @@ final class MainCalendarView: UIView {
     
     return collectionView
   }()
+  
+  private let monthlyBoxTotalStackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.axis = .vertical
+    stackView.alignment = .leading
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    
+    return stackView
+  }()
+  
+  private let secondSeparatorView: UIView = SeparatorView()
+  
+  private let monthlyBoxTopStackView: UIStackView = HorizontalStackView()
+  
+  private let monthlyBoxTitleLabel: UILabel = {
+    let label = UILabel()
+    label.text = "#Monthly"
+    label.textColor = UIColor(resource: .reversedSystem)
+    label.adjustsFontForContentSizeCategory = true
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.title1.size,
+                                          for: .title1)
+    
+    return label
+  }()
+  
+  private let plusButton: UIButton = ImageButton(with: "plus")
+  
+  private let monthlyBoxDetailLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Monthly Box를 자유롭게 채워보세요!"
+    label.textAlignment = .left
+    label.numberOfLines = 0
+    label.textColor = label.text == "Monthly Box를 자유롭게 채워보세요!" ?
+    UIColor(named: AppColor.shared.theme?.mainColor ?? "") :
+    UIColor(resource: .reversedSystem)
+    label.adjustsFontForContentSizeCategory = true
+    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
+                                          of: FontSize.body1.size,
+                                          for: .title3)
+    
+    return label
+  }()
+  
+  private let thirdSeparatorView: UIView = SeparatorView()
   
   // MARK: - Intializer
   override init(frame: CGRect) {
@@ -87,7 +136,7 @@ final class MainCalendarView: UIView {
   }
   
   private func configureUI() {
-    [buttonStackView, monthlyStackView, firstSeparatorView, daysOfWeekStackView]
+    [buttonStackView, monthlyStackView, firstSeparatorView, daysOfWeekStackView, calendarCollectionView, secondSeparatorView, monthlyBoxTotalStackView, thirdSeparatorView]
       .forEach { addSubview($0) }
     [settingButton, searchingButton]
       .forEach { buttonStackView.addArrangedSubview($0) }
@@ -95,6 +144,10 @@ final class MainCalendarView: UIView {
       .forEach { monthlyStackView.addArrangedSubview($0) }
     [sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel]
       .forEach { daysOfWeekStackView.addArrangedSubview($0) }
+    [monthlyBoxTopStackView, monthlyBoxDetailLabel]
+      .forEach { monthlyBoxTotalStackView.addArrangedSubview($0) }
+    [monthlyBoxTitleLabel, plusButton]
+      .forEach { monthlyBoxTopStackView.addArrangedSubview($0)}
   }
   
   // MARK: - Constraints
@@ -103,6 +156,12 @@ final class MainCalendarView: UIView {
     setUpMonthlyStackViewConstraints()
     setUpFirstSeparatorViewConstraints()
     setUpDaysOfWeekStackView()
+    //    setUpCalendarCollectionView()
+    setUpSecondSeparatorViewConstraints()
+    setUpMonthlyBoxTotalStackView()
+    setUpMonthlyBoxTopStackView()
+    setUpMonthlyBoxDetailLabel()
+    setUpThirdSeparatorViewConstraints()
   }
   
   private func setUpButtonStackViewConstraints() {
@@ -143,6 +202,64 @@ final class MainCalendarView: UIView {
       daysOfWeekStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
       daysOfWeekStackView.topAnchor.constraint(equalTo: firstSeparatorView.bottomAnchor,
                                                constant: 8)
+    ])
+  }
+  
+  private func setUpCalendarCollectionView() {
+    NSLayoutConstraint.activate([
+      calendarCollectionView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                    multiplier: 0.85),
+      calendarCollectionView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+      calendarCollectionView.topAnchor.constraint(equalTo: daysOfWeekStackView.bottomAnchor,
+                                                  constant: 8)
+    ])
+  }
+  
+  private func setUpSecondSeparatorViewConstraints() {
+    NSLayoutConstraint.activate([
+      secondSeparatorView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                 multiplier: 0.95),
+      secondSeparatorView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+      secondSeparatorView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
+                                               constant: -200),
+      secondSeparatorView.heightAnchor.constraint(equalToConstant: 2)
+    ])
+  }
+  
+  private func setUpMonthlyBoxTotalStackView() {
+    NSLayoutConstraint.activate([
+      monthlyBoxTotalStackView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                      multiplier: 0.85),
+      monthlyBoxTotalStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+      monthlyBoxTotalStackView.topAnchor.constraint(equalTo: secondSeparatorView.bottomAnchor,
+                                                    constant: 8)
+    ])
+  }
+  
+  private func setUpMonthlyBoxTopStackView() {
+    NSLayoutConstraint.activate([
+      monthlyBoxTopStackView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                    multiplier: 0.85),
+      monthlyBoxTopStackView.topAnchor.constraint(equalTo: monthlyBoxTotalStackView.topAnchor)
+    ])
+  }
+  
+  private func setUpMonthlyBoxDetailLabel() {
+    NSLayoutConstraint.activate([
+      monthlyBoxDetailLabel.topAnchor.constraint(equalTo: monthlyBoxTitleLabel.bottomAnchor,
+                                                 constant: 8),
+      monthlyBoxDetailLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                   multiplier: 0.85)
+    ])
+  }
+  
+  private func setUpThirdSeparatorViewConstraints() {
+    NSLayoutConstraint.activate([
+      thirdSeparatorView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor,
+                                                multiplier: 0.95),
+      thirdSeparatorView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+      thirdSeparatorView.heightAnchor.constraint(equalToConstant: 2),
+      thirdSeparatorView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -2)
     ])
   }
 }

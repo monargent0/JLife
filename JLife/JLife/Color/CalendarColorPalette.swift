@@ -8,38 +8,38 @@
 typealias Theme = (mainColor: String, border: String, kr: String)
 
 enum CalendarColorPalette: String, CaseIterable {
-  case Basic
-  case Coral
-  case Purple
-  case Pink
-  case Beige
-  case Green
-  case WarmGray
-  case CoolGray
-  case Blue
-  case Yellow
+  case basic
+  case coral
+  case purple
+  case pink
+  case beige
+  case green
+  case warmGray
+  case coolGray
+  case blue
+  case yellow
   
   var theme: Theme {
     switch self {
-    case .Basic:
+    case .basic:
       return ("BasicTheme", "BasicBorder", "기본")
-    case .Coral:
+    case .coral:
       return ("CoralTheme", "CoralBorder", "다홍색")
-    case .Purple:
+    case .purple:
       return ("PurpleTheme", "PurpleBorder", "보라색")
-    case .Pink:
+    case .pink:
       return ("PinkTheme", "PinkBorder", "분홍색")
-    case .Beige:
+    case .beige:
       return ("BeigeTheme", "BeigeBorder", "연갈색")
-    case .Green:
+    case .green:
       return ("GreenTheme", "GreenBorder", "연녹색")
-    case .WarmGray:
+    case .warmGray:
       return ("WarmGrayTheme", "WarmGrayBorder", "적회색")
-    case .CoolGray:
+    case .coolGray:
       return ("CoolGrayTheme", "CoolGrayBorder", "청회색")
-    case .Blue:
+    case .blue:
       return ("BlueTheme", "BlueBorder", "하늘색")
-    case .Yellow:
+    case .yellow:
       return ("YellowTheme", "YellowBorder", "연노랑색")
     }
   }

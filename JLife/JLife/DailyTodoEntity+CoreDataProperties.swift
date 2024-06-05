@@ -25,6 +25,6 @@ extension DailyTodoEntity {
   
 }
 
-extension DailyTodoEntity : Identifiable {
+extension DailyTodoEntity: Identifiable {
   
 }

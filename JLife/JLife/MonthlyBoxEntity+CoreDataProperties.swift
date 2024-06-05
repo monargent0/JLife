@@ -23,6 +23,6 @@ extension MonthlyBoxEntity {
   
 }
 
-extension MonthlyBoxEntity : Identifiable {
+extension MonthlyBoxEntity: Identifiable {
   
 }
