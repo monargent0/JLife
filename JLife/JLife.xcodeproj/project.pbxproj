@@ -305,6 +305,7 @@
 		D207B2DA2BDFB38300A81B70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D23D886C2C101C0900227F33 /* NameSpace */,
 				D207B3332BE3191C00A81B70 /* Custom */,
 				48912A792BE5174B003FE078 /* LoadingView.swift */,
 				D207B30C2BE27BE500A81B70 /* MainCalendarView.swift */,
@@ -317,9 +318,9 @@
 		D207B2FF2BE2188E00A81B70 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				D2A04E0A2C0F6A0F00B2C603 /* NetworkManager.swift */,
-				D2A04DF62C0ECF1800B2C603 /* UserDefaultsManager.swift */,
 				D207B3012BE218C200A81B70 /* CoreDataManager.swift */,
+				D2A04DF62C0ECF1800B2C603 /* UserDefaultsManager.swift */,
+				D2A04E0A2C0F6A0F00B2C603 /* NetworkManager.swift */,
 				D2A04E0F2C0F6E3F00B2C603 /* LocationDataManager.swift */,
 			);
 			name = Manager;
@@ -345,14 +346,21 @@
 			name = Custom;
 			sourceTree = "<group>";
 		};
+		D23D886C2C101C0900227F33 /* NameSpace */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NameSpace;
+			sourceTree = "<group>";
+		};
 		D2A04DF82C0EE89200B2C603 /* Font */ = {
 			isa = PBXGroup;
 			children = (
 				D2A04DF42C0ECDA200B2C603 /* AppFont.swift */,
 				D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */,
 				D2A04DF02C0EC2A500B2C603 /* FontSize.swift */,
-				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
 				D2A04DFF2C0F02E500B2C603 /* UIFont+.swift */,
+				D2A04DF22C0EC2EC00B2C603 /* UIFontMetrics+.swift */,
 			);
 			name = Font;
 			sourceTree = "<group>";
