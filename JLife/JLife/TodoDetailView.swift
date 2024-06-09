@@ -10,18 +10,7 @@ import UIKit
 final class TodoDetailView: UIView {
   
   // MARK: - Components
-  private let timeLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = .left
-    label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                          of: FontSize.title1.size,
-                                          for: .headline)
-    label.textColor = UIColor(resource: .reversedSystem)
-    
-    return label
-  }()
+  private let timeLabel: UILabel = BodyLabel(for: "", alignment: .left)
   
   private let todoTextView: UITextView = {
     let textView = UITextView()
@@ -40,30 +29,17 @@ final class TodoDetailView: UIView {
   
   private let textCountLabel: UILabel = {
     let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .right
     label.adjustsFontForContentSizeCategory = true
     label.textColor = UIColor(resource: .reversedSystem)
     label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                              of: FontSize.label.size,
-                                              for: .caption1)
+                                          of: FontSize.label.size,
+                                          for: .caption1)
     
     return label
   }()
   
-  private let timeSetLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "시간"
-    label.textAlignment = .center
-    label.adjustsFontForContentSizeCategory = true
-    label.textColor = UIColor(resource: .reversedSystem)
-    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                              of: FontSize.label.size,
-                                              for: .largeTitle)
-    
-    return label
-  }()
+  private let timeSetLabel: UILabel = TitleLabel(for: "시간")
   
   private let timeSetSwitch: UISwitch = {
     let setSwitch = UISwitch()
@@ -73,16 +49,7 @@ final class TodoDetailView: UIView {
     return setSwitch
   }()
   
-  private let timeSetStackView: UIStackView = {
-    let stackView = UIStackView(frame: .zero)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .horizontal
-    stackView.spacing = 10
-    stackView.alignment = .fill
-    stackView.distribution = .equalSpacing
-    
-    return stackView
-  }()
+  private let timeSetStackView: UIStackView = HorizontalStackView()
   
   private let timeSetDatePicker: UIDatePicker = {
     let datePicker = UIDatePicker()
@@ -96,28 +63,9 @@ final class TodoDetailView: UIView {
     return datePicker
   }()
   
-  private let cancelButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("취소", for: .normal)
-    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
-                                               of: FontSize.body1.size)
-    button.configuration = .tinted()
-    button.tintColor = .gray
-    
-    return button
-  }()
+  private let cancelButton: UIButton = TintedButton(title: "취소", color: UIColor.gray)
   
-  private let saveButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.titleLabel?.font = UIFont.setUpFont(with: AppFont.shared.style,
-                                               of: FontSize.body1.size)
-    button.configuration = .tinted()
-    button.setTitleColor( UIColor(resource: .accent), for: .normal)
-    
-    return button
-  }()
+  private let saveButton: UIButton = TintedButton(title: "저장", color: UIColor(resource: .accent))
   
   private let buttonStackView: UIStackView = {
     let stackView = UIStackView(frame: .zero)
@@ -130,16 +78,7 @@ final class TodoDetailView: UIView {
     return stackView
   }()
   
-  private var halfStackView: UIStackView = {
-    let stackView = UIStackView(frame: .zero)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .vertical
-    stackView.spacing = 3
-    stackView.alignment = .fill
-    stackView.distribution = .equalCentering
-    
-    return stackView
-  }()
+  private var halfStackView: UIStackView = VerticalFillStackView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)

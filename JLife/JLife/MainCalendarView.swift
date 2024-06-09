@@ -32,13 +32,13 @@ final class MainCalendarView: UIView {
   
   // MARK: - Week Labels
   private let daysOfWeekStackView: UIStackView = HorizontalStackView()
-  private let sundayLabel: UILabel = DayLabel(for: "일")
-  private let mondayLabel: UILabel = DayLabel(for: "월")
-  private let tuesdayLabel: UILabel = DayLabel(for: "화")
-  private let wednesdayLabel: UILabel = DayLabel(for: "수")
-  private let thursdayLabel: UILabel = DayLabel(for: "목")
-  private let fridayLabel: UILabel = DayLabel(for: "금")
-  private let saturdayLabel: UILabel = DayLabel(for: "토")
+  private let sundayLabel: UILabel = BodyLabel(for: "일")
+  private let mondayLabel: UILabel = BodyLabel(for: "월")
+  private let tuesdayLabel: UILabel = BodyLabel(for: "화")
+  private let wednesdayLabel: UILabel = BodyLabel(for: "수")
+  private let thursdayLabel: UILabel = BodyLabel(for: "목")
+  private let fridayLabel: UILabel = BodyLabel(for: "금")
+  private let saturdayLabel: UILabel = BodyLabel(for: "토")
   
   private let compositionalLayout: UICollectionViewCompositionalLayout = {
     var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
@@ -68,18 +68,8 @@ final class MainCalendarView: UIView {
   
   private let monthlyBoxTopStackView: UIStackView = HorizontalStackView()
   
-  private let monthlyBoxTitleLabel: UILabel = {
-    let label = UILabel()
-    label.text = "#Monthly"
-    label.textColor = UIColor(resource: .reversedSystem)
-    label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                          of: FontSize.title1.size,
-                                          for: .title1)
-    
-    return label
-  }()
-  
+  private let monthlyBoxTitleLabel: UILabel = TitleLabel(for: "#Monthly")
+
   private let plusButton: UIButton = ImageButton(with: "plus")
   
   private let monthlyBoxDetailLabel: UILabel = {
