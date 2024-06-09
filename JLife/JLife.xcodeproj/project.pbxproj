@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4800FA1D2A5C101200F90A3D /* AlertViewController.swift */; };
 		4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4800FA1F2A5DA28200F90A3D /* TotalScore.swift */; };
+		48251D3D2C15525500735086 /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48251D3C2C15525500735086 /* TintedButton.swift */; };
+		48251D3F2C1555CE00735086 /* VerticalFillStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48251D3E2C1555CE00735086 /* VerticalFillStackView.swift */; };
+		48251D412C15568800735086 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48251D402C15568800735086 /* TitleLabel.swift */; };
+		48251D452C15625400735086 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48251D442C15625400735086 /* NameSpace.swift */; };
+		48251D472C15E34900735086 /* TodayDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48251D462C15E34900735086 /* TodayDate.swift */; };
 		48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B512A43727400D3C3B0 /* AppDelegate.swift */; };
 		48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48307B532A43727400D3C3B0 /* SceneDelegate.swift */; };
 		48307B5B2A43727500D3C3B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48307B5A2A43727500D3C3B0 /* Assets.xcassets */; };
@@ -51,7 +56,7 @@
 		D207B3352BE3197800A81B70 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3342BE3197800A81B70 /* ImageButton.swift */; };
 		D207B3372BE31BD800A81B70 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3362BE31BD800A81B70 /* HorizontalStackView.swift */; };
 		D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B3382BE31C5A00A81B70 /* SeparatorView.swift */; };
-		D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* DayLabel.swift */; };
+		D207B33B2BE31CCF00A81B70 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B33A2BE31CCF00A81B70 /* BodyLabel.swift */; };
 		D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D220BA162BE51BD2007892AB /* LoadingViewController.swift */; };
 		D2A04DED2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */; };
 		D2A04DEF2C0EC25F00B2C603 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */; };
@@ -75,6 +80,11 @@
 /* Begin PBXFileReference section */
 		4800FA1D2A5C101200F90A3D /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4800FA1F2A5DA28200F90A3D /* TotalScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScore.swift; sourceTree = "<group>"; };
+		48251D3C2C15525500735086 /* TintedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedButton.swift; sourceTree = "<group>"; };
+		48251D3E2C1555CE00735086 /* VerticalFillStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalFillStackView.swift; sourceTree = "<group>"; };
+		48251D402C15568800735086 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		48251D442C15625400735086 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
+		48251D462C15E34900735086 /* TodayDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDate.swift; sourceTree = "<group>"; };
 		48307B4E2A43727400D3C3B0 /* JLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48307B512A43727400D3C3B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48307B532A43727400D3C3B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +126,7 @@
 		D207B3342BE3197800A81B70 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		D207B3362BE31BD800A81B70 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		D207B3382BE31C5A00A81B70 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
-		D207B33A2BE31CCF00A81B70 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
+		D207B33A2BE31CCF00A81B70 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		D220BA162BE51BD2007892AB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D2A04DEC2C0EC17900B2C603 /* Cafe24Simplehae-v2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Simplehae-v2.0.ttf"; sourceTree = "<group>"; };
 		D2A04DEE2C0EC25F00B2C603 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
@@ -277,6 +287,7 @@
 		48E4692C2A50A3CC0023B03E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				48251D462C15E34900735086 /* TodayDate.swift */,
 				48307B6B2A43741D00D3C3B0 /* CalendarBuilder.swift */,
 			);
 			name = Service;
@@ -339,9 +350,12 @@
 			isa = PBXGroup;
 			children = (
 				D207B3342BE3197800A81B70 /* ImageButton.swift */,
+				48251D3C2C15525500735086 /* TintedButton.swift */,
 				D207B3362BE31BD800A81B70 /* HorizontalStackView.swift */,
+				48251D3E2C1555CE00735086 /* VerticalFillStackView.swift */,
 				D207B3382BE31C5A00A81B70 /* SeparatorView.swift */,
-				D207B33A2BE31CCF00A81B70 /* DayLabel.swift */,
+				D207B33A2BE31CCF00A81B70 /* BodyLabel.swift */,
+				48251D402C15568800735086 /* TitleLabel.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 		D23D886C2C101C0900227F33 /* NameSpace */ = {
 			isa = PBXGroup;
 			children = (
+				48251D442C15625400735086 /* NameSpace.swift */,
 			);
 			name = NameSpace;
 			sourceTree = "<group>";
@@ -521,11 +536,13 @@
 				D207B3392BE31C5A00A81B70 /* SeparatorView.swift in Sources */,
 				48912AF42BFF67AF003FE078 /* TodoDetailViewController.swift in Sources */,
 				4800FA1E2A5C101200F90A3D /* AlertViewController.swift in Sources */,
+				48251D452C15625400735086 /* NameSpace.swift in Sources */,
 				48C344562A4AEA2C0061F930 /* MonthlyPopUpViewController.swift in Sources */,
 				48C84A502B7F7CA600CE1276 /* SettingViewController.swift in Sources */,
 				48912AF22BFF4896003FE078 /* TodoDetailView.swift in Sources */,
 				D2A04DF72C0ECF1800B2C603 /* UserDefaultsManager.swift in Sources */,
-				D207B33B2BE31CCF00A81B70 /* DayLabel.swift in Sources */,
+				48251D3F2C1555CE00735086 /* VerticalFillStackView.swift in Sources */,
+				D207B33B2BE31CCF00A81B70 /* BodyLabel.swift in Sources */,
 				48307B522A43727400D3C3B0 /* AppDelegate.swift in Sources */,
 				D207B30D2BE27BE500A81B70 /* MainCalendarView.swift in Sources */,
 				D220BA172BE51BD2007892AB /* LoadingViewController.swift in Sources */,
@@ -537,6 +554,7 @@
 				D2A04DF12C0EC2A500B2C603 /* FontSize.swift in Sources */,
 				48307B542A43727400D3C3B0 /* SceneDelegate.swift in Sources */,
 				48D59E822BE214E7005278EC /* DailyTodo.xcdatamodeld in Sources */,
+				48251D3D2C15525500735086 /* TintedButton.swift in Sources */,
 				48E4692E2A50A4140023B03E /* DailyPopUpViewController.swift in Sources */,
 				48D59E7F2BE214D7005278EC /* DailyBox.xcdatamodeld in Sources */,
 				48D59E912BE21646005278EC /* DailyTodoEntity+CoreDataClass.swift in Sources */,
@@ -562,6 +580,7 @@
 				48D59E972BE21646005278EC /* TotalScoreEntity+CoreDataClass.swift in Sources */,
 				48D59E982BE21646005278EC /* TotalScoreEntity+CoreDataProperties.swift in Sources */,
 				48D59E852BE214F8005278EC /* MonthlyBox.xcdatamodeld in Sources */,
+				48251D472C15E34900735086 /* TodayDate.swift in Sources */,
 				486368DD2A58077B007CE00A /* Todo.swift in Sources */,
 				D2A04DF52C0ECDA200B2C603 /* AppFont.swift in Sources */,
 				48307B6C2A43741D00D3C3B0 /* CalendarBuilder.swift in Sources */,
@@ -569,6 +588,7 @@
 				48307B682A4373ED00D3C3B0 /* MainViewController.swift in Sources */,
 				4800FA202A5DA28200F90A3D /* TotalScore.swift in Sources */,
 				D207B3022BE218C200A81B70 /* CoreDataManager.swift in Sources */,
+				48251D412C15568800735086 /* TitleLabel.swift in Sources */,
 				D2A04E052C0F662500B2C603 /* Bundle+.swift in Sources */,
 				48307B6A2A43740000D3C3B0 /* DailyViewController.swift in Sources */,
 			);

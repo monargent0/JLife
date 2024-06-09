@@ -1,28 +1,28 @@
 //
-//  DayLabel.swift
+//  TitleLabel.swift
 //  JLife
 //
-//  Created by OoO on 5/2/24.
+//  Created by OoO on 6/9/24.
 //
 
 import UIKit
 
-final class DayLabel: UILabel {
+final class TitleLabel: UILabel {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
   }
   
-  init(for day: String) {
+  init(for title: String) {
     super.init(frame: .zero)
     
-    text = day
+    text = title
     textAlignment = .center
     textColor = UIColor(resource: .reversedSystem)
     adjustsFontForContentSizeCategory = true
     font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                          of: FontSize.body1.size,
-                                          for: .body)
+                                    of: FontSize.title1.size,
+                                    for: .title1)
   }
   
   required init?(coder: NSCoder) {

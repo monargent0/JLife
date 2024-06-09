@@ -10,10 +10,10 @@ import UIKit
 final class MainCalendarView: UIView {
   
   private let buttonStackView: UIStackView = HorizontalStackView()
-  private let settingButton: UIButton = ImageButton(with: "gearshape.fill")
-  private let searchingButton: UIButton = ImageButton(with: "magnifyingglass")
+  private let settingButton: UIButton = ImageButton(with: NameSpace.Image.settingIcon)
+  private let searchingButton: UIButton = ImageButton(with: NameSpace.Image.searchingIcon)
   private let monthlyStackView: UIStackView = HorizontalStackView()
-  private let previousMonthButton: UIButton = ImageButton(with: "chevron.left")
+  private let previousMonthButton: UIButton = ImageButton(with: NameSpace.Image.previousIcon)
   
   private let currentMonthLabel: UILabel = {
     let label = UILabel()
@@ -27,18 +27,18 @@ final class MainCalendarView: UIView {
     return label
   }()
   
-  private let nextMonthButton: UIButton = ImageButton(with: "chevron.right")
+  private let nextMonthButton: UIButton = ImageButton(with: NameSpace.Image.nextIcon)
   private let firstSeparatorView: UIView = SeparatorView()
   
   // MARK: - Week Labels
   private let daysOfWeekStackView: UIStackView = HorizontalStackView()
-  private let sundayLabel: UILabel = DayLabel(for: "일")
-  private let mondayLabel: UILabel = DayLabel(for: "월")
-  private let tuesdayLabel: UILabel = DayLabel(for: "화")
-  private let wednesdayLabel: UILabel = DayLabel(for: "수")
-  private let thursdayLabel: UILabel = DayLabel(for: "목")
-  private let fridayLabel: UILabel = DayLabel(for: "금")
-  private let saturdayLabel: UILabel = DayLabel(for: "토")
+  private let sundayLabel: UILabel = BodyLabel(for: NameSpace.DayText.sunday)
+  private let mondayLabel: UILabel = BodyLabel(for: NameSpace.DayText.monday)
+  private let tuesdayLabel: UILabel = BodyLabel(for: NameSpace.DayText.tuesday)
+  private let wednesdayLabel: UILabel = BodyLabel(for: NameSpace.DayText.wednesday)
+  private let thursdayLabel: UILabel = BodyLabel(for: NameSpace.DayText.thursday)
+  private let fridayLabel: UILabel = BodyLabel(for: NameSpace.DayText.friday)
+  private let saturdayLabel: UILabel = BodyLabel(for: NameSpace.DayText.saturday)
   
   private let compositionalLayout: UICollectionViewCompositionalLayout = {
     var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
@@ -68,27 +68,17 @@ final class MainCalendarView: UIView {
   
   private let monthlyBoxTopStackView: UIStackView = HorizontalStackView()
   
-  private let monthlyBoxTitleLabel: UILabel = {
-    let label = UILabel()
-    label.text = "#Monthly"
-    label.textColor = UIColor(resource: .reversedSystem)
-    label.adjustsFontForContentSizeCategory = true
-    label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                          of: FontSize.title1.size,
-                                          for: .title1)
-    
-    return label
-  }()
-  
-  private let plusButton: UIButton = ImageButton(with: "plus")
+  private let monthlyBoxTitleLabel: UILabel = TitleLabel(for: NameSpace.Notice.monthlyBoxTitle)
+
+  private let plusButton: UIButton = ImageButton(with: NameSpace.Image.plusIcon)
   
   private let monthlyBoxDetailLabel: UILabel = {
     let label = UILabel()
-    label.text = "Monthly Box를 자유롭게 채워보세요!"
+    label.text = NameSpace.Notice.monthlyBoxDetail
     label.textAlignment = .left
     label.numberOfLines = 0
-    label.textColor = label.text == "Monthly Box를 자유롭게 채워보세요!" ?
-    UIColor(named: AppColor.shared.theme?.mainColor ?? "") :
+    label.textColor = label.text == NameSpace.Notice.monthlyBoxDetail ?
+    UIColor(named: AppColor.shared.theme?.mainColor ?? CalendarColorPalette.basic.theme.mainColor) :
     UIColor(resource: .reversedSystem)
     label.adjustsFontForContentSizeCategory = true
     label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
