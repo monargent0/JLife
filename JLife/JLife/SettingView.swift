@@ -30,7 +30,7 @@ final class SettingView: UIView {
     return pickerView
   }()
   
-  private let nowThemeLabel: UILabel = BodyLabel(for: "현재 테마 색상: " + (AppColor.shared.theme?.kr ?? CalendarColorPalette.basic.theme.kr))
+  private let nowThemeLabel: UILabel = BodyLabel(for: NameSpace.Notice.nowTheme + (AppColor.shared.theme?.kr ?? CalendarColorPalette.basic.theme.kr))
   
   private let applyButton: UIButton = TintedButton(title: "적용", color: UIColor(resource: .accent))
   
@@ -113,7 +113,7 @@ extension SettingView: UIPickerViewDelegate, UIPickerViewDataSource {
   // TODO: - 선택한 테마 값 넘기는 작업
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     themeImageView.image = UIImage(named: String(describing: CalendarColorPalette.allCases[row]))
-    nowThemeLabel.text = "현재 테마 색상: \(CalendarColorPalette.allCases[row].theme.kr)"
+    nowThemeLabel.text = NameSpace.Notice.nowTheme + CalendarColorPalette.allCases[row].theme.kr
   }
   
   func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -125,8 +125,8 @@ extension SettingView: UIPickerViewDelegate, UIPickerViewDataSource {
     label.adjustsFontForContentSizeCategory = true
     label.text = CalendarColorPalette.allCases[row].theme.kr
     label.font = UIFontMetrics.customFont(with: AppFont.shared.style,
-                                              of: FontSize.body1.size,
-                                              for: .body)
+                                          of: FontSize.body1.size,
+                                          for: .body)
     
     return label
   }

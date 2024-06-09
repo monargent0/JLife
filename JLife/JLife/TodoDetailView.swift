@@ -10,13 +10,13 @@ import UIKit
 final class TodoDetailView: UIView {
   
   // MARK: - Components
-  private let timeLabel: UILabel = BodyLabel(for: "", alignment: .left)
+  private let timeLabel: UILabel = BodyLabel(for: NameSpace.Notice.notTimeSelected, alignment: .left)
   
   private let todoTextView: UITextView = {
     let textView = UITextView()
     textView.translatesAutoresizingMaskIntoConstraints = false
     textView.textColor = UIColor(resource: .reversedSystem)
-    textView.layer.borderColor = UIColor(named: AppColor.shared.theme?.border ?? "")?.cgColor
+    textView.layer.borderColor = UIColor(named: AppColor.shared.theme?.border ?? CalendarColorPalette.basic.theme.border)?.cgColor
     textView.layer.borderWidth = 0.7
     textView.layer.masksToBounds = true
     textView.layer.cornerRadius = 5
@@ -44,7 +44,7 @@ final class TodoDetailView: UIView {
   private let timeSetSwitch: UISwitch = {
     let setSwitch = UISwitch()
     setSwitch.translatesAutoresizingMaskIntoConstraints = false
-    setSwitch.onTintColor = UIColor(named: AppColor.shared.theme?.mainColor ?? "")
+    setSwitch.onTintColor = UIColor(named: AppColor.shared.theme?.mainColor ?? CalendarColorPalette.basic.theme.mainColor)
     
     return setSwitch
   }()
@@ -101,7 +101,6 @@ final class TodoDetailView: UIView {
   }
   
   private func setUpPreference() {
-    timeLabel.text = "시간 없음"
     timeSetSwitch.isOn = false
     textCountLabel.text = String(todoTextView.text.count)
     timeSetDatePicker.isHidden = timeSetSwitch.isOn ? false : true
@@ -137,7 +136,7 @@ final class TodoDetailView: UIView {
       timeLabel.text = dateFormat(timeSetDatePicker.date)
     } else {
       timeSetDatePicker.isHidden = true
-      timeLabel.text = "시간 없음"
+      timeLabel.text = NameSpace.Notice.notTimeSelected
     }
   }
   
